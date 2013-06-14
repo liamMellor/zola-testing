@@ -28,7 +28,7 @@ class SomeTestSuite(unittest.TestCase):
         driver.get(self.baseURL + '/')
         
         # an implicit wait sets the time to wait when trying to find elements for the entire test
-        driver.implicitly_wait(15)
+        driver.implicitly_wait(30)
         
         # open top bestseller on homepage
         driver.find_element_by_id('best-sellers').find_element_by_xpath('ul/li/a').click()
@@ -81,7 +81,7 @@ class SomeTestSuite(unittest.TestCase):
         
         driver.find_element_by_name("save_billing_info").click()
         driver.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div/div/div/section[2]/div/section[2]/div/div[2]/div/div/a")
-        driver.find_element_by_id('receive_author_emails').click()
+        driver.find_element_by_id('uniform-receive_author_emails').find_element_by_xpath('span/input').click()
         
         #driver.find_element_by_class("position modal-purchase-book ui-action-1 ui-inline ui-235px").click()
         driver.find_element_by_class_name("l-modal-section-content").find_element_by_xpath("footer").click()

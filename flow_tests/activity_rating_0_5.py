@@ -30,6 +30,7 @@ class SomeTestSuite(unittest.TestCase):
         # an implicit wait sets the time to wait when trying to find elements for the entire test
         driver.implicitly_wait(15)
         driver.find_element_by_link_text('Register / Sign In').click()
+
         driver.find_element_by_name('username').clear()
         driver.find_element_by_name('username').send_keys('davidtennant@zolabooks.com')
         driver.find_element_by_name('password').clear()

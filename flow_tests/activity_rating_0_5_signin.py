@@ -23,57 +23,26 @@ class SomeTestSuite(unittest.TestCase):
     
         # start an instance of firefox and navigate to the zola qc site
         driver = webdriver.Firefox()
-        
-        #driver = webdriver.Firefox('/Library/Python/2.7/site-packages/webdriver/firefox/webdriver.py')
         driver.get(self.baseURL + '/')
-        
-        # an implicit wait sets the time to wait when trying to find elements for the entire test
         driver.implicitly_wait(15)
         driver.find_element_by_id('best-sellers').find_element_by_xpath('ul/li/a').click() #clicks on bestseller top book
-        #driver.find_element_by_link_text('Register / Sign In').click()
-        #driver.find_element_by_name('username').clear()
-        #driver.find_element_by_name('username').send_keys('davidtennant@zolabooks.com')
-        #driver.find_element_by_name('password').clear()
-        #driver.find_element_by_name('password').send_keys('kingkong')
-        #driver.find_element_by_name("submit").click()
-        #driver.find_element_by_link_text("MY eBOOKS").click()
-        
-        #driver.find_element_by_css_selector("img.book").click()
-        #rating_button = driver.find_element_by_class_name('pct-40').find_element_by_xpath("a") #Not For Me
-        #if rating_button is None: raise Exception('rating button not found')
-        #element_to_hover_over =  rating_button
-        #hover = ActionChains(driver).move_to_element(element_to_hover_over)
-        #hover.perform()
-        #driver.execute_script('(arguments[0]).click()', rating_button)
-        
-        star_click = driver.find_element_by_class_name('pct-60').find_element_by_xpath("form/span/div[2]/a").click() #1 star
-        driver.execute_script("$(arguments[0]).click()", star_click) #clicks a star
-        
-        driver.find_element_by_xpath('/html/body/div[4]/div/div/div/div/div/div/section[2]/div/div/form[2]/a/div[2]')
-        #driver.find_element_by_name("username").clear()
-        #driver.find_element_by_name("username").send_keys("davidtennant@zolabooks.com")
-        #WebDriverWait(driver, 10).until(EC.presence_of_element_located(driver.find_element_by_id('login_modal').find_element_by_class_name('margin-bottom-5px').find_element_by_xpath('p[2]/input').send_keys('davidtennant@zolabooks.com')))
-        username = driver.find_element_by_id('login_modal').find_element_by_class_name('margin-bottom-5px').find_element_by_xpath('p[2]/input')
-        if username is None: raise Exception('signup button not found')
-        element_to_hover_over =  username
-        hover = ActionChains(driver).move_to_element(element_to_hover_over)
-        hover.perform()
-        driver.execute_script("$(arguments[0]).click()", username)
-        username.clear() #all of the above is desperately attempting to interact with the 'username' field
-        driver.find_element_by_id('login_modal').find_element_by_class_name('margin-bottom-5px').find_element_by_xpath('p[2]/input').send_keys('davidtennant@zolabooks.com')
-        driver.find_element_by_name('password').click().send_keys('kingkong')
+        driver.find_element_by_class_name('pct-60').find_element_by_xpath("form/span/div[2]/a").click() #1 star
+        username = driver.find_element_by_id('login_modal').find_element_by_class_name('margin-bottom-5px').find_element_by_xpath('p[2]/input')       
+        login_modal = driver.find_element_by_id('login_modal')
+        driver.execute_script('$(arguments[0]).val(arguments[1])', login_modal.find_elements_by_name('username')[0], 'davidtennant@zolabooks.com')
+        password = driver.find_element_by_id('login_modal').find_element_by_class_name('margin-bottom-5px').find_element_by_xpath('p[3]/input')       
+        login_modal = driver.find_element_by_id('login_modal')
+        driver.execute_script('$(arguments[0]).val(arguments[1])', login_modal.find_elements_by_name('password')[0], 'kingkong')
+        sign_in = driver.find_element_by_id('login_modal').find_element_by_xpath('div[3]/p/input')
+        driver.execute_script('(arguments[0]).click()', sign_in)
         driver.find_element_by_class_name('pct-40').find_element_by_xpath("a").click() #Not For Me
-        #driver.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div/div/section/div/section/div[3]/div/div/form/span/div[3]/a").click()
         driver.find_element_by_class_name('pct-60').find_element_by_xpath("form/span/div[3]/a").click() #2 star
         driver.find_element_by_class_name('pct-40').find_element_by_xpath("a").click() #Not For Me
         driver.find_element_by_class_name('pct-60').find_element_by_xpath("form/span/div[4]/a").click() #3 star
-        #driver.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div/div/section/div/section/div[3]/div/div/form/span/div[4]/a").click()
         driver.find_element_by_class_name('pct-40').find_element_by_xpath("a").click() #Not For Me
         driver.find_element_by_class_name('pct-60').find_element_by_xpath("form/span/div[5]/a").click() #4 star
-        #driver.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div/div/section/div/section/div[3]/div/div/form/span/div[5]/a").click()
         driver.find_element_by_class_name('pct-40').find_element_by_xpath("a").click() #Not For Me
         driver.find_element_by_class_name('pct-60').find_element_by_xpath("form/span/div[6]/a").click() #5 star
-        #driver.find_element_by_xpath("/html/body/div[4]/div/div/div/div/div/div/section/div/section/div[3]/div/div/form/span/div[6]/a").click()
         driver.find_element_by_class_name("fancybox-skin").find_element_by_xpath('a').click() #close modal
         
         driver.quit()

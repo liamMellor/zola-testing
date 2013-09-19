@@ -1,0 +1,7 @@
+*** Settings ***
+Library           ../../../Documents/Zola/LibraryTreeTest/WebDriver.py    firefox
+
+*** Test Cases ***
+Sign In
+    WebDriver.Click Sign In
+    WebDriver.Sign In

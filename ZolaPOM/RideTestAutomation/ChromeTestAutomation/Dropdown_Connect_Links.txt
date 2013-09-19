@@ -1,0 +1,72 @@
+*** Settings ***
+Library           ../POMtesting/page_objects/WebDriverWrapper.py
+Library           ../POMtesting/page_objects/ACPList.py
+Library           ../POMtesting/page_objects/ACPProfile.py
+Library           ../POMtesting/page_objects/AddCard.py
+Library           ../POMtesting/page_objects/Bestsellers.py
+Library           ../POMtesting/page_objects/BillingInfo.py
+Library           ../POMtesting/page_objects/Book.py
+Library           ../POMtesting/page_objects/BooksellerProfile.py
+Library           ../POMtesting/page_objects/Booksellers.py
+Library           ../POMtesting/page_objects/Category.py
+Library           ../POMtesting/page_objects/FindFriends.py
+Library           ../POMtesting/page_objects/Home.py
+Library           ../POMtesting/page_objects/List.py
+Library           ../POMtesting/page_objects/MyEBooks.py
+Library           ../POMtesting/page_objects/MyZola.py
+Library           ../POMtesting/page_objects/NewReleases.py
+Library           ../POMtesting/page_objects/Recommendations.py
+Library           ../POMtesting/page_objects/SignUp.py
+Library           ../POMtesting/page_objects/UserProfile.py
+Library           ../POMtesting/page_objects/YourCollection.py
+Library           ../POMtesting/modal_objects/ACPModal.py
+Library           ../POMtesting/modal_objects/BookModal.py
+Library           ../POMtesting/modal_objects/BooksellerModal.py
+Library           ../POMtesting/modal_objects/MessageModal.py
+Library           ../POMtesting/modal_objects/PledgeModal.py
+Library           ../POMtesting/modal_objects/PurchaseConfirmModal.py
+Library           ../POMtesting/modal_objects/RecommendModal.py
+Library           ../POMtesting/modal_objects/SignInModal.py
+Library           ../POMtesting/modal_objects/UserModal.py
+Resource          ../Common_Tasks.txt
+
+*** Test Cases ***
+Authors
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Authors
+    ACPList.Confirm Page    authors
+
+Booksellers
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Booksellers
+    Booksellers.Confirm Page
+
+Curators
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Curators
+    ACPList.Confirm Page    curators
+
+Publishers
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Publishers
+    ACPList.Confirm Page    publishers
+
+Friends Signed In
+    Home.Click Sign In
+    SignInModal.Sign in
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Friends
+    FindFriends.Confirm Page    David Tennant
+
+Friends Not Signed In
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Friends
+    SignInModal.Sign In
+    FindFriends.Confirm Page    David Tennant
+
+Friends No Account
+    Home.Hover Over Connect Dropdown
+    Home.Click on Link    Friends
+    SignInModal.Click Sign Up
+    SignUp.Submit New Member Info
+    FindFriends.Confirm Page

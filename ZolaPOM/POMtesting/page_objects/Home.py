@@ -291,20 +291,4 @@ class Home:
         self._webd_wrap._driver.find_element_by_class_name('l-sidebar-primary').find_element_by_xpath('section/div').find_elements_by_class_name('other-categories')[1].find_element_by_xpath('a').click()         
                  
                  
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-                 
-    
+                

@@ -33,8 +33,8 @@ Resource          ../Common_Tasks.txt
 *** Test Cases ***
 No Account
     Home.Click Bestsellers
-    ${BOOK_TITLE}=    BestSellers.Get First Book Title
-    BestSellers.Click Buy First Book
+    ${BOOK_TITLE}=    BestSellers.Get Eighth Book Title
+    BestSellers.Click Buy Eighth Book
     SignInModal.Click Sign Up
     SignUp.Submit New Member Info
     AddCard.Submit New CC Info
@@ -61,8 +61,8 @@ Signed In
 Not Signed In
     ${EMAIL}=    Register and Sign Out
     Home.Click Bestsellers
-    ${BOOK_TITLE}=    BestSellers.Get First Book Title
-    BestSellers.Click Buy First Book
+    ${BOOK_TITLE}=    BestSellers.Get Eighth Book Title
+    BestSellers.Click Buy Eighth Book
     SignInModal.Sign In    ${EMAIL}    password
     AddCard.Submit New CC Info
     PurchaseConfirmModal.Click Receive Emails

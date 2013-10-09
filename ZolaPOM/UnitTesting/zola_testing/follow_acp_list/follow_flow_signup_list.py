@@ -4,12 +4,11 @@ Created on Jul 15, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.add_card import add_card
-from page_objects.my_zola import my_zola
-from page_objects.acp_list import acp_list
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.my_zola import my_zola
+from UnitTesting.page_objects.acp_list import acp_list
 
 
 class follow_flow_signup_test(unittest.TestCase):

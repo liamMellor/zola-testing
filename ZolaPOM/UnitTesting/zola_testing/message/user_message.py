@@ -4,17 +4,13 @@ Created on Jul 15, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.add_card import add_card
-from page_objects.my_zola import my_zola
-from page_objects.user_profile import user_profile
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.find_friends import find_friends
+from UnitTesting.page_objects.my_zola import my_zola
+from UnitTesting.page_objects.user_profile import user_profile
 
-
-import time
-
-#from page_objects.modals.recommend_modal import recommend_modal
 
 class user_message(unittest.TestCase):
           
@@ -27,13 +23,20 @@ class user_message(unittest.TestCase):
         page_sign_up = sign_up(webd_wrap)
         email = page_sign_up.submit_new_member_info()
          
-        page_sign_up.click_skip_this()
+        page_find_friends = find_friends(webd_wrap)
+        page_find_friends.click_skip_this()
         
-        #page_homepage.click_my_zola()
-        page_user_profile= user_profile(webd_wrap.open_page('profile/david-tennant/')) 
+        page_homepage.click_sign_out()
+        page_homepage.click_sign_in()
+        page_homepage.sign_in_modal.sign_in(email, 'password')
+        page_homepage.click_my_zola()
+
+        webd_wrap.open_page('/profile/david-tennant/')
+        page_user_profile= user_profile(webd_wrap)
         page_user_profile.click_follow()
         page_user_profile.click_sign_out()
         
+        page_homepage = homepage(webd_wrap)
         page_homepage.click_sign_in()
         page_homepage.sign_in_modal.sign_in()
         page_homepage.click_my_zola()

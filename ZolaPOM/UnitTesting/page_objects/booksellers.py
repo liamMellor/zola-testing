@@ -4,7 +4,7 @@ Created on Jul 10, 2013
 @author: emma
 '''
 
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 from selenium.webdriver.common.action_chains import ActionChains
 
 import time 
@@ -22,12 +22,24 @@ class booksellers(base_page_object):
         _actual_url = self._webd_wrap._driver.current_url
         _actual_title = self._webd_wrap._driver.title
         
-        _url = 'https://zolaqc.com/people/booksellers'
+        _url = self._webd_wrap._baseURL + '/people/booksellers'
         _title = 'Zola Books | ebook |'# Booksellers'
         
         if _url != _actual_url  or _title != _actual_title:
             raise AssertionError("Not on the Booksellers list page.")
         
+    def confirm_bookseller_page(self):
+        ''' raises AssertionError if page is incorrect '''
+
+        _actual_url = self._webd_wrap._driver.current_url
+        _actual_title = self._webd_wrap._driver.title
+
+        _url = self._webd_wrap._baseURL + '/people/booksellers'
+        _title = 'Zola Books | ebook |'# Booksellers'                                                                                                                                                       
+
+        if _url != _actual_url  or _title != _actual_title:
+            raise AssertionError("Not on the Booksellers list page.")
+
     def click_my_zola(self):
         self.confirm_page()
         

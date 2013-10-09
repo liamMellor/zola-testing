@@ -4,13 +4,12 @@ Created on Jul 15, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.add_card import add_card
-from page_objects.my_zola import my_zola
-from page_objects.book import book
-from page_objects.bestsellers import bestsellers
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.my_zola import my_zola
+from UnitTesting.page_objects.book import book
+from UnitTesting.page_objects.bestsellers import bestsellers
 
 class test_rating_signup(unittest.TestCase):
           
@@ -20,6 +19,7 @@ class test_rating_signup(unittest.TestCase):
         page_homepage.click_bestsellers()
         
         page_bestsellers = bestsellers(webd_wrap)
+        page_bestsellers.click_first_book()
         book_title = page_bestsellers.book_modal.get_book_title()
         page_bestsellers.book_modal.click_full_profile()
         

@@ -4,12 +4,13 @@ Created on Jul 22, 2013
 @author: emma
 '''
 
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
+import selenium.common.exceptions as Exceptions
 
 import time
 

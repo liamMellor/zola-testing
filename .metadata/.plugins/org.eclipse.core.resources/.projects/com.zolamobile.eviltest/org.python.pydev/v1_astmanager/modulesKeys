@@ -1,0 +1,5 @@
+MODULES_MANAGER_V2
+appium_suite.L_highlight_reply|/Users/Zola/com.zolareader.eviltest/com.zolamobile.eviltest/appium_suite/L_highlight_reply.py
+appium_suite.M_highlight_reply|/Users/Zola/com.zolareader.eviltest/com.zolamobile.eviltest/appium_suite/M_highlight_reply.py
+appium_suite.__init__|/Users/Zola/com.zolareader.eviltest/com.zolamobile.eviltest/appium_suite/__init__.py
+appium_suite.full_suite|/Users/Zola/com.zolareader.eviltest/com.zolamobile.eviltest/appium_suite/full_suite.py

@@ -39,7 +39,6 @@ No Account
     SignInModal.Click Sign Up
     SignUp.Submit New Member Info
     PledgeModal.Pledge Confirm
-    ACPList.Confirm Bookseller Page
     PledgeModal.Initial Unpledge
     PledgeModal.Unpledge Confirm
 
@@ -52,7 +51,6 @@ Signed In
     Booksellers.Click First Bookseller
     PledgeModal.Initial Pledge
     PledgeModal.Pledge Confirm
-    ACPList.Confirm Bookseller Page
     PledgeModal.Initial Unpledge
     PledgeModal.Unpledge Confirm
 
@@ -64,6 +62,5 @@ Not Signed In
     PledgeModal.Initial Pledge
     SignInModal.Sign In    ${EMAIL}    password
     PledgeModal.Pledge Confirm
-    ACPList.Confirm Bookseller Page
     PledgeModal.Initial Unpledge
     PledgeModal.Unpledge Confirm

@@ -5,12 +5,13 @@ Created on Jul 15, 2013
 '''
 
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.bestsellers import bestsellers
-from page_objects.my_zola import my_zola
-from page_objects.book import book
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.bestsellers import bestsellers
+from UnitTesting.page_objects.my_zola import my_zola
+from UnitTesting.page_objects.book import book
+from UnitTesting.page_objects.find_friends import find_friends
 
 
 class test_recommend_flow_notsignedin_profile(unittest.TestCase):
@@ -22,8 +23,11 @@ class test_recommend_flow_notsignedin_profile(unittest.TestCase):
         page_homepage.sign_in_modal.click_sign_up()
          
         page_sign_up = sign_up(webd_wrap)
-        email = page_sign_up.submit_new_member_info() 
-        page_sign_up.click_skip_this()
+        email = page_sign_up.submit_new_member_info()
+         
+        page_find_friends = find_friends(webd_wrap)
+        page_find_friends. click_skip_this()
+        
         page_homepage.click_sign_out()
         page_homepage.click_bestsellers()
         

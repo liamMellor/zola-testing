@@ -100,6 +100,19 @@ class MyZola:
     ########################################################################
     ########################################################################
         
+    def first_activity_should_be_pledged(self):
+        ''' raises AssertionError if page title is not arg1 '''
+        self.confirm_page()
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'activity-container')), 'no activities')
+        
+        try:
+            actual = self._webd_wrap._driver.find_element_by_id('activity-container').find_element_by_xpath('section[1]/div[2]/ul/li/a[2]').text
+        except Exceptions.NoSuchElementException:
+            raise AssertionError("No activity in the feed")
+            
+        if 'pledged' not in actual:
+            raise AssertionError("First activity should have been pledged.")
+
     def first_activity_should_be_purchased_book(self, _book_title):
         ''' raises AssertionError if page title is not arg1 '''
         self.confirm_page()
@@ -116,6 +129,7 @@ class MyZola:
     def first_activity_should_be_recommended_book(self, _book_title):
         ''' raises AssertionError if page title is not arg1 '''
         self.confirm_page()
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'activity-container')), 'no activities')
         
         try:
             actual = self._webd_wrap._driver.find_element_by_id('activity-container').find_element_by_xpath('section[1]/div[2]/ul/li/a[2]').text
@@ -128,6 +142,7 @@ class MyZola:
     def first_activity_should_be_follow(self):
         ''' raises AssertionError if first activity is not a follow '''
         self.confirm_page()
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'activity-container')), 'no activities')
         
         try:
             actual = self._webd_wrap._driver.find_element_by_id('activity-container').find_element_by_xpath('section[1]/div[1]/h5').text
@@ -140,6 +155,7 @@ class MyZola:
     def first_activity_should_be_rated_book(self, _book_title):
         ''' raises AssertionError if first activity is not a rate the proper book '''
         self.confirm_page()
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'activity-container')), 'no activities')
         
         try:
             _actual_book_title = self._webd_wrap._driver.find_element_by_id('activity-container').find_element_by_xpath('section[1]/div[2]/ul/li/a[2]').text
@@ -153,6 +169,7 @@ class MyZola:
     def first_activity_should_be_added_book(self, _book_title):
         ''' raises AssertionError if first activity is not an add the proper book'''
         self.confirm_page()
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'activity-container')), 'no activities')
         
         try:
             _actual_book_title = self._webd_wrap._driver.find_element_by_id('activity-container').find_element_by_xpath('section[1]/div[2]/ul/li/a[2]').text

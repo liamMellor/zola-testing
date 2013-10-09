@@ -17,7 +17,7 @@ class PledgeModal:
         self._webd_wrap = BuiltIn().get_library_instance('WebDriverWrapper')
         
     def _confirm_modal(self):
-        self.wait.until(EC.presence_of_element_located((By.CLASS_NAME, "l-570px")), 'Pledge modal not present')
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.CLASS_NAME, "fancybox-inner")), 'Pledge modal not present')
         
     def close_modal(self):
         self._confirm_modal()
@@ -47,6 +47,7 @@ class PledgeModal:
     
     
     def initial_pledge(self):
+        self._confirm_modal()
         pledge_button = self._webd_wrap._driver.find_element_by_class_name("l-710px").find_element_by_xpath("section/p/a/img")
         if pledge_button is None: raise Exception('pledge button not found')
         element_to_hover_over =  pledge_button
@@ -55,6 +56,7 @@ class PledgeModal:
         self._webd_wrap._driver.execute_script('(arguments[0]).click()', pledge_button)
     
     def pledge_confirm(self):
+        self._confirm_modal()
         #self._driver.find_element_by_class_name("margin-left-250px").find_element_by_xpath("p/label")
         pledge_button2 = self._webd_wrap._driver.find_element_by_class_name("l-modal-800px").find_element_by_xpath("section[2]/a/img")
         if pledge_button2 is None: raise Exception('pledge button not found')
@@ -65,6 +67,7 @@ class PledgeModal:
         
     
     def initial_unpledge(self):
+        self._confirm_modal()
         pledge_button = self._webd_wrap._driver.find_element_by_class_name("l-710px").find_element_by_xpath("section/div[2]/a/img")
         if pledge_button is None: raise Exception('pledge button not found')
         element_to_hover_over =  pledge_button
@@ -73,6 +76,7 @@ class PledgeModal:
         self._webd_wrap._driver.execute_script('(arguments[0]).click()', pledge_button)
         
     def unpledge_confirm(self):
+        self._confirm_modal()
         self._webd_wrap._driver.find_element_by_class_name("l-modal-800px").find_element_by_xpath("section[2]/a[2]")
         pledge_button2 = self._webd_wrap._driver.find_element_by_class_name("l-modal-800px").find_element_by_xpath("section[2]/a/input")
         if pledge_button2 is None: raise Exception('pledge button not found')

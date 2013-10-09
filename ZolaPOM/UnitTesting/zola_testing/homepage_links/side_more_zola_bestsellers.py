@@ -4,8 +4,9 @@ Created on Jul 17, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.bestsellers import bestsellers
 
 class side_more_zola_bestsellers(unittest.TestCase):
           
@@ -14,7 +15,9 @@ class side_more_zola_bestsellers(unittest.TestCase):
         page_homepage = homepage(webd_wrap)
         page_homepage.get_page()
         page_homepage.click_more_zola_bestsellers()
-        webd_wrap.check_url('https://zolaqc.com/bestsellers')
+        
+        page_bestsellers = bestsellers(webd_wrap)
+        page_bestsellers.confirm_page()
         
         webd_wrap.close_the_browser()
         

@@ -7,7 +7,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects.modals.base_modal import base_modal
+from UnitTesting.page_objects.modals.base_modal import base_modal
 
 class bookseller_modal(base_modal):
     def __init__(self, webd_wrap):
@@ -33,7 +33,6 @@ class bookseller_modal(base_modal):
     def modal_should_be_present(self):
         ''' raises AssertionError if modal is not displayed '''
         self.wait.until(EC.presence_of_element_located((By.CLASS_NAME, "l-570px")), 'modal not present')
-        return self
     
     def click_full_profile(self):
         self._confirm_modal()

@@ -4,11 +4,11 @@ Created on Jul 9, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.find_friends import find_friends
-from page_objects.acp_list import acp_list
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.find_friends import find_friends
+from UnitTesting.page_objects.acp_list import acp_list
 
 #from page_objects.modals.recommend_modal import recommend_modal
 

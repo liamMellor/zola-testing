@@ -4,8 +4,8 @@ Created on Jul 17, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
 
 class side_usa_today_bestsellers(unittest.TestCase):
           
@@ -15,6 +15,7 @@ class side_usa_today_bestsellers(unittest.TestCase):
         page_homepage.get_page()
         page_homepage.click_usa_today_bestsellers()
         webd_wrap.check_url('http://www.usatoday.com/life/books/best-selling/')
+        
         
         webd_wrap.close_the_browser()
         

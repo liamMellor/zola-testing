@@ -35,7 +35,7 @@ No Account
     Home.Click First Bestseller
     ${BOOK_TITLE}=    BookModal.Get Book Title
     BookModal.Click Full Profile
-    Book.Click Add To List Nsi
+    Book.Click Add To List
     SignInModal.Click Sign Up
     SignUp.Submit New Member Info
     Book.Choose Wishlist
@@ -59,7 +59,7 @@ Not Signed In
     Home.Click First Bestseller
     ${BOOK_TITLE}=    BookModal.Get Book Title
     BookModal.Click Full Profile
-    Book.Click Add To List Nsi
+    Book.Click Add To List
     SignInModal.Sign In    ${EMAIL}    password
     Book.Choose Wishlist
     Book.Click My Zola

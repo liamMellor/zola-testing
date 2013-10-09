@@ -4,9 +4,9 @@ Created on Jul 25, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
-from page_objects.booksellers import booksellers
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.booksellers import booksellers
 
 class connect_booksellers(unittest.TestCase):
           

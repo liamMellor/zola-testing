@@ -5,11 +5,11 @@ Created on Jul 12, 2013
 '''
 
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.add_card import add_card
-from page_objects.my_zola import my_zola
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.find_friends import find_friends
+from UnitTesting.page_objects.my_zola import my_zola
 
 import time
 
@@ -25,12 +25,14 @@ class addtolist_flow_notsignedin_test(unittest.TestCase):
          
         page_sign_up = sign_up(webd_wrap)
         email = page_sign_up.submit_new_member_info()
-         
+        
+        page_find_friends = find_friends(webd_wrap)
+        page_find_friends.click_skip_this() 
         page_homepage.click_sign_out()
         
         page_homepage.click_first_bestseller()
         title = page_homepage.book_modal.get_book_title()
-        page_homepage.book_modal.click_add_to_list_nsi()
+        page_homepage.book_modal.click_add_to_list()
         page_homepage.sign_in_modal.sign_in(email, 'password')
         page_homepage.book_modal.choose_wishlist()
         page_homepage.book_modal.close_modal()

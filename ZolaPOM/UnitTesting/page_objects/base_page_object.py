@@ -1,12 +1,12 @@
-from page_objects.modals.book_modal import book_modal
-from page_objects.modals.sign_in_modal import sign_in_modal
-from page_objects.modals.purchase_confirm_modal import purchase_confirm_modal
-from page_objects.modals.recommend_modal import recommend_modal
-from page_objects.modals.pledge_modal import pledge_modal
-from page_objects.modals.bookseller_modal import bookseller_modal
-from page_objects.modals.message_modal import message_modal
-from page_objects.modals.user_modal import user_modal
-from page_objects.modals.acp_modal import acp_modal
+from UnitTesting.page_objects.modals.book_modal import book_modal
+from UnitTesting.page_objects.modals.sign_in_modal import sign_in_modal
+from UnitTesting.page_objects.modals.purchase_confirm_modal import purchase_confirm_modal
+from UnitTesting.page_objects.modals.recommend_modal import recommend_modal
+from UnitTesting.page_objects.modals.pledge_modal import pledge_modal
+from UnitTesting.page_objects.modals.bookseller_modal import bookseller_modal
+from UnitTesting.page_objects.modals.message_modal import message_modal
+from UnitTesting.page_objects.modals.user_modal import user_modal
+from UnitTesting.page_objects.modals.acp_modal import acp_modal
 
 
 from selenium.webdriver.support import expected_conditions as EC

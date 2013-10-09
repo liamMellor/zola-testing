@@ -8,7 +8,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects.modals.base_modal import base_modal
+from UnitTesting.page_objects.modals.base_modal import base_modal
 
 class recommend_modal(base_modal):
     def __init__(self, webd_wrap):
@@ -37,7 +37,6 @@ class recommend_modal(base_modal):
         self.enter_message()
         self.submit()
         
-       
     def enter_email(self):
         _recommend_email_form = self._webd_wrap._driver.find_element_by_id('recommend-modal').find_element_by_id('recommend-email-form')
         self._webd_wrap._driver.execute_script('$(arguments[0]).val(arguments[1])', _recommend_email_form.find_elements_by_class_name('textboxlist-bit-editable-input')[0], '1@zolabooks.com')

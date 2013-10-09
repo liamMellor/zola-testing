@@ -4,9 +4,9 @@ Created on Jul 16, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
-import time
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+
 
 class bottom_copyright(unittest.TestCase):
           
@@ -15,7 +15,7 @@ class bottom_copyright(unittest.TestCase):
         page_homepage = homepage(webd_wrap)
         page_homepage.get_page()
         page_homepage.click_copyright()
-        webd_wrap.check_url('https://zolaqc.com/terms#')
+        page_homepage.check_copyright_page()
         
         webd_wrap.close_the_browser()
         

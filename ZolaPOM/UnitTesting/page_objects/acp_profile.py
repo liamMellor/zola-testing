@@ -3,9 +3,10 @@ Created on Jul 15, 2013
 
 @author: emma
 '''
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 from selenium.webdriver.common.action_chains import ActionChains
-
+from selenium.webdriver.common.by import By
+from selenium.webdriver.support import expected_conditions as EC
 import time
 
 class acp_profile(base_page_object):  
@@ -15,10 +16,11 @@ class acp_profile(base_page_object):
 
     def confirm_page(self):
         ''' raises AssertionError if page is incorrect '''
+        self._webd_wrap.wait.until(EC.visibility_of_element_located((By.CSS_SELECTOR, "ul[class='ui-button-set ui-button-set-170px']")), 'Not on a Profile page.')
         
         _url = self._webd_wrap._driver.current_url
         
-        if not _url.startswith('https://zolaqc.com/profile'):
+        if not _url.startswith(self._webd_wrap._baseURL + '/profile'):
             raise AssertionError("Not on a profile page.")    
         
     def click_my_zola(self):

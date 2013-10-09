@@ -5,8 +5,8 @@ Created on Jul 16, 2013
 '''
 
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
 
 class bottom_contact_us(unittest.TestCase):
           

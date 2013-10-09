@@ -4,9 +4,10 @@ Created on Jul 17, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
-from page_objects.my_zola import my_zola
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.my_zola import my_zola
+from UnitTesting.page_objects.my_ebooks import my_ebooks
 
 class my_zola_collection_tab(unittest.TestCase):
           
@@ -21,7 +22,8 @@ class my_zola_collection_tab(unittest.TestCase):
         page_my_zola = my_zola(webd_wrap)
         page_my_zola.click_collection_tab()
         
-        webd_wrap.check_url('https://zolaqc.com/collection')
+        page_my_ebooks = my_ebooks(webd_wrap)
+        page_my_ebooks.confirm_page()
         
         webd_wrap.close_the_browser()
         

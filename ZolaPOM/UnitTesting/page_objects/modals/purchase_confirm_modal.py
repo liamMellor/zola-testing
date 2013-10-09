@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects.modals.base_modal import base_modal
+from UnitTesting.page_objects.modals.base_modal import base_modal
 
 import time
 
@@ -40,7 +40,7 @@ class purchase_confirm_modal(base_modal):
         time.sleep(1)
         
     def click_done(self):
-        self._webd_wrap.wait.until(EC.invisibility_of_element_located((By.ID, 'redeive_author_emails')))
+        self._webd_wrap.wait.until(EC.invisibility_of_element_located((By.ID, 'receive_author_emails')))
        
         _elt = self._webd_wrap._driver.find_element_by_id('sign-in-modal').find_element_by_xpath('footer/a')
         self._webd_wrap._driver.execute_script("(arguments[0]).click()", _elt)

@@ -34,7 +34,7 @@ Resource          ../Common_Tasks.txt
 No Account
     Home.Click First Bestseller
     ${BOOK_TITLE}=    BookModal.Get Book Title
-    BookModal.Click Add To List Nsi
+    BookModal.Click Add To List
     SignInModal.Click Sign Up
     SignUp.Submit New Member Info
     BookModal.Choose Wishlist
@@ -58,7 +58,7 @@ Not Signed In
     ${EMAIL}=    Register and Sign Out
     Home.Click First Bestseller
     ${BOOK_TITLE}=    BookModal.Get Book Title
-    BookModal.Click Add To List Nsi
+    BookModal.Click Add To List
     SignInModal.Sign In    ${EMAIL}    password
     BookModal.Choose Wishlist
     BookModal.Close Modal

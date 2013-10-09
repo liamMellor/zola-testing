@@ -4,13 +4,14 @@ Created on Aug 5, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.add_card import add_card
-from page_objects.my_zola import my_zola
-from page_objects.bestsellers import bestsellers
-from page_objects.billing_info import billing_info
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.add_card import add_card
+from UnitTesting.page_objects.my_zola import my_zola
+from UnitTesting.page_objects.bestsellers import bestsellers
+from UnitTesting.page_objects.billing_info import billing_info
+from UnitTesting.page_objects.find_friends import find_friends
 
 class test_purchase_notsignedincc(unittest.TestCase):
           
@@ -23,7 +24,9 @@ class test_purchase_notsignedincc(unittest.TestCase):
         page_sign_up = sign_up(webd_wrap)
         email = page_sign_up.submit_new_member_info()
         
-        page_sign_up.click_skip_this()
+        page_find_friends = find_friends(webd_wrap)
+        page_find_friends.click_skip_this()
+        
         page_homepage.click_my_zola()
         
         page_my_zola = my_zola(webd_wrap)
@@ -37,12 +40,12 @@ class test_purchase_notsignedincc(unittest.TestCase):
         
         page_billing_info.click_back_to_profile()
         
-        page_homepage.click_sign_out()
+        page_my_zola.click_sign_out()
         page_homepage.click_bestsellers()
         
         page_bestsellers = bestsellers(webd_wrap)
-        book_title = page_bestsellers.get_first_book_title()
-        page_bestsellers.click_buy_first_book()
+        book_title = page_bestsellers.get_eighth_book_title()
+        page_bestsellers.click_buy_eighth_book()
         page_bestsellers.sign_in_modal.sign_in(email, 'password')
         
         page_bestsellers.purchase_confirm_modal.click_receive_emails()
@@ -50,8 +53,6 @@ class test_purchase_notsignedincc(unittest.TestCase):
         page_bestsellers.purchase_confirm_modal.click_done()
         
         page_bestsellers.click_my_zola()
-        
-        page_my_zola = my_zola(webd_wrap)
         page_my_zola.first_activity_should_be_purchased_book(book_title)
     
         webd_wrap.close_the_browser()

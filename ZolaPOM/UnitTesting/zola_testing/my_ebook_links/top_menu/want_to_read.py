@@ -4,9 +4,10 @@ Created on Jul 22, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
-from page_objects.my_ebooks import my_ebooks
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.my_ebooks import my_ebooks
+from UnitTesting.page_objects.your_collection import your_collection
 
 class top_want_to_read(unittest.TestCase):
           
@@ -21,7 +22,8 @@ class top_want_to_read(unittest.TestCase):
         page_my_ebooks = my_ebooks(webd_wrap)
         page_my_ebooks.click_want_to_read()
         
-        webd_wrap.check_url('https://zolaqc.com/collection/list/wishlist/')
+        page_your_collection = your_collection(webd_wrap)
+        page_your_collection.confirm_filter_selected('wishlist')
         
         webd_wrap.close_the_browser()
         

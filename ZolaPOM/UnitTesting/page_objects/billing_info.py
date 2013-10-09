@@ -3,7 +3,7 @@ Created on Jul 29, 2013
 
 @author: emma
 '''
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
 from selenium.webdriver.common.action_chains import ActionChains
@@ -19,5 +19,18 @@ class billing_info(base_page_object):
         
         _url = self._webd_wrap._driver.current_url
         
-        if not _url.startswith('https://zolaqc.com/profile/billing'):
+        if not _url.startswith(self._webd_wrap._baseURL + '/profile/billing'):
             raise AssertionError("Not on the billing info page.")
+        
+    ##########################################################################
+    ##########################################################################
+    
+    def click_add_card(self):
+        self.confirm_page()
+        
+        self._webd_wrap._driver.find_element_by_class_name('l-section-header-2').find_element_by_xpath('a').click()
+        
+    def click_back_to_profile(self):
+        self.confirm_page()
+        
+        self._webd_wrap._driver.find_element_by_class_name('l-section-capital').find_element_by_xpath('a').click()

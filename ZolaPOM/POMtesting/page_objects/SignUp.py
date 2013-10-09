@@ -19,6 +19,11 @@ class SignUp:
     def __init__(self):
         self._webd_wrap = BuiltIn().get_library_instance('WebDriverWrapper')
         
+        self._first_name_list = ['Adam', 'John', 'Lin', 'Jennifer', 'Jerome', 'Alyssa', 'Cassandra', 'Terry',
+                            'Dan', 'Katya', 'Andrea', 'Ken', 'Frank', 'Ingrid', 'Monica', 'Natalya']
+        self._last_name_list = ['Davidson', 'Robinson', 'Berry', 'Chen', 'Miller', 'Wilson', 'White', 'Hall',
+                            'King', 'Green', 'Baker', 'Parker', 'Cook', 'Simpson', 'Porter', 'Shaw']
+        
     def confirm_page(self):
         
         self._webd_wrap.wait.until(EC.text_to_be_present_in_element((By.CLASS_NAME, 'header-1'), 'Fill in your'))
@@ -44,10 +49,10 @@ class SignUp:
         
         return _email
 
-    def register_email(self, email):
+    def register_email(self, _email):
         
-        self._webd_wrap._driver.find_element_by_name("email").send_keys(email)
-        self._webd_wrap._driver.find_element_by_name("confirm_email").send_keys(email)
+        self._webd_wrap._driver.find_element_by_name("email").send_keys(_email)
+        self._webd_wrap._driver.find_element_by_name("confirm_email").send_keys(_email)
 
     def register_password(self):
 
@@ -56,8 +61,14 @@ class SignUp:
 
 
     def register_name(self):
-        self._webd_wrap._driver.find_element_by_id("first_name").send_keys("Lin")
-        self._webd_wrap._driver.find_element_by_id("last_name").send_keys("Robinson")
+        
+        _first_name = self._first_name_list[ random.randint(0, 15) ]
+        _last_name = self._last_name_list[ random.randint(0, 15) ]
+        
+        self._webd_wrap._driver.find_element_by_id("first_name").send_keys(_first_name)
+        self._webd_wrap._driver.find_element_by_id("last_name").send_keys(_last_name)
+        
+        
 
     def register_birthday(self):
         self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, "bday_m")))

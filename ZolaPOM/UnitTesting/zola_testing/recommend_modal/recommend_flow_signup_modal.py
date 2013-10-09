@@ -5,12 +5,11 @@ Created on Jul 2, 2013
 '''
 
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.sign_up import sign_up
-from page_objects.homepage import homepage
-from page_objects.add_card import add_card
-from page_objects.bestsellers import bestsellers
-from page_objects.my_zola import my_zola
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.sign_up import sign_up
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.bestsellers import bestsellers
+from UnitTesting.page_objects.my_zola import my_zola
 
 
 class test_recommend_flow_signup_modal(unittest.TestCase):
@@ -23,7 +22,7 @@ class test_recommend_flow_signup_modal(unittest.TestCase):
         page_bestsellers = bestsellers(webd_wrap)
         page_bestsellers.click_first_book()
         book_title = page_bestsellers.book_modal.get_book_title()
-        page_bestsellers.recommend_modal.click_recommend()
+        page_bestsellers.book_modal.click_recommend()
         page_bestsellers.sign_in_modal.click_sign_up()
 
         page_sign_up = sign_up(webd_wrap)

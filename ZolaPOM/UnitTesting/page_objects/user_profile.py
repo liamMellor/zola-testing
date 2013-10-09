@@ -9,21 +9,23 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 
 import time
 
 class user_profile(base_page_object):
        
-    def __init__(self,webd_wrap):
+    def __init__(self, webd_wrap):
         base_page_object.__init__(self, webd_wrap)
         
     def confirm_page(self):
         ''' raises AssertionError if page is incorrect '''
         
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'activity-container')), 'user profile not found')
+
         _url = self._webd_wrap._driver.current_url
         
-        if not _url.startswith('https://zolaqc.com/profile'):
+        if not _url.startswith(self._webd_wrap._baseURL + '/profile'):
             raise AssertionError("Not on a profile page.")    
         
     def click_my_zola(self):
@@ -74,6 +76,6 @@ class user_profile(base_page_object):
         self.confirm_page()
         
         _url = self._webd_wrap._driver.current_url
-        return _url.replace('https://zolaqc.com/profile')
+        return _url.replace(self._webd_wrap._baseURL + '/profile')
     
     

@@ -4,9 +4,9 @@ Created on Jul 25, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
-from page_objects.find_friends import find_friends
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.find_friends import find_friends
 
 
 class connect_friends_notsignedin(unittest.TestCase):
@@ -18,8 +18,6 @@ class connect_friends_notsignedin(unittest.TestCase):
         page_homepage.hover_over_connect_dropdown()
         page_homepage.click_on_link('Friends')
         page_homepage.sign_in_modal.sign_in()
-        #page_homepage.hover_over_connect_dropdown()
-        #page_homepage.click_on_link('Friends')
         
         page_find_friends = find_friends(webd_wrap)
         page_find_friends.confirm_page('David Tennant')

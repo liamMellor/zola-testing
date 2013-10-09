@@ -2,7 +2,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects.modals.base_modal import base_modal
+from UnitTesting.page_objects.modals.base_modal import base_modal
 
 import time
 
@@ -10,7 +10,7 @@ class book_modal(base_modal):
     def __init__(self, webd_wrap):
         base_modal.__init__(self, webd_wrap)
     
-        def _confirm_modal(self):
+    def _confirm_modal(self):
         ''' raises AssertionError if modal is incorrect '''
         self._webd_wrap.wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'fancybox-inner')), 'modal not present')
         
@@ -70,11 +70,6 @@ class book_modal(base_modal):
         
         self._webd_wrap._driver.find_element_by_link_text('My Wishlist').click()
         
-#         _element = self._webd_wrap._driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/div/div/section[2]/div/div/ul/li[2]/div/div/div/div/section/ul/li/a')
-#         #/html/body/div[3]/div/div/div/div/div/div/section[2]/div/div/ul/li[2]/div/div/div/div/section/ul/li/a
-#         _hov = ActionChains(self._webd_wrap._driver).move_to_element(_element)
-#         _hov.perform()
-#         self._webd_wrap._driver.execute_script('(arguments[0]).click()', _element)
 
     def click_view_your_list(self):
         ''' clicks the view your list option after adding the book the the list '''
@@ -86,8 +81,8 @@ class book_modal(base_modal):
         ''' clicks the add to list button '''
         self._confirm_modal()
         
-        self._webd_wrap._driver.find_element_by_link_text("ADD TO LIST").click()
-
+        _addtolist = self._webd_wrap._driver.find_element_by_xpath("/html/body/div[3]/div/div/div/div/div/div/section[2]/div/div/ul/li[2]/a")
+        self._webd_wrap._driver.execute_script("(arguments[0]).click()", _addtolist)
 
     ########################################################################
         

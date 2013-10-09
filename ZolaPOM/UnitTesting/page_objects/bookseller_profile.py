@@ -9,7 +9,7 @@ from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
 from selenium.webdriver.common.action_chains import ActionChains
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 
 import time
 
@@ -22,7 +22,7 @@ class bookseller_profile(base_page_object):
         ''' raises AssertionError if page is incorrect. Does this by checking for the pledge element. '''
         
         _actual_url = self._webd_wrap._driver.current_url
-        _url = 'https://zolaqc.com/profile'
+        _url = self._webd_wrap._baseURL + '/profile'
         
         # this should really check for the pledge webelement but there isn't a good way of identifying it yet
         self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'page')))

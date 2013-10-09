@@ -6,7 +6,7 @@ Created on Jul 25, 2013
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support.ui import WebDriverWait # available since 2.4.0
 from selenium.webdriver.support import expected_conditions as EC # available since 2.26.0
-from page_objects.base_page_object import base_page_object
+from UnitTesting.page_objects.base_page_object import base_page_object
 
 import time
 
@@ -24,12 +24,12 @@ class list(base_page_object):
         
         if _list_name is None:
             _title = 'Zola Books | ebook | Booklist'
-            if not _actual_url.startswith('https://zolaqc.com/list') or not _actual_title.startswith(_title):
+            if not _actual_url.startswith(self._webd_wrap._baseURL + '/list') or not _actual_title.startswith(_title):
                 raise AssertionError("Not on an List page")
         else:
             _title = 'Zola Books | ebook | ' + _list_name
-            if not _actual_url.startswith('https://zolaqc.com/list') or not _actual_title.startswith(_title):
-                raise AssertionError("Not on an List page")
+            if not _actual_url.startswith(self._webd_wrap._baseURL + '/list') or not _actual_title.startswith(_title):
+                raise AssertionError("Not on a List page")
 
     def click_my_zola(self):
         self.confirm_page()
@@ -43,6 +43,8 @@ class list(base_page_object):
     
     def confirm_daily_deals(self):
         ''' confirms the page is the Zola Deals page '''
+
+        self._webd_wrap.wait.until(EC.visibility_of_element_located((By.CLASS_NAME, 'header-1')))        
         
         _list_title = self._webd_wrap._driver.find_element_by_class_name('header-1').text
         

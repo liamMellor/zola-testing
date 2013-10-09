@@ -4,10 +4,10 @@ Created on Jul 25, 2013
 @author: emma
 '''
 import unittest #imports unit test/ability to run as pyunit test
-from page_objects.webdriver_wrapper import webdriver_wrapper
-from page_objects.homepage import homepage
-from page_objects.my_ebooks import my_ebooks
-from page_objects.your_collection import your_collection
+from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
+from UnitTesting.page_objects.homepage import homepage
+from UnitTesting.page_objects.my_ebooks import my_ebooks
+from UnitTesting.page_objects.your_collection import your_collection
 
 class open_book_modal(unittest.TestCase):
           
@@ -23,6 +23,7 @@ class open_book_modal(unittest.TestCase):
         page_my_ebooks.click_all_books_see_all()
         
         page_your_collection = your_collection(webd_wrap)
+        page_your_collection.confirm_page()
         page_your_collection.click_first_book()
         
         page_your_collection.book_modal.close_modal()

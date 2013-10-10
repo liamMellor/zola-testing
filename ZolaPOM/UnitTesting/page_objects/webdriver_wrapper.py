@@ -45,6 +45,9 @@ class webdriver_wrapper():
         self.rand_username_int = str( random.randint(0,1000000) )
         if mode == 'single' and browser in _drivers:
             self._driver = _drivers[browser]
+            ## Just logout, since the browser is still open
+            self._driver.get(self._baseURL + self.logout_path)
+            sleep(0.5)
         elif browser == 'chrome':
             self._driver = webdriver.Chrome('/Library/Python/2.7/site-packages/chromedriver')
         elif browser == 'safari':
@@ -74,11 +77,8 @@ class webdriver_wrapper():
         
     def close_the_browser(self):
         global mode
-        self._driver.get(self._baseURL + self.logout_path)
-        if mode == 'single':
-            ## Just sleep to make sure the logout finishes, and don't close browser
-            sleep(0.5)
-        else:
+        if mode != 'single':
+            self._driver.get(self._baseURL + self.logout_path)
             self._driver.quit()
         
     def switch_window(self):

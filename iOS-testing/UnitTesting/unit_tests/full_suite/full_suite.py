@@ -16,6 +16,7 @@ from UnitTesting.app_objects.login_screen import login_screen
 from UnitTesting.app_objects.home_screen import home_screen
 from UnitTesting.app_objects.my_ebooks_screen import my_ebooks_screen
 from UnitTesting.app_objects.book_screen import book_screen
+from UnitTesting.app_objects.social_tab import social_tab
 
 class test_app_full_suite(unittest.TestCase):
 
@@ -31,15 +32,33 @@ class test_app_full_suite(unittest.TestCase):
 
             my_ebooks_screen_inst = my_ebooks_screen(appium_wrap)
             my_ebooks_screen_inst.confirm_purchase(num_books)
-            my_ebooks_click_third_book()
+            my_ebooks_screen_inst.click_first_book()
 
             book_screen_inst = book_screen(appium_wrap)
-            for i in range(10):
+            for i in range(20):
                 book_screen_inst.page_turn()
             book_screen_inst.highlight_text()
             book_screen_inst.comment_on_highlight()
             book_screen_inst.tap_midscreen()
+            book_screen_inst.click_home_button()
+            
+            my_ebooks_screen_inst.click_home_button()
+            home_screen_inst.deregister_device()
+            login_screen_inst.log_in()
+            home_screen_inst.click_my_ebooks()
+            my_ebooks_screen_inst.click_third_book()
+            
+            book_screen_inst.tap_midscreen()
             book_screen_inst.click_social_tab()
+
+            social_tab_inst = social_tab(appium_wrap)
+            social_tab_inst.comment_check()
+            social_tab_inst.click_orange_reply()
+            social_tab_inst.add_reply()
+            social_tab_inst.add_second_reply()
+            social_tab_inst.check_see_comments()
+            social_tab_inst.check_second_reply()
+            social_tab_inst.click_social_tab()
 
 
 

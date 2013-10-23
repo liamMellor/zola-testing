@@ -18,18 +18,19 @@ class home_screen(base_app_object):
         self.driver.find_element_by_name('ipad nav home on').click()
 
     def click_my_ebooks(self):
-        self.driver.find_element_by_name('ipad nav myebooks off').click()
+        self.driver.find_element_by_xpath('//window[1]/button[2]').click()
+        time.sleep(5)
 
     def refresh(self):
         self.driver.find_element_by_name('ipad purchased refresh').click()
 
     def check_landing_gear(self):
         #self.wait.until(EC.element_to_be_clickable((By.NAME,'ipad landing gear')))
-        cog = self.driver.find_element_by_name('ipad landing gear')
-        cog.size()
+        cog = self.driver.find_element_by_xpath('//window[1]/button[4]').location
+        print str(cog)
 
     def click_landing_gear(self):
-        self.driver.find_element_by_name('ipad landing gear').click()
+        self.driver.find_element_by_xpath('//window[1]/button[4]').click()
 
     def click_deregister(self):
         self.driver.find_element_by_name('ipad information deregister').click()

@@ -17,40 +17,46 @@ class login_screen(base_app_object):
     def __init__(self, appium_wrap):
         base_app_object.__init__(self, appium_wrap)
     
-    def textfield():
-        textfield = self.driver.find_element_by_tag_name('textField').size()
+    def textfield(self):
+        self.driver.find_element_by_xpath('//window[1]/textfield[1]')
     
     def log_in(self):
         self.driver.implicitly_wait(180)
         print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Beginning Appium Test"
         buttons = self.driver.find_elements_by_tag_name('button')
-        text = self.driver.find_elements_by_tag_name('textField')
+        text = self.driver.find_elements_by_xpath('//window[1]/textfield[1]')
         text[0].click()
         text[0].send_keys("jay+" + self.appium_wrap.rand_username_int + "@zolabooks.com")
-        secure = self.driver.find_elements_by_tag_name("secure")
+        secure = self.driver.find_elements_by_xpath("//window[1]/secure[1]")
         secure[0].click()
         secure[0].send_keys("password")
         #secure[0].send_keys("\n")
         #login = self.driver.find_elements_by_name("ipad login loginbutton")
         buttons[0].click()
         print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Logging in..."
-        time.sleep(5)
+        time.sleep(40)
         print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Log in Succesful"
 
     def login_check(self):
         app_home_screen = home_screen(self.appium_wrap)
         app_my_ebooks_screen = my_ebooks_screen(self.appium_wrap)
-        if (self.textfield > 0):
+        try:
+            self.driver.implicitly_wait(0)
+            self.driver.find_element_by_xpath('//window[1]/textfield[1]')
+            self.driver.implicitly_wait(10)
             self.log_in()
-            app_home_screen.refresh()
-        elif (app_home_screen.check_landing_gear > 0):
-            app_home_screen.refresh()
+    #self.driver.find_element_by_xpath('//window[1]/textfield[1]').location['y'] == 212 and self.driver.find_element_by_xpath('//window[1]/textfield[1]').location['x'] == 182:
+            # app_home_screen.deregister_device()
+            
+        #   app_home_screen.refresh()
+        except:
+            cog = self.driver.find_element_by_xpath('//window[1]/button[4]')
+            cog.size['width'] == 33 and cog.size['height'] == 26
             app_home_screen.deregister_device()
             self.log_in()
-            app_home_screen.refresh()
-        else:
-            app_home_screen.refresh()
-            app_my_ebooks_screen.click_home_button()
-            app_home_screen.deregister_device()
-            self.log_in()
-            app_home_screen.refresh()
+    #    app_home_screen.refresh()
+    #       cog = self.driver.find_element_by_xpath('//window[1]/button[4]')
+    #       cog.size['width'] == 33 and cog.size['height'] == 26
+    #       app_home_screen.deregister_device()
+#       self.log_in()
+        #   app_home_screen.refresh()

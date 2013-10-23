@@ -43,7 +43,7 @@ class appium_wrapper():
                                             'version': self.version,
                                             'app': appium_wrapper.apppath
                                             })
-            self.driver.implicitly_wait(80)
+            self.driver.implicitly_wait(900)
             self.wait = WebDriverWait(self.driver, 10)
             driver = self.driver
 

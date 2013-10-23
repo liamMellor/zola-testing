@@ -5,7 +5,6 @@ from unittest import TestCase, TestSuite, TestLoader, TextTestRunner
 from itertools import islice
 from inspect import isclass
 from UnitTesting.app_objects import appium_wrapper
-import time
 
 test_modules_to_run = ()
 
@@ -29,14 +28,14 @@ def chunkIt(seq, num):
             last += avg
         num -= 1
 
-def run_some_or_all_tests(apppath, num_books_options, appium_binary_path, appium_output_file, ios_device_id=None, number_of_computers=None, this_machine_number=None):
+def run_some_or_all_tests(apppath, num_books, number_of_computers=None, this_machine_number=None):
     '''Initialize appium_wrapper with app path and number of books,
     then run unit tests'''
     global test_modules_to_run
     appium_wrapper.mode = 'same driver each time'
     appium_wrapper.appium_wrapper.apppath = apppath
-    if num_books_options is not None:
-        appium_wrapper.appium_wrapper.num_books_options = num_books_options
+    if num_books is not None:
+        appium_wrapper.appium_wrapper.num_books_options = num_books
 
     if number_of_computers:
         if not this_machine_number:
@@ -57,22 +56,7 @@ def run_some_or_all_tests(apppath, num_books_options, appium_binary_path, appium
         for test_class in test_classes:
             test_suite.addTests(test_loader.loadTestsFromTestCase(test_class))
 
-    outfile = open(appium_output_file, 'w')
-    from subprocess import Popen
-    cmd = ['appium', '--app', apppath]
-    if apppath[:4] == 'com.':  # this is a real device not a simulator
-        cmd.append('-U')
-        cmd.append(ios_device_id)
-    else:  # this is a simulator
-        cmd.append('--force-ipad')
-    p = Popen(cmd, stdout=outfile, stderr=outfile)
-    print p.returncode and p.pid
-    try:
-        time.sleep(10)
-        TextTestRunner(verbosity=2).run(test_suite)
-    
-    finally:
-        p.kill(); print "Appium Killed"
+    TextTestRunner(verbosity=2).run(test_suite)
 
 def main(argv=None):
     if argv is None:
@@ -92,30 +76,20 @@ def main(argv=None):
 
     parser.add_argument('--number_of_computers',
                         type=int,
-                        help='number of computers splitting the tests')
+                        help='number of computers splitting the tests',
+                        default=1)
     parser.add_argument('--this_machine_number',
                         type=int,
-                        help='number for this machine, starting with 1')
+                        help='number for this machine, starting with 1',
+                        default=1)
     parser.add_argument('--num_books',
                         type=int,
                         action='append',
                         help='number of books you wish to purchase (please select an integer 1-20)'
                         )
-    parser.add_argument('--appium_binary_path',
-                        help='path to appium binary',
-                        #default='/usr/local/bin/appium'
-                        default='/User/Zola/appium/bin/appium.js')
-    parser.add_argument('--appium_output_file',
-                        help='logfile path to store appium output',
-                        default='./appium_logfile.txt')
-    parser.add_argument('--ios_device_id',
-                        help='UDID - unique device ID for iOS device')
     args = parser.parse_args()
 
-    if args.app_path[:4] == 'com.' and args.ios_device_id is None:
-        print 'ERROR: missing --ios_device_id argument'
-
-    return run_some_or_all_tests(args.app_path, args.num_books, args.appium_binary_path, args.appium_output_file, args.ios_device_id, args.number_of_computers, args.this_machine_number)
+    return run_some_or_all_tests(args.app_path, args.num_books, args.number_of_computers, args.this_machine_number)
 
 if __name__ == '__main__':
     sys.exit(main())

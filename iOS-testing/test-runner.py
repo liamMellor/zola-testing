@@ -10,7 +10,11 @@ import time
 test_modules_to_run = ()
 
 test_modules_to_run += (
-    'full_suite.full_suite',
+                        'full_suite.full_suite',
+                        'highlight_suite.highlight_suite',
+                        'reply_suite.reply_suite',
+                        'progress_suite.progress_suite',
+                        #'book_insert.book_insert',
 )
 
 test_modules_to_run = ['UnitTesting.unit_tests.'+x for x in test_modules_to_run]
@@ -29,12 +33,14 @@ def chunkIt(seq, num):
             last += avg
         num -= 1
 
-def run_some_or_all_tests(apppath, num_books_options, appium_binary_path, appium_output_file, ios_device_id=None, number_of_computers=None, this_machine_number=None):
+def run_some_or_all_tests(apppath, num_books_options, appium_binary_path, appium_output_file, ios_device_id=None, number_of_computers=None, this_machine_number=None, enable_screenshots=False):
     '''Initialize appium_wrapper with app path and number of books,
     then run unit tests'''
     global test_modules_to_run
     appium_wrapper.mode = 'same driver each time'
     appium_wrapper.appium_wrapper.apppath = apppath
+    appium_wrapper.screenshots_enabled = enable_screenshots
+    
     if num_books_options is not None:
         appium_wrapper.appium_wrapper.num_books_options = num_books_options
 
@@ -65,14 +71,15 @@ def run_some_or_all_tests(apppath, num_books_options, appium_binary_path, appium
         cmd.append(ios_device_id)
     else:  # this is a simulator
         cmd.append('--force-ipad')
-    p = Popen(cmd, stdout=outfile, stderr=outfile)
-    print p.returncode and p.pid
+    appium_wrapper.appium_process = Popen(cmd, stdout=outfile, stderr=outfile)
+    print appium_wrapper.appium_process.returncode and appium_wrapper.appium_process.pid
     try:
+        
         time.sleep(10)
         TextTestRunner(verbosity=2).run(test_suite)
     
     finally:
-        p.kill(); print "Appium Killed"
+        appium_wrapper.appium_process.kill(); print "Appium Killed"
 
 def main(argv=None):
     if argv is None:
@@ -103,19 +110,24 @@ def main(argv=None):
                         )
     parser.add_argument('--appium_binary_path',
                         help='path to appium binary',
+                        ##verison 0.10.4 below
                         #default='/usr/local/bin/appium'
+                        ##version 0.11.0 below
                         default='/User/Zola/appium/bin/appium.js')
     parser.add_argument('--appium_output_file',
                         help='logfile path to store appium output',
                         default='./appium_logfile.txt')
     parser.add_argument('--ios_device_id',
                         help='UDID - unique device ID for iOS device')
+    parser.add_argument('--enable_screenshots',
+                        help='enables screen capture, which is disabled by default',
+                        action='store_true')
     args = parser.parse_args()
 
     if args.app_path[:4] == 'com.' and args.ios_device_id is None:
         print 'ERROR: missing --ios_device_id argument'
 
-    return run_some_or_all_tests(args.app_path, args.num_books, args.appium_binary_path, args.appium_output_file, args.ios_device_id, args.number_of_computers, args.this_machine_number)
+    return run_some_or_all_tests(args.app_path, args.num_books, args.appium_binary_path, args.appium_output_file, args.ios_device_id, args.number_of_computers, args.this_machine_number, args.enable_screenshots)
 
 if __name__ == '__main__':
     sys.exit(main())

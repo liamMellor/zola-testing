@@ -23,20 +23,23 @@ class social_tab(base_app_object):
             print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')),("Comments match!")
 
     def click_orange_reply(self):
+        time.sleep(1)
         self.driver.find_element_by_xpath("//window[1]/tableview[1]/cell[1]/button[1]").click()
 
     def add_reply(self):
-        reply_typer = self.driver.find_elements_by_xpath("//window[1]/scrollview[1]/textview[3]")
-        reply_typer[0].send_keys("testtext2")
-        SOCIAL_SAVE = self.driver.find_elements_by_xpath("//window[1]/scrollview[1]/button[2]")
-        SOCIAL_SAVE[0].click()
+        reply_typer = self.driver.find_element_by_xpath("//window[1]/scrollview[2]/textview[3]")
+        reply_typer.click()
+        reply_typer.send_keys("testtext2")
+        SOCIAL_SAVE = self.driver.find_element_by_name("ipad highlightcell reply")
+        SOCIAL_SAVE.click()
 
     def check_see_comments(self):
-        SEE_ALL_COMMENTS = self.driver.find_elements_by_xpath("//window[1]/tableview[1]/cell[1]/button[1]")
-        if SEE_ALL_COMMENTS[0].text != "SEE 1 COMMENT":
+        SEE_ALL_COMMENTS = self.driver.find_element_by_xpath("//button[contains(@text, 'SEE')]")
+        # print SEE_ALL_COMMENTS.text
+        if SEE_ALL_COMMENTS.text != "SEE 1 REPLY":
             raise AssertionError((datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Too many comments!")
         else:
-            print ((datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Proper amount of comments")
+            print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Proper amount of comments"
 
     def add_second_reply(self):
         self.driver.find_element_by_xpath("//window[1]/tableview[1]/cell[1]/button[1]").click()
@@ -53,4 +56,9 @@ class social_tab(base_app_object):
         cancel[0].click()
 
     def click_social_tab(self):
-        self.driver.find_element_by_name('ipad reader activity off').click()
+        try:
+            self.driver.implicitly_wait(0)
+            self.driver.find_element_by_name('ipad reader activity off').click()
+            self.driver.implicitly_wait(10)
+        except:
+            self.driver.find_element_by_name('ipad reader activity on').click()

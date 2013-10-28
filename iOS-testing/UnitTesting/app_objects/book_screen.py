@@ -26,6 +26,7 @@ class book_screen(base_app_object):
 
     def click_home_button(self):
         self.driver.find_element_by_name('ipad reader home off').click()
+        time.sleep(3)
 
     def click_ToC(self):
         self.driver.find_element_by_name('ipad reader contents off').click()
@@ -50,8 +51,12 @@ class book_screen(base_app_object):
         print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Current Book Progress:", preprog_print.text
 
     def scroll_progress(self):
-        self.driver.execute_script("mobile: swipe", {"touchCount": 1 , "startX": 63, "startY": 983, "endX": 239, "endY": 976, "duration": 0.5 })
-
+        percent = self.driver.find_element_by_name("ipad_reader_bottombar_marker.png")
+        #print percent.location
+        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "scrolling..."
+        #self.driver.execute_script("mobile: swipe", {"touchCount": 1 , "startX":(percent.location['x']), "startY":(percent.location['y']),  "endX": 239, "endY": 976, "duration": 1.5 })
+    #"startX": 63, "startY": 983,
+    
     def post_progress_check(self):
         postprog_print = self.progress_scroller.find_element_by_xpath('/text[1]')
         print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Current Book Progress:", postprog_print.text
@@ -85,3 +90,29 @@ class book_screen(base_app_object):
         uikeyboard[0].click()
         SAVE_HIGH = self.driver.find_elements_by_xpath("//window[1]/button[9]")
         SAVE_HIGH[0].click()
+    
+    def percent_path(self):
+        percent_check = self.driver.find_element_by_xpath("//text[contains(@text,'%')]").text
+        return percent_check
+
+    def progress_check(self, percent_path):
+        percent = self.percent_path()
+        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "initial book progress percentage: ", percent
+        return percent
+
+    def secondary_progress_check(self, percent_path):
+        secondary_percent = self.percent_path()
+        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "percentage after book progress: ", secondary_percent
+        return secondary_percent
+    
+    def tertiary_progress_check(self, percent_path):
+        tertiary_percent = self.percent_path()
+        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "percentage after resync: ", tertiary_percent
+        return tertiary_percent
+    
+    def quaternary_progress_check(self, secondary_progress_check, tertiary_progress_check, percent_path):
+        #self.progress_check.percent.text
+        if self.secondary_progress_check(percent_path) != self.tertiary_progress_check(percent_path):
+            raise AssertionError("Book Progress Not Synced")
+        else:
+            print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Book Progress Synced"

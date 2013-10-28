@@ -22,7 +22,8 @@ class home_screen(base_app_object):
         time.sleep(5)
 
     def refresh(self):
-        self.driver.find_element_by_name('ipad purchased refresh').click()
+        sync = self.driver.find_element_by_xpath('//window[1]/button[3]').location
+        self.driver.execute_script("mobile: tap",{"touchCount":"1","x":sync['x'],"y":sync['y']})
 
     def check_landing_gear(self):
         #self.wait.until(EC.element_to_be_clickable((By.NAME,'ipad landing gear')))
@@ -30,7 +31,8 @@ class home_screen(base_app_object):
         print str(cog)
 
     def click_landing_gear(self):
-        self.driver.find_element_by_xpath('//window[1]/button[4]').click()
+        #self.driver.find_element_by_xpath('//window[1]/button[4]').click()
+        self.driver.execute_script("mobile: tap",{"touchCount":"1","x":"711","y":"80"})
 
     def click_deregister(self):
         self.driver.find_element_by_name('ipad information deregister').click()

@@ -8,7 +8,7 @@ from time import sleep
 import random
 import os
 import subprocess
-
+from datetime import datetime
 from UnitTesting.page_objects.webdriver_wrapper import webdriver_wrapper
 from UnitTesting.page_objects.sign_up import sign_up
 from UnitTesting.page_objects.homepage import homepage
@@ -22,12 +22,13 @@ from UnitTesting.page_objects.billing_info import billing_info
 mode = 'new driver each time'  # if running a suite of tests, use 'same driver each time'
 driver = None
 zb_users = {}
+screenshots_enabled = False
 
 class appium_wrapper():
-
+    
     version = "7.0"  # other options: "6.1", "6.0"
     num_books_options = (1,3,10)
-    apppath = '/Users/Zola/Downloads/zola-mobile-Reading-Page-Performance/build/Sim-iphonesimulator/Zola.app'
+    apppath = '/Users/Zola/zola-mobile-Reading-Page-Performance/build/Sim-iphonesimulator/Zola.app'#'com.zolabooks.zolareader'
 
     def __init__(self, num_books):
         global driver, mode, zb_users
@@ -43,10 +44,10 @@ class appium_wrapper():
                                             'version': self.version,
                                             'app': appium_wrapper.apppath
                                             })
-            self.driver.implicitly_wait(900)
             self.wait = WebDriverWait(self.driver, 10)
+            
             driver = self.driver
-
+            self.driver.implicitly_wait(100)
         ## setup Zola Books user
         if num_books in zb_users:
             self.rand_username_int = zb_users[num_books]
@@ -54,24 +55,26 @@ class appium_wrapper():
             self.rand_username_int = str( random.randint(0,1000000) )
             zb_users[num_books] = self.rand_username_int
 
-            if num_books > 22:  ## maximum number of bestsellers
+            if num_books > 22:   ##maximum number of bestsellers
                 raise Exception('num_books value of '+str(num_books)+' is too high in '+self.__class__.
                     __name__)
 
             ## Use a browser to signup a new user and buy some books
             browser = webdriver_wrapper._browsers[0]
             self.webd_wrap = webdriver_wrapper(browser, self.rand_username_int)
-            # appium_launch = 'appium --app "/Users/Zola/Downloads/zola-mobile-Reading-Page-Performance/build/Sim-iphonesimulator/Zola.app" --force-ipad'
-            #p = subprocess.Popen("appium_launch", stdout=subprocess.PIPE, shell=True)
-            #(output, err) = p.communicate()
-            #print "Today is", output
             self.light_signup()
             for book_num in range(num_books):
                 self.light_purchase(book_num)
             self.webd_wrap.close_the_browser()
             del self.webd_wrap
 
+    ##take screenshots using webdriver (if enabled)
+    def get_screenshot(self):
+        global screenshots_enabled
+        if screenshots_enabled:
+            self.driver.get_screenshot_as_file(str(datetime.now())+'.png')
 
+    ##creates new account with cc information
     def light_signup(self):
         page_homepage = homepage(self.webd_wrap)
         page_homepage.get_page()
@@ -91,9 +94,9 @@ class appium_wrapper():
         page_add_card = add_card(self.webd_wrap)
         page_add_card.submit_new_cc_info()
 
-#page_homepage.click_sign_out()
+#        page_homepage.click_sign_out()
 
-
+    ##purchases bestsellers for num_books
     def light_purchase(self, book_num):
         page_homepage = homepage(self.webd_wrap)
         page_homepage.get_page()

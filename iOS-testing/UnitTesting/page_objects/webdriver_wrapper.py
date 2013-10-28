@@ -67,6 +67,7 @@ class webdriver_wrapper():
         _drivers[browser] = self._driver
         self._driver.implicitly_wait(40)
         self.wait = WebDriverWait(self._driver, 10)
+        self._driver.set_window_position(-950, 20)
         #self._driver.set_window_size(360, 450)
         import re
         authURL = re.sub(r'(https?://)(.*)', r'\1zola_stage:zola123@\2', self._baseURL)

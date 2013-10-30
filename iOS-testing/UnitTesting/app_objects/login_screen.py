@@ -121,20 +121,21 @@ class login_screen(base_app_object):
     
     def log_in(self):
         time.sleep(3)
-        print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Beginning Appium Test"
-        buttons = self.driver.find_elements_by_tag_name('button')
-        text = self.driver.find_elements_by_xpath('//window[1]/textfield[1]')
-        text[0].click()
-        text[0].send_keys("jay+" + self.appium_wrap.rand_username_int + "@zolabooks.com")
-        secure = self.driver.find_elements_by_xpath("//window[1]/secure[1]")
-        secure[0].click()
-        secure[0].send_keys("password")
-        #secure[0].send_keys("\n")
-        #login = self.driver.find_elements_by_name("ipad login loginbutton")
-        buttons[0].click()
-        print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Logging in..."
-        time.sleep(40)
-        print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Log in Succesful"
+        try:
+            print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Beginning Appium Test"
+            buttons = self.driver.find_elements_by_tag_name('button')
+            text = self.driver.find_elements_by_xpath('//window[1]/textfield[1]')
+            text[0].click()
+            text[0].send_keys("jay+" + self.appium_wrap.rand_username_int + "@zolabooks.com")
+            secure = self.driver.find_elements_by_xpath("//window[1]/secure[1]")
+            secure[0].click()
+            secure[0].send_keys("password")
+            #secure[0].send_keys("\n")
+            #login = self.driver.find_elements_by_name("ipad login loginbutton")
+            buttons[0].click()
+            print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Logging in..."
+            time.sleep(40)
+            print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Log in Succesful"
     
     def book_insert_login(self, emails):
         #for emails in (self.book_insert_mails):

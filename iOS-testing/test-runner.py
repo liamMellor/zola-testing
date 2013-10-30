@@ -10,10 +10,10 @@ import time
 test_modules_to_run = ()
 
 test_modules_to_run += (
-                        'full_suite.full_suite',
+                        #'full_suite.full_suite',
                         'highlight_suite.highlight_suite',
-                        'reply_suite.reply_suite',
-                        'progress_suite.progress_suite',
+                        #'reply_suite.reply_suite',
+                        #'progress_suite.progress_suite',
                         #'book_insert.book_insert',
 )
 

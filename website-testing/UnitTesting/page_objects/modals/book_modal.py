@@ -44,8 +44,10 @@ class book_modal(base_modal):
         self._confirm_modal()
         
         _purchase_button = self._webd_wrap._driver.find_element_by_class_name('l-230px').find_element_by_xpath('div/div/span/a')
-        self._webd_wrap._driver.execute_script('$(arguments[0]).click()', _purchase_button)
-        self._webd_wrap.wait.until(EC.title_contains("Zola"))
+        element_to_hover_over =  _purchase_button
+        hover = ActionChains(self._webd_wrap._driver).move_to_element(element_to_hover_over)
+        hover.perform()
+        self._webd_wrap._driver.execute_script('(arguments[0]).click()', _purchase_button)
         
     def click_recommend(self):
         ''' clicks the recommend button on the book modal '''

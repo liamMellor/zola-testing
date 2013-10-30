@@ -73,15 +73,28 @@ class book_screen(base_app_object):
 ### highlights ###
 
     def highlight_text(self):
-        swiper = self.driver.find_elements_by_xpath("//window[1]/scrollview[1]/webview[1]/text[1]")
+        swiper = self.driver.find_element_by_xpath("//window[1]/scrollview[1]/webview[1]/text[1]")
         #print (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Highlight Coordinates:",swiper[0].location)
-        swiper_location = swiper[0].location
+        swiper_location = swiper.location
         self.driver.execute_script("mobile: tap",{"tapCount":"2", "tapObject": swiper_location, "duration": 1})
         #print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Highlight:",swiper[0].text
         highlight = self.driver.find_elements_by_name('Highlight')
         highlight[0].click()
-        hightext = self.driver.find_elements_by_xpath("//window[1]/textview[1]")
-        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Checking highlight against:",hightext[0].text
+        hightext = self.driver.find_element_by_xpath("//window[1]/textview[1]").text
+        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Checking highlight against:",hightext
+        return hightext
+    
+    def assert_highlight(self, highlight_text):
+        #self.driver.find_element_by_name('Web, Use of UIWebView').click()
+        #self.driver.window_handles()
+        print self.driver.window_handles
+        self.driver.switch_to_window[0]
+        css_check = self.driver.find_element_by_css('.highlight').text
+        if css_check != self.highlight_text():
+            raise AssertionError("highlight not yellow!")
+        else:
+            print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "words properly yellowed (highlighted)"
+        self.driver.execute_script("mobile: leaveWebView")
 
     def comment_on_highlight(self):
         high_typer = self.driver.find_elements_by_xpath("//window[1]/textview[2]")

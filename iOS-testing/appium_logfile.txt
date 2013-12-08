@@ -1,0 +1,1174 @@
+info: [36mWelcome to Appium v0.10.4 (REV a8797e06e6891012451cd548a05477c67dda9e39)[39m
+info: [36mAppium REST http interface listener started on 0.0.0.0:4723[39m
+info: socket.io started
+debug: Appium request initiated at /wd/hub/session
+debug: Request received with params: {"sessionId":null,"desiredCapabilities":{"platform":"Mac","browserName":"iOS","version":"7.0","app":"com.zolabooks.zolareader"}}
+info: App is an iOS bundle, will attempt to run as pre-existing
+info: Creating new appium session 4d87595d-5e12-4b43-bf13-a4482973330f
+info: Removing any remaining instruments sockets
+info: Cleaned up instruments socket /tmp/instruments_sock
+info: Cleaning up any tracedirs
+info: Cleaned up /Users/Zola/zola-testing/iOS-testing/instrumentscli0.trace
+info: Localizable.strings is not currently supported when using real devices.
+info: Not setting device type since we're connected to a device
+debug: No device id or app, not installing to real device.
+debug: Creating instruments
+info: instruments is: /Applications/Xcode.app/Contents/Developer/usr/bin/instruments
+info: [90m[INSTSERVER] Instruments socket server started at /tmp/instruments_sock[39m
+info: Attempting to run app on real device with UDID f8243b82a4dba7feca2292cc6297d9989f14f57b
+info: Spawning instruments with command: /Applications/Xcode.app/Contents/Developer/usr/bin/instruments -t /Applications/Xcode.app/Contents/Applications/Instruments.app/Contents/PlugIns/AutomationInstrument.bundle/Contents/Resources/Automation.tracetemplate -w f8243b82a4dba7feca2292cc6297d9989f14f57b com.zolabooks.zolareader -e UIASCRIPT /usr/local/lib/node_modules/appium/app/uiauto/bootstrap.js -e UIARESULTSPATH /tmp/appium-instruments/
+info: And extra without-delay env: {}
+info: [32m[INST] 2013-11-25 20:17:12 +0000 Default: Instruments shell user: Zola[39m
+info: [32m[INST] 2013-11-25 20:17:30 +0000 Default: Found node using `which node`: /usr/local/bin/node[39m
+info: [90m[INSTSERVER] Instruments is ready to receive commands[39m
+info: Instruments launched. Starting poll loop for new commands.
+info: Setting initial orientation to PORTRAIT
+info: Pushing command to appium work queue: "au.setScreenOrientation('PORTRAIT')"
+debug: Sending command to instruments: au.setScreenOrientation('PORTRAIT')
+info: [90m[INSTSERVER] Socket data received (15 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Sending command to instruments: au.setScreenOrientation('PORTRAIT')[39m
+info: [32m[INST] 2013-11-25 20:17:37 +0000 Default: Got new command 0 from instruments: au.setScreenOrientation('PORTRAIT')[39m
+info: [90m[INSTSERVER] Socket data received (56 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"PORTRAIT"}[39m
+info: Appium session started with sessionId 4d87595d-5e12-4b43-bf13-a4482973330f
+[90mPOST /wd/hub/session [36m303 [90m38261ms - 9[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f
+info: Responding to client with success: {"status":0,"value":{"version":"6.0","webStorageEnabled":false,"locationContextEnabled":false,"browserName":"iOS","platform":"MAC","javascriptEnabled":true,"databaseEnabled":false,"takesScreenshot":true},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f [32m200 [90m5ms - 319[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/timeouts/implicit_wait
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","ms":100000}
+info: Set iOS implicit wait to 100000ms
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/timeouts/implicit_wait [32m200 [90m6ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/timeouts/implicit_wait
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","ms":0}
+info: Set iOS implicit wait to 0ms
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/timeouts/implicit_wait [32m200 [90m14ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/textfield[1]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/window[1]\\/textfield[1]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/window[1]\/textfield[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/window[1]\/textfield[1]')[39m
+info: [32m[INST] 2013-11-25 20:17:37 +0000 Debug: target.setDeviceOrientation("1")
+       2013-11-25 20:20:04 +0000 Default: Got new command 1 from instruments: au.getElementByXpath('\/\/window[1]\/textfield[1]')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":7,"value":null}[39m
+info: Responding to client with error: {"status":7,"value":{"message":"An element could not be located on the page using the given search parameters."},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [31m500 [90m697ms - 186[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"711","y":"80"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"711\",\"y\":\"80\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"711","y":"80"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"711","y":"80"})[39m
+info: [32m[INST] 2013-11-25 20:20:05 +0000 Default: Got new command 2 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"711","y":"80"})[39m
+info: [32m[INST] 2013-11-25 20:20:05 +0000 Debug: target.tapWithOptions({x:"711", y:"80"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:20:05 +0000 Default: Command executed without response[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1385ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//button[contains(@text,'information deregister')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/button[contains(@text,\\'information deregister\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'information deregister\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'information deregister\')]')[39m
+info: [32m[INST] 2013-11-25 20:20:05 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [32m[INST] 2013-11-25 20:20:06 +0000 Default: Got new command 3 from instruments: au.getElementByXpath('\/\/button[contains(@text,\'information deregister\')]')[39m
+info: [32m[INST] 2013-11-25 20:20:06 +0000 Default: Lookup returned [object UIAButton] with the name "ipad information deregister" (id: 0).[39m
+info: [90m[INSTSERVER] Socket data received (61 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"0"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"0"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1591ms - 109[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/0/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"0"}
+info: Pushing command to appium work queue: "au.tapById('0')"
+debug: Sending command to instruments: au.tapById('0')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('0')[39m
+info: [32m[INST] 2013-11-25 20:20:08 +0000 Default: Got new command 4 from instruments: au.tapById('0')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/0/click [32m200 [90m1503ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"YES"}
+info: Pushing command to appium work queue: "au.getElementByName('YES')"
+debug: Sending command to instruments: au.getElementByName('YES')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByName('YES')[39m
+info: [32m[INST] 2013-11-25 20:20:08 +0000 Debug: target.frontMostApp().elements()[0].elements()[6].tap()
+       2013-11-25 20:20:10 +0000 Default: Got new command 5 from instruments: au.getElementByName('YES')[39m
+info: [32m[INST] 2013-11-25 20:20:10 +0000 Default: Lookup returned [object UIATableCell] with the name "YES" (id: 1).[39m
+info: [90m[INSTSERVER] Socket data received (61 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"1"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"1"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1296ms - 109[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/1/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"1"}
+info: Pushing command to appium work queue: "au.tapById('1')"
+debug: Sending command to instruments: au.tapById('1')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('1')[39m
+info: [32m[INST] 2013-11-25 20:20:11 +0000 Default: Got new command 6 from instruments: au.tapById('1')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/1/click [32m200 [90m1787ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"tag name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"button"}
+info: Pushing command to appium work queue: "au.getElementsByType('button')"
+debug: Sending command to instruments: au.getElementsByType('button')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByType('button')[39m
+info: [32m[INST] 2013-11-25 20:20:11 +0000 Debug: target.frontMostApp().elements()[2].elements()[1].elements()[2].elements()[0].tap()
+       2013-11-25 20:20:15 +0000 Default: Got new command 7 from instruments: au.getElementsByType('button')[39m
+info: [32m[INST] 2013-11-25 20:20:15 +0000 Default: Lookup returned [object UIAButton] with the name "ipad login loginbutton" (id: 2).[39m
+info: [32m[INST] 2013-11-25 20:20:15 +0000 Default: Lookup returned [object UIAButton] with the name "ipad login forgotpassword" (id: 3).[39m
+info: [90m[INSTSERVER] Socket data received (79 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"2"},{"ELEMENT":"3"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"2"},{"ELEMENT":"3"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m463ms - 157[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/textfield[1]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/textfield[1]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/textfield[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/textfield[1]')[39m
+info: [32m[INST] 2013-11-25 20:20:16 +0000 Default: Got new command 8 from instruments: au.getElementsByXpath('\/\/window[1]\/textfield[1]')[39m
+info: [90m[INSTSERVER] Socket data received (63 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"4"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"4"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1052ms - 123[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/4/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"4"}
+info: Pushing command to appium work queue: "au.tapById('4')"
+debug: Sending command to instruments: au.tapById('4')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('4')[39m
+info: [32m[INST] 2013-11-25 20:20:17 +0000 Default: Got new command 9 from instruments: au.tapById('4')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/4/click [32m200 [90m1106ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/4/value
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"4","value":["j","a","y","+","6","2","9","0","3","9","@","z","o","l","a","b","o","o","k","s",".","c","o","m"]}
+info: Pushing command to appium work queue: "au.getElement('4').setValueByType('jay+629039@zolabooks.com')"
+debug: Sending command to instruments: au.getElement('4').setValueByType('jay+629039@zolabooks.com')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('4').setValueByType('jay+629039@zolabooks.com')[39m
+info: [32m[INST] 2013-11-25 20:20:17 +0000 Debug: target.frontMostApp().elements()[0].elements()[2].tap()
+       2013-11-25 20:20:18 +0000 Default: Got new command 10 from instruments: au.getElement('4').setValueByType('jay+629039@zolabooks.com')[39m
+info: [32m[INST] 2013-11-25 20:20:18 +0000 Debug: target.frontMostApp().elements()[0].elements()[2].tap()
+       2013-11-25 20:20:19 +0000 Debug: target.frontMostApp().keyboard().typeString("jay+629039@zolabooks.com")
+2013-11-25 20:20:23 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:20:23 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/4/value [32m200 [90m5280ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/secure[1]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/secure[1]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/secure[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/secure[1]')[39m
+info: [32m[INST] 2013-11-25 20:20:24 +0000 Default: Got new command 11 from instruments: au.getElementsByXpath('\/\/window[1]\/secure[1]')[39m
+info: [90m[INSTSERVER] Socket data received (63 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"5"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"5"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1215ms - 123[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/5/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"5"}
+info: Pushing command to appium work queue: "au.tapById('5')"
+debug: Sending command to instruments: au.tapById('5')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('5')[39m
+info: [32m[INST] 2013-11-25 20:20:25 +0000 Default: Got new command 12 from instruments: au.tapById('5')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/5/click [32m200 [90m1106ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/5/value
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"5","value":["p","a","s","s","w","o","r","d"]}
+info: Pushing command to appium work queue: "au.getElement('5').setValueByType('password')"
+debug: Sending command to instruments: au.getElement('5').setValueByType('password')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('5').setValueByType('password')[39m
+info: [32m[INST] 2013-11-25 20:20:25 +0000 Debug: target.frontMostApp().elements()[0].elements()[3].tap()
+       2013-11-25 20:20:26 +0000 Default: Got new command 13 from instruments: au.getElement('5').setValueByType('password')[39m
+info: [32m[INST] 2013-11-25 20:20:26 +0000 Debug: target.frontMostApp().elements()[0].elements()[3].tap()
+       2013-11-25 20:20:26 +0000 Debug: target.frontMostApp().keyboard().typeString("password")
+2013-11-25 20:20:27 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:20:27 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/5/value [32m200 [90m2371ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/2/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"2"}
+info: Pushing command to appium work queue: "au.tapById('2')"
+debug: Sending command to instruments: au.tapById('2')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('2')[39m
+info: [32m[INST] 2013-11-25 20:20:28 +0000 Default: Got new command 14 from instruments: au.tapById('2')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/2/click [32m200 [90m1116ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/button[2]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/window[1]\\/button[2]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/window[1]\/button[2]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/window[1]\/button[2]')[39m
+info: [32m[INST] 2013-11-25 20:20:28 +0000 Debug: target.frontMostApp().elements()[0].elements()[4].tap()
+       2013-11-25 20:21:10 +0000 Default: Got new command 15 from instruments: au.getElementByXpath('\/\/window[1]\/button[2]')[39m
+info: [32m[INST] 2013-11-25 20:21:10 +0000 Default: Lookup returned [object UIAButton] with the name "ipad nav myebooks off" (id: 6).[39m
+info: [90m[INSTSERVER] Socket data received (61 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"6"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"6"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1338ms - 109[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/6/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"6"}
+info: Pushing command to appium work queue: "au.tapById('6')"
+debug: Sending command to instruments: au.tapById('6')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('6')[39m
+info: [32m[INST] 2013-11-25 20:21:11 +0000 Default: Got new command 16 from instruments: au.tapById('6')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/6/click [32m200 [90m1209ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//text[contains(@text,'Purchased')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/text[contains(@text,\\'Purchased\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'Purchased\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'Purchased\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:11 +0000 Debug: target.frontMostApp().elements()[0].elements()[3].tap()
+       2013-11-25 20:21:17 +0000 Default: Got new command 17 from instruments: au.getElementByXpath('\/\/text[contains(@text,\'Purchased\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:17 +0000 Default: Lookup returned [object UIAStaticText] with the name "1 Purchased" (id: 7).[39m
+info: [90m[INSTSERVER] Socket data received (61 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"7"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"7"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1346ms - 109[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/7/text
+info: Pushing command to appium work queue: "au.getElement('7').text()"
+debug: Sending command to instruments: au.getElement('7').text()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('7').text()[39m
+info: [32m[INST] 2013-11-25 20:21:18 +0000 Default: Got new command 18 from instruments: au.getElement('7').text()[39m
+info: [32m[INST] 2013-11-25 20:21:18 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (59 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"1 Purchased"}[39m
+info: Responding to client with success: {"status":0,"value":"1 Purchased","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/7/text [32m200 [90m771ms - 98[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//text[contains(@text,'Purchased')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/text[contains(@text,\\'Purchased\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'Purchased\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'Purchased\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:19 +0000 Default: Got new command 19 from instruments: au.getElementByXpath('\/\/text[contains(@text,\'Purchased\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:19 +0000 Default: Lookup returned [object UIAStaticText] with the name "1 Purchased" (id: 8).[39m
+info: [90m[INSTSERVER] Socket data received (61 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"8"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"8"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1235ms - 109[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/8/text
+info: Pushing command to appium work queue: "au.getElement('8').text()"
+debug: Sending command to instruments: au.getElement('8').text()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('8').text()[39m
+info: [32m[INST] 2013-11-25 20:21:20 +0000 Default: Got new command 20 from instruments: au.getElement('8').text()[39m
+info: [32m[INST] 2013-11-25 20:21:20 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (59 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"1 Purchased"}[39m
+info: Responding to client with success: {"status":0,"value":"1 Purchased","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/8/text [32m200 [90m1094ms - 98[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//button[contains(@text, 'download')]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/button[contains(@text, \\'download\\')]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/button[contains(@text, \'download\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/button[contains(@text, \'download\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:22 +0000 Default: Got new command 21 from instruments: au.getElementsByXpath('\/\/button[contains(@text, \'download\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:23 +0000 Default: Lookup returned [object UIAButton] with the name "ipad bookdetail download" (id: 9).[39m
+info: [90m[INSTSERVER] Socket data received (63 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"9"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"9"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m2194ms - 123[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/9/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"9"}
+info: Pushing command to appium work queue: "au.tapById('9')"
+debug: Sending command to instruments: au.tapById('9')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('9')[39m
+info: [32m[INST] 2013-11-25 20:21:25 +0000 Default: Got new command 22 from instruments: au.tapById('9')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/9/click [32m200 [90m2148ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"0.63","y":"0.25"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"0.63\",\"y\":\"0.25\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})[39m
+info: [32m[INST] 2013-11-25 20:21:25 +0000 Debug: target.frontMostApp().elements()[0].elements()[18].elements()[0].elements()[3].tap()
+       2013-11-25 20:21:36 +0000 Default: Got new command 23 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})[39m
+info: [32m[INST] 2013-11-25 20:21:36 +0000 Debug: target.tapWithOptions({x:"483.84", y:"256"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:36 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:36 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1934ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//text[contains(@text,'%')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/text[contains(@text,\\'%\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'%\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'%\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:39 +0000 Default: Got new command 24 from instruments: au.getElementByXpath('\/\/text[contains(@text,\'%\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:39 +0000 Default: Lookup returned [object UIAStaticText] with the name "0%" (id: 10).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"10"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"10"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m2394ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/10/text
+info: Pushing command to appium work queue: "au.getElement('10').text()"
+debug: Sending command to instruments: au.getElement('10').text()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('10').text()[39m
+info: [32m[INST] 2013-11-25 20:21:40 +0000 Default: Got new command 25 from instruments: au.getElement('10').text()[39m
+info: [32m[INST] 2013-11-25 20:21:40 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"0%"}[39m
+info: Responding to client with success: {"status":0,"value":"0%","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/10/text [32m200 [90m1224ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//text[contains(@text,'%')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/text[contains(@text,\\'%\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'%\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/text[contains(@text,\'%\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:42 +0000 Default: Got new command 26 from instruments: au.getElementByXpath('\/\/text[contains(@text,\'%\')]')[39m
+info: [32m[INST] 2013-11-25 20:21:42 +0000 Default: Lookup returned [object UIAStaticText] with the name "0%" (id: 11).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"11"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"11"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1999ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/11/text
+info: Pushing command to appium work queue: "au.getElement('11').text()"
+debug: Sending command to instruments: au.getElement('11').text()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('11').text()[39m
+info: [32m[INST] 2013-11-25 20:21:43 +0000 Default: Got new command 27 from instruments: au.getElement('11').text()[39m
+info: [32m[INST] 2013-11-25 20:21:43 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"0%"}[39m
+info: Responding to client with success: {"status":0,"value":"0%","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/11/text [32m200 [90m1006ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:44 +0000 Default: Got new command 28 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:44 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:45 +0000 Default: Command executed without response[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1226ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:45 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [32m[INST] 2013-11-25 20:21:46 +0000 Default: Got new command 29 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:46 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:46 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:46 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1742ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:47 +0000 Default: Got new command 30 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:47 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:47 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:47 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m834ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:48 +0000 Default: Got new command 31 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:48 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:48 +0000 Default: Command executed without response[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1202ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:48 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [32m[INST] 2013-11-25 20:21:49 +0000 Default: Got new command 32 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:49 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:50 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:50 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1322ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:51 +0000 Default: Got new command 33 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:51 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:51 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:51 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1472ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:52 +0000 Default: Got new command 34 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:52 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:52 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:52 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1326ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:53 +0000 Default: Got new command 35 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:53 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:53 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:53 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m916ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:55 +0000 Default: Got new command 36 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:55 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:55 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:55 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1198ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:56 +0000 Default: Got new command 37 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:56 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:56 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:56 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1350ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:57 +0000 Default: Got new command 38 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:57 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:57 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:57 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1132ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:58 +0000 Default: Got new command 39 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:21:58 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:21:59 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:21:59 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1401ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:00 +0000 Default: Got new command 40 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:00 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:00 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:00 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1207ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:01 +0000 Default: Got new command 41 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:01 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:01 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:01 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1324ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:02 +0000 Default: Got new command 42 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:02 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:02 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:02 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1155ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:03 +0000 Default: Got new command 43 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:03 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:04 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:04 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1222ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:05 +0000 Default: Got new command 44 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:05 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:05 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:05 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1356ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:06 +0000 Default: Got new command 45 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:06 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:06 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:06 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1230ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:07 +0000 Default: Got new command 46 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:07 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:07 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:07 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1264ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"744.00","y":"384.00"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"744.00\",\"y\":\"384.00\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:08 +0000 Default: Got new command 47 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"744.00","y":"384.00"})[39m
+info: [32m[INST] 2013-11-25 20:22:08 +0000 Debug: target.tapWithOptions({x:"744", y:"384"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:09 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:09 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1191ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/scrollview[1]/webview[1]/text[1]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/window[1]\\/scrollview[1]\\/webview[1]\\/text[1]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/window[1]\/scrollview[1]\/webview[1]\/text[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/window[1]\/scrollview[1]\/webview[1]\/text[1]')[39m
+info: [32m[INST] 2013-11-25 20:22:10 +0000 Default: Got new command 48 from instruments: au.getElementByXpath('\/\/window[1]\/scrollview[1]\/webview[1]\/text[1]')[39m
+info: [32m[INST] 2013-11-25 20:22:10 +0000 Default: Lookup returned [object UIAStaticText] with the name "For the first time in weeks" (id: 12).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"12"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"12"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1732ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/12/location
+info: Pushing command to appium work queue: "au.getElement('12').getElementLocation()"
+debug: Sending command to instruments: au.getElement('12').getElementLocation()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('12').getElementLocation()[39m
+info: [32m[INST] 2013-11-25 20:22:11 +0000 Default: Got new command 49 from instruments: au.getElement('12').getElementLocation()[39m
+info: [90m[INSTSERVER] Socket data received (61 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"x":0,"y":555}}[39m
+info: Responding to client with success: {"status":0,"value":{"x":0,"y":555},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/12/location [32m200 [90m1000ms - 115[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"duration":1,"tapCount":"2","tapObject":{"y":555,"x":0}}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":\"2\",\"touchCount\":1,\"duration\":1,\"x\":0.5,\"y\":0.5})"
+debug: Sending command to instruments: au.complexTap({"tapCount":"2","touchCount":1,"duration":1,"x":0.5,"y":0.5})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":"2","touchCount":1,"duration":1,"x":0.5,"y":0.5})[39m
+info: [32m[INST] 2013-11-25 20:22:12 +0000 Default: Got new command 50 from instruments: au.complexTap({"tapCount":"2","touchCou[39m
+info: [32m[INST] nt":1,"duration":1,"x":0.5,"y":0.5})[39m
+info: [32m[INST] 2013-11-25 20:22:12 +0000 Debug: target.tapWithOptions({x:"384", y:"512"},[39m
+info: [32m[INST]  {touchCount:"1", duration:"1", tapCount:"2"})
+       2013-11-25 20:22:13 +0000 Default: Command executed without response[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m2046ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"Highlight"}
+info: Pushing command to appium work queue: "au.getElementsByName('Highlight')"
+debug: Sending command to instruments: au.getElementsByName('Highlight')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByName('Highlight')[39m
+info: [32m[INST] 2013-11-25 20:22:13 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [32m[INST] 2013-11-25 20:22:14 +0000 Default: Got new command 51 from instruments: au.getElementsByName('Highlight')[39m
+info: [32m[INST] 2013-11-25 20:22:15 +0000 Default: Lookup returned [object UIAElement] with the name "Highlight" (id: 13).[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"13"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"13"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1616ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/13/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"13"}
+info: Pushing command to appium work queue: "au.tapById('13')"
+debug: Sending command to instruments: au.tapById('13')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('13')[39m
+info: [32m[INST] 2013-11-25 20:22:16 +0000 Default: Got new command 52 from instruments: au.tapById('13')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/13/click [32m200 [90m1097ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/textview[2]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/textview[2]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/textview[2]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/textview[2]')[39m
+info: [32m[INST] 2013-11-25 20:22:16 +0000 Debug: target.frontMostApp().elements()[1].elements()[0].elements()[21].tap()
+       2013-11-25 20:22:17 +0000 Default: Got new command 53 from instruments: au.getElementsByXpath('\/\/window[1]\/textview[2]')[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"14"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"14"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1567ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/14/value
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"14","value":["t","e","s","t","t","e","x","t"]}
+info: Pushing command to appium work queue: "au.getElement('14').setValueByType('testtext')"
+debug: Sending command to instruments: au.getElement('14').setValueByType('testtext')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('14').setValueByType('testtext')[39m
+info: [32m[INST] 2013-11-25 20:22:19 +0000 Default: Got new command 54 from instruments: au.getElement('14').setValueByType('testtext')[39m
+info: [32m[INST] 2013-11-25 20:22:19 +0000 Debug: target.frontMostApp().elements()[0].elements()[18].tap()
+       2013-11-25 20:22:19 +0000 Debug: target.frontMostApp().keyboard().typeString("testtext")
+2013-11-25 20:22:21 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:21 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/14/value [32m200 [90m3174ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"Hide keyboard"}
+info: Pushing command to appium work queue: "au.getElementsByName('Hide keyboard')"
+debug: Sending command to instruments: au.getElementsByName('Hide keyboard')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByName('Hide keyboard')[39m
+info: [32m[INST] 2013-11-25 20:22:22 +0000 Default: Got new command 55 from instruments: au.getElementsByName('Hide keyboard')[39m
+info: [32m[INST] 2013-11-25 20:22:22 +0000 Default: Lookup returned [object UIAButton] with the name "Hide keyboard" (id: 15).[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"15"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"15"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1600ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/15/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"15"}
+info: Pushing command to appium work queue: "au.tapById('15')"
+debug: Sending command to instruments: au.tapById('15')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('15')[39m
+info: [32m[INST] 2013-11-25 20:22:23 +0000 Default: Got new command 56 from instruments: au.tapById('15')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/15/click [32m200 [90m1199ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/button[9]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/button[9]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/button[9]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/button[9]')[39m
+info: [32m[INST] 2013-11-25 20:22:23 +0000 Debug: target.frontMostApp().elements()[1].elements()[1].elements()[37].tap()
+       2013-11-25 20:22:25 +0000 Default: Got new command 57 from instruments: au.getElementsByXpath('\/\/window[1]\/button[9]')[39m
+info: [32m[INST] 2013-11-25 20:22:25 +0000 Default: Lookup returned [object UIAButton] with the name "ipad highlightmodal save" (id: 16).[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"16"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"16"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1510ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/16/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"16"}
+info: Pushing command to appium work queue: "au.tapById('16')"
+debug: Sending command to instruments: au.tapById('16')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('16')[39m
+info: [32m[INST] 2013-11-25 20:22:27 +0000 Default: Got new command 58 from instruments: au.tapById('16')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/16/click [32m200 [90m2300ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"0.63","y":"0.25"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"0.63\",\"y\":\"0.25\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})[39m
+info: [32m[INST] 2013-11-25 20:22:27 +0000 Debug: target.frontMostApp().elements()[0].elements()[30].tap()
+       2013-11-25 20:22:29 +0000 Default: Got new command 59 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})[39m
+info: [32m[INST] 2013-11-25 20:22:29 +0000 Debug: target.tapWithOptions({x:"483.84", y:"256"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:30 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:30 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m2527ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//button[contains(@text,'reader home off')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/button[contains(@text,\\'reader home off\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'reader home off\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'reader home off\')]')[39m
+info: [32m[INST] 2013-11-25 20:22:31 +0000 Default: Got new command 60 from instruments: au.getElementByXpath('\/\/button[contains(@text,\'reader home off\')]')[39m
+info: [32m[INST] 2013-11-25 20:22:31 +0000 Default: Lookup returned [object UIAButton] with the name "ipad reader home off" (id: 17).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"17"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"17"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1114ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/17/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"17"}
+info: Pushing command to appium work queue: "au.tapById('17')"
+debug: Sending command to instruments: au.tapById('17')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('17')[39m
+info: [32m[INST] 2013-11-25 20:22:32 +0000 Default: Got new command 61 from instruments: au.tapById('17')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/17/click [32m200 [90m1130ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"ipad nav home off"}
+info: Pushing command to appium work queue: "au.getElementByName('ipad nav home off')"
+debug: Sending command to instruments: au.getElementByName('ipad nav home off')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByName('ipad nav home off')[39m
+info: [32m[INST] 2013-11-25 20:22:32 +0000 Debug: target.frontMostApp().elements()[0].elements()[1].tap()
+       2013-11-25 20:22:36 +0000 Default: Got new command 62 from instruments: au.getElementByName('ipad nav home off')[39m
+info: [32m[INST] 2013-11-25 20:22:36 +0000 Default: Lookup returned [object UIAButton] with the name "ipad nav home off" (id: 18).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"18"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"18"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1059ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/18/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"18"}
+info: Pushing command to appium work queue: "au.tapById('18')"
+debug: Sending command to instruments: au.tapById('18')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('18')[39m
+info: [32m[INST] 2013-11-25 20:22:38 +0000 Default: Got new command 63 from instruments: au.tapById('18')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/18/click [32m200 [90m2187ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"711","y":"80"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"711\",\"y\":\"80\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"711","y":"80"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"711","y":"80"})[39m
+info: [32m[INST] 2013-11-25 20:22:38 +0000 Debug: target.frontMostApp().elements()[0].elements()[1].tap()
+       2013-11-25 20:22:43 +0000 Default: Got new command 64 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"711","y":"80"})[39m
+info: [32m[INST] 2013-11-25 20:22:43 +0000 Debug: target.tapWithOptions({x:"711", y:"80"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:22:43 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:22:43 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1515ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//button[contains(@text,'information deregister')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/button[contains(@text,\\'information deregister\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'information deregister\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'information deregister\')]')[39m
+info: [32m[INST] 2013-11-25 20:22:44 +0000 Default: Got new command 65 from instruments: au.getElementByXpath('\/\/button[contains(@text,\'information deregister\')]')[39m
+info: [32m[INST] 2013-11-25 20:22:44 +0000 Default: Lookup returned [object UIAButton] with the name "ipad information deregister" (id: 19).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"19"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"19"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1539ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/19/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"19"}
+info: Pushing command to appium work queue: "au.tapById('19')"
+debug: Sending command to instruments: au.tapById('19')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('19')[39m
+info: [32m[INST] 2013-11-25 20:22:46 +0000 Default: Got new command 66 from instruments: au.tapById('19')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/19/click [32m200 [90m1517ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"YES"}
+info: Pushing command to appium work queue: "au.getElementByName('YES')"
+debug: Sending command to instruments: au.getElementByName('YES')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByName('YES')[39m
+info: [32m[INST] 2013-11-25 20:22:46 +0000 Debug: target.frontMostApp().elements()[0].elements()[7].tap()
+       2013-11-25 20:22:47 +0000 Default: Got new command 67 from instruments: au.getElementByName('YES')[39m
+info: [32m[INST] 2013-11-25 20:22:47 +0000 Default: Lookup returned [object UIATableCell] with the name "YES" (id: 20).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"20"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"20"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1258ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/20/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"20"}
+info: Pushing command to appium work queue: "au.tapById('20')"
+debug: Sending command to instruments: au.tapById('20')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('20')[39m
+info: [32m[INST] 2013-11-25 20:22:48 +0000 Default: Got new command 68 from instruments: au.tapById('20')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/20/click [32m200 [90m1195ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"tag name","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"button"}
+info: Pushing command to appium work queue: "au.getElementsByType('button')"
+debug: Sending command to instruments: au.getElementsByType('button')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByType('button')[39m
+info: [32m[INST] 2013-11-25 20:22:48 +0000 Debug: target.frontMostApp().elements()[2].elements()[1].elements()[2].elements()[0].tap()
+       2013-11-25 20:22:53 +0000 Default: Got new command 69 from instruments: au.getElementsByType('button')[39m
+info: [32m[INST] 2013-11-25 20:22:53 +0000 Default: Lookup returned [object UIAButton] with the name "ipad login loginbutton" (id: 21).[39m
+info: [32m[INST] 2013-11-25 20:22:53 +0000 Default: Lookup returned [object UIAButton] with the name "ipad login forgotpassword" (id: 22).[39m
+info: [90m[INSTSERVER] Socket data received (81 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"21"},{"ELEMENT":"22"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"21"},{"ELEMENT":"22"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1133ms - 159[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/textfield[1]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/textfield[1]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/textfield[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/textfield[1]')[39m
+info: [32m[INST] 2013-11-25 20:22:54 +0000 Default: Got new command 70 from instruments: au.getElementsByXpath('\/\/window[1]\/textfield[1]')[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"23"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"23"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1092ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/23/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"23"}
+info: Pushing command to appium work queue: "au.tapById('23')"
+debug: Sending command to instruments: au.tapById('23')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('23')[39m
+info: [32m[INST] 2013-11-25 20:22:55 +0000 Default: Got new command 71 from instruments: au.tapById('23')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/23/click [32m200 [90m1205ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/23/value
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"23","value":["j","a","y","+","6","2","9","0","3","9","@","z","o","l","a","b","o","o","k","s",".","c","o","m"]}
+info: Pushing command to appium work queue: "au.getElement('23').setValueByType('jay+629039@zolabooks.com')"
+debug: Sending command to instruments: au.getElement('23').setValueByType('jay+629039@zolabooks.com')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('23').setValueByType('jay+629039@zolabooks.com')[39m
+info: [32m[INST] 2013-11-25 20:22:55 +0000 Debug: target.frontMostApp().elements()[0].elements()[2].tap()
+       2013-11-25 20:22:56 +0000 Default: Got new command 72 from instruments: au.getElement('23').setValueByType('jay+629039@zolabooks.com')[39m
+info: [32m[INST] 2013-11-25 20:22:56 +0000 Debug: target.frontMostApp().elements()[0].elements()[2].tap()
+       2013-11-25 20:22:56 +0000 Debug: target.frontMostApp().keyboard().typeString("jay+629039@zolabooks.com")
+2013-11-25 20:23:00 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:23:00 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/23/value [32m200 [90m4769ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/secure[1]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/secure[1]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/secure[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/secure[1]')[39m
+info: [32m[INST] 2013-11-25 20:23:01 +0000 Default: Got new command 73 from instruments: au.getElementsByXpath('\/\/window[1]\/secure[1]')[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"24"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"24"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1188ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/24/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"24"}
+info: Pushing command to appium work queue: "au.tapById('24')"
+debug: Sending command to instruments: au.tapById('24')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('24')[39m
+info: [32m[INST] 2013-11-25 20:23:02 +0000 Default: Got new command 74 from instruments: au.tapById('24')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/24/click [32m200 [90m1227ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/24/value
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"24","value":["p","a","s","s","w","o","r","d"]}
+info: Pushing command to appium work queue: "au.getElement('24').setValueByType('password')"
+debug: Sending command to instruments: au.getElement('24').setValueByType('password')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('24').setValueByType('password')[39m
+info: [32m[INST] 2013-11-25 20:23:02 +0000 Debug: target.frontMostApp().elements()[0].elements()[3].tap()
+       2013-11-25 20:23:04 +0000 Default: Got new command 75 from instruments: au.getElement('24').setValueByType('password')[39m
+info: [32m[INST] 2013-11-25 20:23:04 +0000 Debug: target.frontMostApp().elements()[0].elements()[3].tap()
+       2013-11-25 20:23:04 +0000 Debug: target.frontMostApp().keyboard().typeString("password")
+2013-11-25 20:23:05 +0000 Default: Command executed without response[39m
+info: [32m[INST] 2013-11-25 20:23:05 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/24/value [32m200 [90m3465ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/21/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"21"}
+info: Pushing command to appium work queue: "au.tapById('21')"
+debug: Sending command to instruments: au.tapById('21')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('21')[39m
+info: [32m[INST] 2013-11-25 20:23:06 +0000 Default: Got new command 76 from instruments: au.tapById('21')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/21/click [32m200 [90m1016ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/button[2]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/window[1]\\/button[2]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/window[1]\/button[2]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/window[1]\/button[2]')[39m
+info: [32m[INST] 2013-11-25 20:23:06 +0000 Debug: target.frontMostApp().elements()[0].elements()[4].tap()
+       2013-11-25 20:23:48 +0000 Default: Got new command 77 from instruments: au.getElementByXpath('\/\/window[1]\/button[2]')[39m
+info: [32m[INST] 2013-11-25 20:23:48 +0000 Default: Lookup returned [object UIAButton] with the name "ipad nav myebooks off" (id: 25).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"25"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"25"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1773ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/25/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"25"}
+info: Pushing command to appium work queue: "au.tapById('25')"
+debug: Sending command to instruments: au.tapById('25')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('25')[39m
+info: [32m[INST] 2013-11-25 20:23:49 +0000 Default: Got new command 78 from instruments: au.tapById('25')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/25/click [32m200 [90m635ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//button[contains(@text, 'download')]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/button[contains(@text, \\'download\\')]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/button[contains(@text, \'download\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/button[contains(@text, \'download\')]')[39m
+info: [32m[INST] 2013-11-25 20:23:49 +0000 Debug: target.frontMostApp().elements()[0].elements()[3].tap()
+       2013-11-25 20:23:55 +0000 Default: Got new command 79 from instruments: au.getElementsByXpath('\/\/button[contains(@text, \'download\')]')[39m
+info: [32m[INST] 2013-11-25 20:23:55 +0000 Default: Lookup returned [object UIAButton] with the name "ipad bookdetail download" (id: 26).[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"26"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"26"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1598ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/26/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"26"}
+info: Pushing command to appium work queue: "au.tapById('26')"
+debug: Sending command to instruments: au.tapById('26')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('26')[39m
+info: [32m[INST] 2013-11-25 20:23:56 +0000 Default: Got new command 80 from instruments: au.tapById('26')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/26/click [32m200 [90m712ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","args":[{"touchCount":"1","x":"0.63","y":"0.25"}],"script":"mobile: tap"}
+info: Pushing command to appium work queue: "au.complexTap({\"tapCount\":1,\"touchCount\":\"1\",\"duration\":0.1,\"x\":\"0.63\",\"y\":\"0.25\"})"
+debug: Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})
+info: [90m[INSTSERVER] Sending command to instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})[39m
+info: [32m[INST] 2013-11-25 20:23:56 +0000 Debug: target.frontMostApp().elements()[0].elements()[23].elements()[0].elements()[3].tap()
+       2013-11-25 20:24:07 +0000 Default: Got new command 81 from instruments: au.complexTap({"tapCount":1,"touchCount":"1","duration":0.1,"x":"0.63","y":"0.25"})[39m
+info: [32m[INST] 2013-11-25 20:24:07 +0000 Debug: target.tapWithOptions({x:"483.84", y:"256"}, {touchCount:"1", duration:"0.1", tapCount:"1"})
+       2013-11-25 20:24:08 +0000 Default: Command executed without response[39m
+info: [90m[INSTSERVER] Socket data received (48 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":""}[39m
+info: Responding to client with success: {"status":0,"value":"","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/execute [32m200 [90m1236ms - 87[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//button[contains(@text,'reader activity off')]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/button[contains(@text,\\'reader activity off\\')]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'reader activity off\')]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/button[contains(@text,\'reader activity off\')]')[39m
+info: [32m[INST] 2013-11-25 20:24:08 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [32m[INST] 2013-11-25 20:24:09 +0000 Default: Got new command 82 from instruments: au.getElementByXpath('\/\/button[contains(@text,\'reader activity off\')]')[39m
+info: [32m[INST] 2013-11-25 20:24:09 +0000 Default: Lookup returned [object UIAButton] with the name "ipad reader activity off" (id: 27).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"27"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"27"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1488ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/27/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"27"}
+info: Pushing command to appium work queue: "au.tapById('27')"
+debug: Sending command to instruments: au.tapById('27')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('27')[39m
+info: [32m[INST] 2013-11-25 20:24:10 +0000 Default: Got new command 83 from instruments: au.tapById('27')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/27/click [32m200 [90m999ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/tableview[1]/cell[1]/textview[2]"}
+info: Pushing command to appium work queue: "au.getElementsByXpath('\\/\\/window[1]\\/tableview[1]\\/cell[1]\\/textview[2]')"
+debug: Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/tableview[1]\/cell[1]\/textview[2]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementsByXpath('\/\/window[1]\/tableview[1]\/cell[1]\/textview[2]')[39m
+info: [32m[INST] 2013-11-25 20:24:10 +0000 Debug: target.frontMostApp().elements()[0].elements()[6].tap()
+       2013-11-25 20:24:11 +0000 Default: Got new command 84 from instruments: au.getElementsByXpath('\/\/window[1]\/tableview[1]\/cell[1]\/textview[2]')[39m
+info: [32m[INST] 2013-11-25 20:24:12 +0000 Default: Lookup returned [object UIATextView] with the name "test text" (id: 28).[39m
+info: [90m[INSTSERVER] Socket data received (64 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":[{"ELEMENT":"28"}]}[39m
+info: Responding to client with success: {"status":0,"value":[{"ELEMENT":"28"}],"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/elements [32m200 [90m1786ms - 124[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/28/text
+info: Pushing command to appium work queue: "au.getElement('28').text()"
+debug: Sending command to instruments: au.getElement('28').text()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('28').text()[39m
+info: [32m[INST] 2013-11-25 20:24:13 +0000 Default: Got new command 85 from instruments: au.getElement('28').text()[39m
+info: [32m[INST] 2013-11-25 20:24:13 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (57 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"test text"}[39m
+info: Responding to client with success: {"status":0,"value":"test text","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/28/text [32m200 [90m1377ms - 96[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/28/text
+info: Pushing command to appium work queue: "au.getElement('28').text()"
+debug: Sending command to instruments: au.getElement('28').text()
+info: [90m[INSTSERVER] Sending command to instruments: au.getElement('28').text()[39m
+info: [32m[INST] 2013-11-25 20:24:14 +0000 Default: Got new command 86 from instruments: au.getElement('28').text()[39m
+info: [32m[INST] 2013-11-25 20:24:14 +0000 Default: Result is not protocol compliant, wrapping[39m
+info: [90m[INSTSERVER] Socket data received (57 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":"test text"}[39m
+info: Responding to client with success: {"status":0,"value":"test text","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mGET /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/28/text [32m200 [90m542ms - 96[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/tableview[1]/cell[1]/button[1]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/window[1]\\/tableview[1]\\/cell[1]\\/button[1]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/window[1]\/tableview[1]\/cell[1]\/button[1]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/window[1]\/tableview[1]\/cell[1]\/button[1]')[39m
+info: [32m[INST] 2013-11-25 20:24:16 +0000 Default: Got new command 87 from instruments: au.getElementByXpath('\/\/window[1]\/tableview[1]\/cell[1]\/button[1]')[39m
+info: [32m[INST] 2013-11-25 20:24:16 +0000 Default: Lookup returned [object UIAButton] with the name "ipad activitycell reply" (id: 29).[39m
+info: [90m[INSTSERVER] Socket data received (62 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":{"ELEMENT":"29"}}[39m
+info: Responding to client with success: {"status":0,"value":{"ELEMENT":"29"},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [32m200 [90m1317ms - 110[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/29/click
+debug: Request received with params: {"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","id":"29"}
+info: Pushing command to appium work queue: "au.tapById('29')"
+debug: Sending command to instruments: au.tapById('29')
+info: [90m[INSTSERVER] Sending command to instruments: au.tapById('29')[39m
+info: [32m[INST] 2013-11-25 20:24:17 +0000 Default: Got new command 88 from instruments: au.tapById('29')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":0,"value":null}[39m
+info: Responding to client with success: {"status":0,"value":null,"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element/29/click [32m200 [90m1147ms - 89[0m
+debug: Appium request initiated at /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element
+debug: Request received with params: {"using":"xpath","sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f","value":"//window[1]/scrollview[2]/textview[3]"}
+info: Pushing command to appium work queue: "au.getElementByXpath('\\/\\/window[1]\\/scrollview[2]\\/textview[3]')"
+debug: Sending command to instruments: au.getElementByXpath('\/\/window[1]\/scrollview[2]\/textview[3]')
+info: [90m[INSTSERVER] Sending command to instruments: au.getElementByXpath('\/\/window[1]\/scrollview[2]\/textview[3]')[39m
+info: [32m[INST] 2013-11-25 20:24:17 +0000 Debug: target.frontMostApp().elements()[0].elements()[17].elements()[0].elements()[3].tap()
+       2013-11-25 20:24:18 +0000 Default: Got new command 89 from instruments: au.getElementByXpath('\/\/window[1]\/scrollview[2]\/textview[3]')[39m
+info: [90m[INSTSERVER] Socket data received (50 bytes)[39m
+info: [90m[INSTSERVER] Socket data being routed for 'cmd' event[39m
+info: [90m[INSTSERVER] Got result from instruments: {"status":7,"value":null}[39m
+info: Responding to client with error: {"status":7,"value":{"message":"An element could not be located on the page using the given search parameters."},"sessionId":"4d87595d-5e12-4b43-bf13-a4482973330f"}
+[90mPOST /wd/hub/session/4d87595d-5e12-4b43-bf13-a4482973330f/element [31m500 [90m1574ms - 186[0m

@@ -42,13 +42,13 @@ class sign_up(base_page_object):
     def register_email(self, email):
         self._webd_wrap._driver.find_element_by_name("email").send_keys(email)
         #self._webd_wrap._driver.find_element_by_name("username").send_keys(email)
-        self._webd_wrap._driver.find_element_by_name("confirm_email").send_keys(email)
+
         #above line is before we removed confirm email
         
     def register_password(self):
 
         self._webd_wrap._driver.find_element_by_id("password").send_keys("password")
-        self._webd_wrap._driver.find_element_by_id("confirm_password").send_keys("password")
+    
         #above line is before we removed confirm password
 
     def register_name(self):
@@ -63,5 +63,5 @@ class sign_up(base_page_object):
 
     def register_submit(self):
         
-        self._webd_wrap._driver.find_element_by_id('signup_form').find_element_by_name("submit").click()
+        self._webd_wrap._driver.find_element_by_name("submit").click()
         #self._webd_wrap._driver.find_element_by_xpath('/html/body/div[3]/div/div/div/div/form/div[2]/footer/p/input').click()

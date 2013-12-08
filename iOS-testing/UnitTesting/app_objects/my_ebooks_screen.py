@@ -44,9 +44,14 @@ class my_ebooks_screen(base_app_object):
     def click_wishlist_tab(self):
         self.driver.find_element_by_name('WISHLIST').click()
     
+#    def click_first_book(self):
+#        self.driver.find_element_by_xpath('//window[1]/tableview[1]/cell[1]/button[2]').click()
+#        time.sleep(8)
+
     def click_first_book(self):
-        self.driver.find_element_by_xpath('//window[1]/tableview[1]/cell[1]/button[2]').click()
-        time.sleep(8)
+        iphonebookdl = self.driver.find_elements_by_xpath("//button[contains(@text, 'download')]")
+        iphonebookdl[0].click()
+        time.sleep(10)
     
     def click_book_with_shimmer(self, num_books):
         self.driver.find_element_by_xpath('//window[1]/tableview[1]/cell[1]/button[2]').click()
@@ -60,13 +65,21 @@ class my_ebooks_screen(base_app_object):
         print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Downloading Book..."
         time.sleep(7)
         print datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Download Complete"
-        
+    
+    def iphone_confirm_purchase(self):
+        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "on purchased tab...debugging..." + str(self.driver.find_element_by_xpath("//text[contains(@text,'Purchased')]").text)
+        if (self.driver.find_element_by_xpath("//text[contains(@text,'Purchased')]").text) != (str("Purchased")):
+            raise AssertionError("...not on purchased tab")
+        else:
+            print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "...on purchased tab"
+
     def confirm_purchase(self, num_books):
         print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Number of Books Purchased: " + str(self.driver.find_element_by_xpath("//text[contains(@text,'Purchased')]").text)
         if self.driver.find_element_by_xpath("//text[contains(@text,'Purchased')]").text != (str(num_books) + " Purchased"):
             raise AssertionError("Number of Books Purchased Incorrect")
         else:
             print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Number of Books Purchased Correct"
+
     def return_book_title(self):
         
         return True if self.driver.find_element_by_xpath("//text[contains(@text,'Making Mavericks,')]") else False

@@ -13,7 +13,7 @@ class purchase_confirm_modal(base_modal):
          
     def _confirm_modal(self):
 #        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, "web-purchase")), 'Purchase Confirm Modal not present.')
-        placeholder = 1
+        print "test"
 
     def close_modal(self):
         self._confirm_modal()

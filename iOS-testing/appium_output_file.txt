@@ -1,0 +1,4 @@
+error: Couldn't start Appium REST http interface listener. Requested port is already in use. Please make sure there's no other instance of Appium running already.
+error: Couldn't start Appium REST http interface listener. Requested port is already in use. Please make sure there's no other instance of Appium running already.
+error: Couldn't start Appium REST http interface listener. Requested port is already in use. Please make sure there's no other instance of Appium running already.
+error: Couldn't start Appium REST http interface listener. Requested port is already in use. Please make sure there's no other instance of Appium running already.

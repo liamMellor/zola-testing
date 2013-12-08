@@ -20,31 +20,39 @@ class book_screen(base_app_object):
             
     def page_turn(self):
         self.driver.execute_script("mobile: tap",{"touchCount":"1","x":"744.00","y":"384.00"})
+    
+    def iphone_page_turn(self):
+        self.driver.execute_script("mobile: tap",{"touchCount":"1","x":"290","y":"272"})
 
     def tap_midscreen(self):
         self.driver.execute_script("mobile: tap",{"touchCount":"1","x":"0.63","y":"0.25"})
 
     def click_home_button(self):
-        self.driver.find_element_by_name('ipad reader home off').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader home off')]").click()
         time.sleep(3)
 
     def click_ToC(self):
-        self.driver.find_element_by_name('ipad reader contents off').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader contents off')]").click()
 
     def click_top_info_bar(self):
-        self.driver.find_element_by_name('ipad reader info off').click()
+        #self.driver.find_element_by_name('ipad reader info off').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader info off')]").click()
 
     def click_social_tab(self):
-        self.driver.find_element_by_name('ipad reader activity off').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader activity off')]").click()
+    #self.driver.find_element_by_name('ipad reader activity off').click()
 
     def click_reader_settings(self):
-        self.driver.find_element_by_name('ipad reader settings off').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader settings off')]").click()
+    #self.driver.find_element_by_name('ipad reader settings off').click()
 
     def click_reader_refresh(self):
-        self.driver.find_element_by_name('ipad reader bottombar refresh').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader bottombar refresh')]").click()
+    #self.driver.find_element_by_name('ipad reader bottombar refresh').click()
 
     def progress_scoller(self):
-        self.driver.find_element_by_name('ipad_reader_bottombar_marker.png')
+        self.driver.find_element_by_xpath("//button[contains(@text,'reader_bottombar_marker')]").click()
+    #self.driver.find_element_by_name('ipad_reader_bottombar_marker.png')
 
     def initial_progress_check(self):
         preprog_print = self.progress_scroller.find_element_by_xpath('/text[1]')
@@ -77,12 +85,13 @@ class book_screen(base_app_object):
         #print (datetime.now().strftime('%Y-%m-%d %H:%M:%S'), "Highlight Coordinates:",swiper[0].location)
         swiper_location = swiper.location
         self.driver.execute_script("mobile: tap",{"tapCount":"2", "tapObject": swiper_location, "duration": 1})
+        #return swiper.text
         #print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Highlight:",swiper[0].text
         highlight = self.driver.find_elements_by_name('Highlight')
         highlight[0].click()
-        hightext = self.driver.find_element_by_xpath("//window[1]/textview[1]").text
-        print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Checking highlight against:",hightext
-        return hightext
+        #hightext = self.driver.find_element_by_xpath("//textview[contains(@text, swiper.text)]")
+        #print (datetime.now().strftime('%Y-%m-%d %H:%M:%S')), "Checking highlight against:",hightext
+        #return hightext
     
     def assert_highlight(self, highlight_text):
         #self.driver.find_element_by_name('Web, Use of UIWebView').click()
@@ -97,6 +106,7 @@ class book_screen(base_app_object):
         self.driver.execute_script("mobile: leaveWebView")
 
     def comment_on_highlight(self):
+        #high_typer = self.driver.find_element_by_xpath("//textview[contains(@text,'UIATextView')]")
         high_typer = self.driver.find_elements_by_xpath("//window[1]/textview[2]")
         high_typer[0].send_keys("testtext")
         uikeyboard = self.driver.find_elements_by_name("Hide keyboard")

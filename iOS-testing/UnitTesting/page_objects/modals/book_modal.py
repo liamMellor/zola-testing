@@ -13,7 +13,7 @@ class book_modal(base_modal):
     def _confirm_modal(self):
         ''' raises AssertionError if modal is incorrect '''
 #        self._webd_wrap.wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'fancybox-inner')), 'modal not present')
-        placeholder = 1
+        print "yes"
         # waits until the rating bar is present to confirm the a book modal is present
        # self._webd_wrap.wait.until(EC.presence_of_element_located((By.CLASS_NAME, "ui-rating-bar-section-large")), 'rating bar')
 
@@ -48,7 +48,6 @@ class book_modal(base_modal):
         hover = ActionChains(self._webd_wrap._driver).move_to_element(element_to_hover_over)
         hover.perform()
         self._webd_wrap._driver.execute_script('(arguments[0]).click()', _purchase_button)
-    #self._webd_wrap.wait.until(EC.title_contains("Zola"))
         
     def click_recommend(self):
         ''' clicks the recommend button on the book modal '''

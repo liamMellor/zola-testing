@@ -29,12 +29,12 @@ class my_zola(base_page_object):
         
         # enables option to test for a specific username or just a general My Zola page
         #if _name is None:
-        #    _actual_title = _title
-        #else:
-        #    _actual_title = 'Zola Books | ' + _name
+        #_actual_title = _title
+            #else:
+            #    _actual_title = 'Zola Books | ' + _name
         
-        #  if not _url.startswith(self._webd_wrap._baseURL + '/profile') or _title != _actual_title:
-        #    raise AssertionError("Not on My Zola page.")
+        # if not _url.startswith(self._webd_wrap._baseURL + '/profile') or _title != _actual_title:
+        #   raise AssertionError("Not on My Zola page.")
         
     def click_my_zola(self):
         self.confirm_page()

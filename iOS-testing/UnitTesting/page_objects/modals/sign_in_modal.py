@@ -12,7 +12,7 @@ class sign_in_modal(base_modal):
         
     def _confirm_modal(self):
        # self._webd_wrap.wait.until(EC.presence_of_element_located((By.CLASS_NAME, 'fancybox-inner')), 'Sign In modal not present')
-        placeholder = 1
+        print "test"
     def close_modal(self):
         self._confirm_modal()
         

@@ -29,13 +29,18 @@ class home_screen(base_app_object):
         #self.wait.until(EC.element_to_be_clickable((By.NAME,'ipad landing gear')))
         cog = self.driver.find_element_by_xpath('//window[1]/button[4]').location
         print str(cog)
+    
+    def iphone_click_landing_gear(self):
+        self.driver.find_element_by_xpath('//window[1]/button[4]').click()
+        time.sleep(5)
 
     def click_landing_gear(self):
         #self.driver.find_element_by_xpath('//window[1]/button[4]').click()
+        #self.driver.find_element_by_xpath("//text[contains(@text,'gear']").click()
         self.driver.execute_script("mobile: tap",{"touchCount":"1","x":"711","y":"80"})
 
     def click_deregister(self):
-        self.driver.find_element_by_name('ipad information deregister').click()
+        self.driver.find_element_by_xpath("//button[contains(@text,'information deregister')]").click()
 
     def click_send_feedback(self):
         self.driver.find_element_by_name('ipad information sendfeedback').click()
@@ -48,6 +53,11 @@ class home_screen(base_app_object):
 
     def click_logout(self):
         self.driver.find_element_by_name('YES').click()
+
+    def iphone_deregister_device(self):
+        self.iphone_click_landing_gear()
+        self.click_deregister()
+        self.click_logout()
 
     def deregister_device(self):
         self.click_landing_gear()

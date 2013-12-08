@@ -1,6 +1,7 @@
 from UnitTesting.page_objects.base_page_object import base_page_object
 from selenium.webdriver.common.by import By
 from selenium.webdriver.support import expected_conditions as EC
+import time
 
 class add_card(base_page_object):
     def __init__(self, webd_wrap):
@@ -33,8 +34,8 @@ class add_card(base_page_object):
         self.click_state_dropdown()
         self.enter_zip()
         self.click_cc_submit()
-        self._webd_wrap._driver.find_element_by_xpath('//*[@id="page"]/div[1]/section/header[1]/a').click()
-    
+        time.sleep(10)
+        
     def enter_cc_number(self):
         self._webd_wrap._driver.find_element_by_id('add-payment-profile').find_element_by_id("card_number").send_keys("378282246310005")
         self._webd_wrap._driver.find_element_by_id('add-payment-profile').find_element_by_id("security_code").send_keys("266")
@@ -49,7 +50,7 @@ class add_card(base_page_object):
             
     def enter_cc_address(self):
         self._webd_wrap._driver.find_element_by_id('add-payment-profile').find_element_by_id("pp_address_1").send_keys("221B Baker Street")
-        self._webd_wrap._driver.find_element_by_id('add-payment-profile').find_element_by_id("pp_city").send_keys("London")
+        self._webd_wrap._driver.find_element_by_id('add-payment-profile').find_element_by_id("pp_address_2").send_keys("London")
         
     def click_state_dropdown(self):
         self._webd_wrap._driver.find_element_by_id('add-payment-profile').find_element_by_id("dk_container_pp_state").find_element_by_xpath("a").click()

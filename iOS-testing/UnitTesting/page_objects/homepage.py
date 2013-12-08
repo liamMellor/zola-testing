@@ -51,7 +51,7 @@ class homepage(base_page_object):
     
     def click_first_bestseller(self):
         ''' clicks the first item in the bestseller list '''
-        #self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'best-sellers')), 'bestseller list not present')
+        self._webd_wrap.wait.until(EC.presence_of_element_located((By.ID, 'best-sellers')), 'bestseller list not present')
         
         _bestseller = self._webd_wrap._driver.find_element_by_id('best-sellers').find_element_by_xpath('ul/li/a')
         self._webd_wrap._driver.execute_script("(arguments[0]).click()", _bestseller)

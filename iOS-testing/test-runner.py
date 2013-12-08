@@ -10,8 +10,9 @@ import time
 test_modules_to_run = ()
 
 test_modules_to_run += (
-                        #'full_suite.full_suite',
-                        'highlight_suite.highlight_suite',
+                        'full_suite.full_suite',
+                        #'full_suite.iphone_full_suite',
+                        #'highlight_suite.highlight_suite',
                         #'reply_suite.reply_suite',
                         #'progress_suite.progress_suite',
                         #'book_insert.book_insert',
@@ -113,7 +114,7 @@ def main(argv=None):
                         ##verison 0.10.4 below
                         #default='/usr/local/bin/appium'
                         ##version 0.11.0 below
-                        default='/User/Zola/appium/bin/appium.js')
+                        default='/Applications/Appium.app/Contents/Resources/node/bin/node')
     parser.add_argument('--appium_output_file',
                         help='logfile path to store appium output',
                         default='./appium_logfile.txt')

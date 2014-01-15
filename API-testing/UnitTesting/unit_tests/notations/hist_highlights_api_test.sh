@@ -1,0 +1,1 @@
+python books.py  | sed "s/SET NOTATION/$(printf "\033[1;31mSET NOTATION\033[0m")/g" | sed "s/GET NOTATION/$(printf "\033[1;31mGET NOTATION\033[0m")/g" | sed "s/DEVICE LOGIN/$(printf "\033[1;31mDEVICE LOGIN\033[0m")/g" | sed "s/timestamp/$(printf "\033[1;31mtimestamp\IN\033[0m")/g"

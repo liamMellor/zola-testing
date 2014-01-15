@@ -41,7 +41,7 @@ class bookseller_profile(base_page_object):
         
     def click_pledge(self):
         self.confirm_page()
-        
+        print "pledging, bookseller page"
         self._webd_wrap._driver.find_element_by_id('page').find_element_by_xpath('div/div/section/p/a/img').click()    
         
     def click_unpledge(self):

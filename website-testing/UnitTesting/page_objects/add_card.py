@@ -17,7 +17,6 @@ class add_card(base_page_object):
 #        self._webd_wrap.wait.until(EC.text_to_be_present_in_element((By.CLASS_NAME, 'header-modal-capital'), 'CREDIT'), 'Not on the add card page.')
         
 #        _url = self._webd_wrap._driver.current_url
-        print "test"
 #        if not _url.startswith(self._webd_wrap._baseURL + '/profile/add-card'):
 #            raise AssertionError("Not on the add card page.")
         
@@ -26,7 +25,7 @@ class add_card(base_page_object):
         
     def submit_new_cc_info(self):
         self.confirm_page()
-        
+        print "adding cc info"
         self.enter_cc_number()
         self.click_cc_month_dropdown()
         self.click_cc_year_dropdown()

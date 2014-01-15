@@ -83,7 +83,7 @@ class homepage(base_page_object):
     def hover_over_category_dropdown(self):
         ''' hovers the mouse over the category drop down menu '''
         self.confirm_page()
-        
+        print "hovering over category dropdown"
         _element = self._webd_wrap._driver.find_element_by_id("h-shop-by-category").find_element_by_xpath("h2/a")
         _hov = ActionChains(self._webd_wrap._driver).move_to_element(_element)
         _hov.perform()
@@ -91,7 +91,7 @@ class homepage(base_page_object):
     def hover_over_connect_dropdown(self):
         ''' hovers the mouse over the connect drop down menu '''
         self.confirm_page()
-        
+        print "hovering over connect dropdown"
         _element = self._webd_wrap._driver.find_element_by_xpath("/html/body/div[2]/header/div/div[3]/h2/a")
         _hov = ActionChains(self._webd_wrap._driver).move_to_element(_element)
         _hov.perform()

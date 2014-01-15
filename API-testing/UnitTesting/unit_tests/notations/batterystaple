@@ -1,0 +1,12 @@
+#!/bin/bash
+i=0
+while [ $i -le 0 ]
+do
+    battery=$(LC_CTYPE=C tr -dc a-z < /dev/urandom | head -c ${1} | xargs)
+    battery2=$(LC_CTYPE=C tr -dc a-z < /dev/urandom | head -c ${1} | xargs)
+    battery3=$(LC_CTYPE=C tr -dc a-z < /dev/urandom | head -c ${1} | xargs)
+    battery4=$(LC_CTYPE=C tr -dc a-z < /dev/urandom | head -c ${1} | xargs)
+    staple="-"
+    i=$[$i+1]
+    echo $battery$battery2$battery3$battery4
+done

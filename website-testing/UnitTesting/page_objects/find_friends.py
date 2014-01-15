@@ -37,8 +37,5 @@ class find_friends(base_page_object):
         
     def click_skip_this(self):
         time.sleep(2)
-        #self._webd_wrap.wait.until(EC.presence_of_element_located((By.CSS_SELECTOR, "footer[class='pad-box-40px t-center']")))
-        
-       # self._webd_wrap._driver.find_element_by_id('page').find_element_by_xpath('div[1]/div/footer/form/input').click()
-        
+        print "skipping people finder"
         self._webd_wrap._driver.find_element_by_xpath('/html/body/div[2]/div/div/footer/form/a').click()

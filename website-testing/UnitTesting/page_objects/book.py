@@ -46,7 +46,7 @@ class book(base_page_object):
         
     def click_buy(self):
         self.confirm_page()
-        
+        print "purchase confirm, book page"
         self._webd_wrap._driver.find_element_by_class_name('l-sidebar-primary').find_element_by_xpath('div/div/span/a').click()
         
     def click_add_to_list(self):

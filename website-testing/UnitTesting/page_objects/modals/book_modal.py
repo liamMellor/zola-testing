@@ -24,7 +24,7 @@ class book_modal(base_modal):
      
     def close_modal(self):
         self._confirm_modal()
-        
+        print "closing modal"
         _close = self._webd_wrap._driver.find_element_by_class_name('fancybox-skin').find_element_by_xpath('a')
         self._webd_wrap._driver.execute_script("(arguments[0]).click()", _close)
     
@@ -36,26 +36,26 @@ class book_modal(base_modal):
     def rate(self):
         ''' rates the book '''
         self._confirm_modal()
-        
+       
         self._webd_wrap._driver.find_element_by_class_name('ui-rating-bar-section-large').find_element_by_xpath('span/div[3]/a').click()    
-        
+        print "rated book"
     def click_buy(self):
         ''' clicks the buy button on the book modal '''
         self._confirm_modal()
-        
         _purchase_button = self._webd_wrap._driver.find_element_by_class_name('l-230px').find_element_by_xpath('div/div/span/a')
         element_to_hover_over =  _purchase_button
         hover = ActionChains(self._webd_wrap._driver).move_to_element(element_to_hover_over)
         hover.perform()
         self._webd_wrap._driver.execute_script('(arguments[0]).click()', _purchase_button)
-        
+        print "purchased book, book modal"
+    
     def click_recommend(self):
         ''' clicks the recommend button on the book modal '''
         self._confirm_modal()
         
         _recommend_button = self._webd_wrap._driver.find_element_by_class_name("l-230px").find_element_by_xpath("div/div/ul/li[3]/a")
         self._webd_wrap._driver.execute_script("(arguments[0]).click()", _recommend_button)
-        
+        print "book recomended"
     def click_full_profile(self):
         ''' clicks the full profile button on the book modal '''
         self._confirm_modal()
@@ -85,7 +85,7 @@ class book_modal(base_modal):
         
         _addtolist = self._webd_wrap._driver.find_element_by_xpath("/html/body/div[3]/div/div/div/div/div/div/section[2]/div/div/ul/li[2]/a")
         self._webd_wrap._driver.execute_script("(arguments[0]).click()", _addtolist)
-
+        print "added to list"
     ########################################################################
         
     def get_book_title(self):

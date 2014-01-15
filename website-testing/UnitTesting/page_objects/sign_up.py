@@ -36,7 +36,7 @@ class sign_up(base_page_object):
         self.register_name()
         self.register_birthday()
         self.register_submit()
-        
+        print "submitting new member info"
         return _email
 
     def register_email(self, email):

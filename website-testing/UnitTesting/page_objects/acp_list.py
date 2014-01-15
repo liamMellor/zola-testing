@@ -7,7 +7,6 @@ from selenium.webdriver.common.by import By
 from UnitTesting.page_objects.base_page_object import base_page_object
 from selenium.webdriver.common.action_chains import ActionChains
 from selenium.webdriver.support import expected_conditions as EC
-
 import time
 
 class acp_list(base_page_object):  
@@ -55,7 +54,7 @@ class acp_list(base_page_object):
     def click_follow_first_acp(self):
         ''' clicks follow on the first acp in the main list '''
         self.confirm_page()
-        
+        print "following first acp"
         self._webd_wrap._driver.find_element_by_class_name('l-main-primary').find_element_by_xpath('div/section[1]/div/div/div[2]/a').click()
         
     ########################################################################

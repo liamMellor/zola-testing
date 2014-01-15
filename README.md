@@ -1,2 +1,2 @@
-Selenium+Robot Framework Automated Testing
-==========================================
+Selenium Automated Testing
+==========================

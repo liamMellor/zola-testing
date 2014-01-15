@@ -39,7 +39,7 @@ class bestsellers(base_page_object):
     
     def click_first_book(self):
         self.confirm_page()
-        
+        print "buying first bestseller"
         self._webd_wrap._driver.find_element_by_class_name('l-main-primary').find_element_by_xpath('section[2]/div/div/a[1]').click()
         
     def click_second_book(self):

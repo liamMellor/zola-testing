@@ -1,21 +1,15 @@
 package quantum;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.FontFormatException;
-import java.awt.GraphicsEnvironment;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.IOException;
-import java.net.MalformedURLException;
-import java.net.URL;
 import java.util.ArrayList;
 
 import javax.swing.BorderFactory;
@@ -33,7 +27,6 @@ import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.border.TitledBorder;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
@@ -41,7 +34,6 @@ import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
-@SuppressWarnings("serial")
 public class QuantumCreatorRightPanel {
     protected static final String buttonString = "JButton";
 	JPanel rightSide;
@@ -134,7 +126,6 @@ public class QuantumCreatorRightPanel {
             		qMain.remove(rightPane);
             		qMain.invalidate();
 	            	//repaint();
-	            	JSplitPane rightSide;
 	                topBar.removeAll();
 	                topBar.add(Box.createRigidArea(new Dimension(100,50)));
 	                topBar.setLayout(new BoxLayout(topBar, BoxLayout.Y_AXIS));
@@ -282,7 +273,6 @@ public class QuantumCreatorRightPanel {
             		qMain.remove(rightPane);
             		qMain.invalidate();
 	            	//repaint();
-	            	JSplitPane rightSide;
 	                topBar.removeAll();
 	                topBar.add(Box.createRigidArea(new Dimension(100,50)));
 	                topBar.setLayout(new BoxLayout(topBar, BoxLayout.Y_AXIS));

@@ -5,7 +5,6 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileInputStream;
-import java.io.FileNotFoundException;
 import java.io.IOException;
 
 import javax.swing.BorderFactory;
@@ -21,7 +20,6 @@ import javax.swing.JSplitPane;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 
 import org.apache.commons.io.IOUtils;
 
@@ -36,14 +34,19 @@ public class QuantumManagerList {
     static JButton editorButton;
     static JButton moveRightButton;
 	private FileInputStream inputStream;
+	private QuantumManagerMain qmMain;
 	
-	
+	public QuantumManagerList(QuantumManagerMain qmMain){
+		this.qmMain = qmMain;
+	}
     public JSplitPane QuantumList() {
 
         listModel = new DefaultListModel<String>();
         listModel.addElement("");
         final File epochFolder = new File("QuantumScripts/epoch/");
-        listFilesForFolder(epochFolder);
+        if (epochFolder.exists() || epochFolder.mkdirs()) {
+        	listFilesForFolder(epochFolder);
+        }
         //Create the list and put it in a scroll pane.
         list = new JList<String>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
@@ -117,19 +120,18 @@ public class QuantumManagerList {
                 listModel.addElement(fileEntry.getName());
                 } catch (IOException e) {
 					// TODO Auto-generated catch block
-					e.printStackTrace();
+					break;
 				} finally {
                     try {
 						inputStream.close();
 					} catch (IOException e) {
 						// TODO Auto-generated catch block
-						e.printStackTrace();
+						break;
 					}
                 }
             }
         }
     }
-    
     
     public static void listValueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
@@ -172,7 +174,10 @@ public class QuantumManagerList {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			
+			QuantumCreatorMain.createAndShowGUI(qmMain);
+			String entry = list.getSelectedValue();
+			String constructorSetter = QuantumDataManager.managerContainer.get(entry);
+			QuantumConstructor.reconstruct(constructorSetter, true);
 	    }
     }
     class MoveRightListener implements ActionListener {

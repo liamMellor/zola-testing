@@ -1,63 +1,51 @@
 package quantum;
 
 import java.awt.BorderLayout;
-import java.awt.Container;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.util.ArrayList;
 
 import javafx.embed.swing.JFXPanel;
 
 import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
-import javax.swing.SwingUtilities;
-import javax.swing.UIManager;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
 import javax.swing.text.StyledDocument;
 
 public class QuantumManagerMain extends JPanel implements ActionListener {
-    private String newline = "\n";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = -679415248975465081L;
     protected static final String textFieldString = "Tag Name";
     protected static final String passwordFieldString = "Identifier Type";
     protected static final String ftfString = "Identifier";
     protected static final String actionString = "Action";
     protected static final String sendKeysString = "Keys to send";
     protected static final String buttonString = "JButton";
-    private String emptyLine = "\n";
-	private JPanel rightPaneSetter;
 	private JPanel rightPane;
 	private JPanel leftPane;
 	private JPanel centerPane;
-	private JTextPane tagPage;
-	private int creationIterator;
 	
     public QuantumManagerMain() {
     	
         setLayout(new BorderLayout());
         //Create a regular text field.
        
-        QuantumManagerList qList = new QuantumManagerList();
+        QuantumManagerList qList = new QuantumManagerList(this);
         final JSplitPane quantumDataList = qList.QuantumList();
         //HireListener hireListener = new HireListener(mSubmit);
         
@@ -145,34 +133,6 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
         QuantumDataManager.currentUrl = "http://www.bookish.com";
         mWebView.loadURL("http://www.bookish.com");
         return webPageTopBar;
-    }
-    
-    private JTextPane createTextPane(String selectedItem) {
-    	QuantumTagList qtl = new QuantumTagList();
-        String[] initString = qtl.parser(QuantumDataManager.currentUrl, selectedItem);
-	    ArrayList<String> initStyleList = new ArrayList<String>();
-
-        for(int i = 0; i < initString.length; i++){
-    		initStyleList.add("regular");
-	    }
-        String[] initStyles = new String[initStyleList.size()];
-	    initStyles = initStyleList.toArray(initStyles);
-        JTextPane textPane = new JTextPane();
-        StyledDocument doc = textPane.getStyledDocument();
-        addStylesToDocument(doc);
-
-        try {
-            for (int i=0; i < initString.length; i++) {
-                doc.insertString(doc.getLength(), initString[i],
-                                 doc.getStyle(initStyles[i]));
-            }
-        } catch (BadLocationException ble) {
-            System.err.println("Couldn't insert initial text into text pane.");
-        }
-        textPane.setPreferredSize(new Dimension(700, 700));
-        textPane.setMinimumSize(new Dimension(700, 700));
-        textPane.setEditable(false);
-        return textPane;
     }
     
     public void addStylesToDocument(StyledDocument doc) {

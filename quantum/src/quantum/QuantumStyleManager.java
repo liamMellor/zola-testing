@@ -14,8 +14,8 @@ import java.awt.font.FontRenderContext;
 import java.awt.font.TextLayout;
 import java.awt.geom.AffineTransform;
 import java.io.IOException;
+import java.io.InputStream;
 import java.net.MalformedURLException;
-import java.net.URL;
 
 import javax.swing.JButton;
 import javax.swing.JComponent;
@@ -26,15 +26,15 @@ import javax.swing.plaf.basic.BasicComboBoxUI;
 
 public class QuantumStyleManager {
 	public static Font mightyFont(){
-		URL fontUrl;
 		Font myFont = null;
+		InputStream fontStream = null;
     	try {
-    		//www.WebpagePublicity.com/free-fonts/e/Earth's Mightiest Bold Expanded.ttf
-    		 fontUrl = new URL("http://www.webpagepublicity.com/" +
-                     "free-fonts/e/Earth's%20Mightiest%20Bold%20Expanded.ttf"); // dummy font 
-
-             myFont = Font.createFont(Font.TRUETYPE_FONT, fontUrl.openStream());
-             myFont = myFont.deriveFont(Font.PLAIN,20);
+    		fontStream =QuantumStyleManager
+                      		 .class
+                       		 .getResourceAsStream("fonts/dinengschrift.ttf");
+             myFont = Font.createFont(Font.TRUETYPE_FONT, 
+            		 fontStream);
+             myFont = myFont.deriveFont(Font.BOLD,20);
              GraphicsEnvironment ge = GraphicsEnvironment.getLocalGraphicsEnvironment();
              ge.registerFont(myFont);
     	 }	catch (MalformedURLException e1) {
@@ -47,6 +47,14 @@ public class QuantumStyleManager {
 	         // TODO Auto-generated catch block
 	         e.printStackTrace();
 	     }
+    	finally{
+    		try {
+				fontStream.close();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+    	}
     	return myFont;
 	}
 	public static void buttonStyles(JButton... thatButton){
@@ -58,7 +66,12 @@ public class QuantumStyleManager {
 		}
 	}
 	static class FontPanel extends JPanel {
-		  public void paintComponent(Graphics g) {
+		  /**
+		 * 
+		 */
+		private static final long serialVersionUID = -8404192986141274893L;
+
+		public void paintComponent(Graphics g) {
 		    super.paintComponent(g);
 		    setBackground(Color.white);
 		    int width = getSize().width;

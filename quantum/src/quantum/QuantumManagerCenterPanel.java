@@ -5,7 +5,6 @@ import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.FileInputStream;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -31,13 +30,8 @@ public class QuantumManagerCenterPanel {
     private static final String runString = "Run All";
     static JButton moveLeftButton;
     static JButton runButton;
-	private FileInputStream inputStream;
-	private JPanel centerPane;
-	private QuantumManagerMain qMain;
 	
 	public QuantumManagerCenterPanel(JPanel centerPane, QuantumManagerMain quantumMain){
-		this.centerPane = centerPane;
-		this.qMain = quantumMain;
 		
 	}
     public JSplitPane QuantumTopCenter() {
@@ -173,7 +167,7 @@ public class QuantumManagerCenterPanel {
 			for(int i = 0; i < listModel.size()-1; i++){
 				String entry = listModel.get(i+1).toString();
 				String constructorSetter = QuantumDataManager.managerContainer.get(entry);
-				QuantumRunner.reconstruct(constructorSetter);
+				QuantumConstructor.reconstruct(constructorSetter, false);
 				QuantumRunner.run();
 			}
 		}

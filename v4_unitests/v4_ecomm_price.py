@@ -10,7 +10,7 @@ import re
 import time
 import os
 
-api_url = 'https://api.api-v4.divergence.zolaqc.com/v4/'
+api_url = 'https://api.zolaqc.com/v4/'
 
 class V4_book_price():
      def __init__ (self, action, isbn):

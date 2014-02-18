@@ -45,29 +45,34 @@ import java.awt.Dimension;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;        //for action events
-import java.net.URL;
+import java.awt.event.KeyEvent;
 import java.util.ArrayList;
 import java.util.Properties;
 
 import javafx.embed.swing.JFXPanel;
 
 import javax.swing.BorderFactory;
+import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
+import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
+import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
+import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
@@ -83,23 +88,25 @@ import javax.swing.text.StyledDocument;
 import com.jtattoo.plaf.smart.SmartLookAndFeel;
 
 public class QuantumCreatorMain extends JPanel implements ActionListener {
-    private String newline = "\n";
+    /**
+	 * 
+	 */
+	private static final long serialVersionUID = 3413241423943899492L;
     protected static final String textFieldString = "Tag Name";
     protected static final String passwordFieldString = "Identifier Type";
     protected static final String ftfString = "Identifier";
     protected static final String actionString = "Action";
     protected static final String sendKeysString = "Keys to send";
     protected static final String buttonString = "JButton";
-    private String emptyLine = "\n";
-	private JPanel rightPaneSetter;
 	private JPanel rightPane;
 	private JPanel leftPane;
 	private JPanel centerPane;
 	private JComboBox<?> petList;
 	private JTextPane tagPage;
-	private int creationIterator;
+	private static QuantumManagerMain qmMain;
 	
-    public QuantumCreatorMain() {
+    public QuantumCreatorMain(QuantumManagerMain qmMain) {
+    	QuantumCreatorMain.qmMain = qmMain;
         setLayout(new BorderLayout());
         QuantumTagList qtl = new QuantumTagList();
         //Create a regular text field.
@@ -142,7 +149,6 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         actionFieldLabel.setLabelFor(actionType);
         JLabel sendKeysFieldLabel = new JLabel(sendKeysString + ": ");
         sendKeysFieldLabel.setLabelFor(keysToSend);
-        QuantumStyleManager.FontPanel fp = new QuantumStyleManager.FontPanel();
         JLabel specialActionFieldLabel = new JLabel("Special Action" + ": ");
         specialActionFieldLabel.setLabelFor(keysToSend);
         //Create a label to put messages during an action event.
@@ -159,7 +165,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         	label.setFont(QuantumStyleManager.mightyFont());
         }
         JTextField[] textFields = {ftf, keysToSend};
-        JComboBox[] comboBoxes = {tagName, identifierType, actionType, specialActionType};
+        JComboBox<?>[] comboBoxes = {tagName, identifierType, actionType, specialActionType};
         for (JComboBox<?> comboBox: comboBoxes){
         	comboBox.setUI(QuantumStyleManager.ColorArrowUI.createUI(specialActionType));
         }
@@ -267,9 +273,6 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         final JSplitPane webPageTopBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
         		webBar,
         		petList);
-        final JSplitPane splitPane2Inner = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-        		webPage,
-        		webPageTopBar);
         ActionListener btnGoAL = new ActionListener() {
 
 			@Override
@@ -347,7 +350,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     
     private void addLabelTextRows(JLabel[] labels,
                                   JTextField[] textFields,
-                                  JComboBox[] comboBoxes, GridBagLayout gridbag,
+                                  JComboBox<?>[] comboBoxes, GridBagLayout gridbag,
                                   Container container) {
         GridBagConstraints c = new GridBagConstraints();
         c.anchor = GridBagConstraints.EAST;
@@ -374,8 +377,8 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     }
 
     public void actionPerformed(ActionEvent e) {
-        String prefix = "You typed \"";
     }
+    
     private JSplitPane createWebPagePane() {
     	final QuantumCreatorWebView mWebView = new QuantumCreatorWebView();
     	JFXPanel webPagePane = mWebView.initComponents();
@@ -500,14 +503,94 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
      * this method should be invoked from the
      * event dispatch thread.
      */
-    private static void createAndShowGUI() {
+    static void createAndShowGUI(QuantumManagerMain qmMain) {
         //Create and set up the window.
+    	//Create the menu bar.
+    	JMenuBar menuBar;
+    	JMenu menu, submenu;
+    	JMenuItem menuItem;
+    	JRadioButtonMenuItem rbMenuItem;
+    	JCheckBoxMenuItem cbMenuItem;
+    	menuBar = new JMenuBar();
 
+    	//Build the first menu.
+    	menu = new JMenu("A Menu");
+    	menu.setMnemonic(KeyEvent.VK_A);
+    	menu.getAccessibleContext().setAccessibleDescription(
+    	        "The only menu in this program that has menu items");
+    	menuBar.add(menu);
+
+    	//a group of JMenuItems
+    	menuItem = new JMenuItem("A text-only menu item",
+    	                         KeyEvent.VK_T);
+    	menuItem.getAccessibleContext().setAccessibleDescription(
+    	        "This doesn't really do anything");
+    	menu.add(menuItem);
+
+    	menuItem = new JMenuItem("Both text and icon",
+    	                         new ImageIcon("images/middle.gif"));
+    	menuItem.setMnemonic(KeyEvent.VK_B);
+    	menu.add(menuItem);
+
+    	menuItem = new JMenuItem(new ImageIcon("images/middle.gif"));
+    	menuItem.setMnemonic(KeyEvent.VK_D);
+    	menu.add(menuItem);
+
+    	//a group of radio button menu items
+    	menu.addSeparator();
+    	ButtonGroup group = new ButtonGroup();
+    	rbMenuItem = new JRadioButtonMenuItem("A radio button menu item");
+    	rbMenuItem.setSelected(true);
+    	rbMenuItem.setMnemonic(KeyEvent.VK_R);
+    	group.add(rbMenuItem);
+    	menu.add(rbMenuItem);
+
+    	rbMenuItem = new JRadioButtonMenuItem("Another one");
+    	rbMenuItem.setMnemonic(KeyEvent.VK_O);
+    	group.add(rbMenuItem);
+    	menu.add(rbMenuItem);
+
+    	//a group of check box menu items
+    	menu.addSeparator();
+    	cbMenuItem = new JCheckBoxMenuItem("A check box menu item");
+    	cbMenuItem.setMnemonic(KeyEvent.VK_C);
+    	menu.add(cbMenuItem);
+
+    	cbMenuItem = new JCheckBoxMenuItem("Another one");
+    	cbMenuItem.setMnemonic(KeyEvent.VK_H);
+    	menu.add(cbMenuItem);
+
+    	//a submenu
+    	menu.addSeparator();
+    	submenu = new JMenu("A submenu");
+    	submenu.setMnemonic(KeyEvent.VK_S);
+
+    	menuItem = new JMenuItem("An item in the submenu");
+    	menuItem.setAccelerator(KeyStroke.getKeyStroke(
+    	        KeyEvent.VK_2, ActionEvent.ALT_MASK));
+    	submenu.add(menuItem);
+
+    	menuItem = new JMenuItem("Another item");
+    	submenu.add(menuItem);
+    	menu.add(submenu);
+
+    	//Build second menu in the menu bar.
+    	menu = new JMenu("Another Menu");
+    	menu.setMnemonic(KeyEvent.VK_N);
+    	menu.getAccessibleContext().setAccessibleDescription(
+    	        "This menu does nothing");
+    	menuBar.add(menu);
+
+    	QuantumDataManager.frame.setJMenuBar(menuBar);
         QuantumDataManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        if(qmMain != null){
+        	QuantumDataManager.frame.remove(qmMain);
+        }
+        
         //Add content to the window.
-        QuantumDataManager.frame.add(new QuantumCreatorMain());
+        QuantumDataManager.frame.add(new QuantumCreatorMain(qmMain));
         //Display the window.
+        
         QuantumDataManager.frame.pack();
         QuantumDataManager.frame.setFont(QuantumStyleManager.mightyFont());
         QuantumDataManager.frame.setVisible(true);
@@ -521,6 +604,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         
     	
     	Properties props = new Properties();
+    	props.put("logoString", "Zola Books");
         props.put("selectionBackgroundColor", "220 208 255"); 
         props.put("menuSelectionBackgroundColor", "220 208 255"); 
         
@@ -554,13 +638,8 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         
         SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                 //Turn off metal's use of bold fonts
-				//UIManager.put("swing.boldMetal", Boolean.FALSE);
-            	URL url = quantum.QuantumCreatorMain.class.getResource( "images/GladosPotato.png" );
-            	Toolkit kit = Toolkit.getDefaultToolkit();
-            	Image img = kit.createImage(url);
-            	QuantumDataManager.frame.setIconImage(img);
-				createAndShowGUI();
+                
+				createAndShowGUI(qmMain);
 
             }
         });

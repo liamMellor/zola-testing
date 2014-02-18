@@ -108,7 +108,6 @@ public class QuantumManagerRightPanel {
             		qMain.remove(rightPane);
             		qMain.invalidate();
 	            	//repaint();
-	            	JSplitPane rightSide;
 	                topBar.removeAll();
 	                topBar.add(Box.createRigidArea(new Dimension(100,50)));
 	                topBar.setLayout(new BoxLayout(topBar, BoxLayout.Y_AXIS));
@@ -257,7 +256,6 @@ public class QuantumManagerRightPanel {
             		qMain.remove(rightPane);
             		qMain.invalidate();
 	            	//repaint();
-	            	JSplitPane rightSide;
 	                topBar.removeAll();
 	                topBar.add(Box.createRigidArea(new Dimension(100,50)));
 	                topBar.setLayout(new BoxLayout(topBar, BoxLayout.Y_AXIS));
@@ -284,8 +282,6 @@ public class QuantumManagerRightPanel {
 	                qMain.repaint();
 	                flagRunActive = false;
             	}
-				Icon icon = createImageIcon("images/GladosPotato.png", "GLaDOS Potato");
-				Object[] possibilities = null;
 			}
         };
         runButton.addActionListener(runAL);

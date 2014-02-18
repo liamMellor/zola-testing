@@ -2,7 +2,6 @@ package quantum;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 import java.util.Collections;
 
 import javax.swing.BorderFactory;
@@ -15,7 +14,6 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
-import javax.swing.JTextField;
 import javax.swing.ListSelectionModel;
 import javax.swing.SwingConstants;
 import javax.swing.event.ListSelectionEvent;
@@ -23,8 +21,8 @@ import javax.swing.event.ListSelectionListener;
 
 public class QuantumCreatorList {
 	
-	static JList list;
-    static DefaultListModel listModel;
+	static JList<String> list;
+    static DefaultListModel<String> listModel;
 
     private static final String moveUpString = "Move Up";
     private static final String moveDownString = "Move Down";
@@ -35,11 +33,11 @@ public class QuantumCreatorList {
     
     public JSplitPane QuantumList() {
 
-        listModel = new DefaultListModel();
+        listModel = new DefaultListModel<String>();
         listModel.addElement("");
 
         //Create the list and put it in a scroll pane.
-        list = new JList(listModel);
+        list = new JList<String>(listModel);
         list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
         list.setSelectedIndex(0);
         list.addListSelectionListener(new ListSelectionListener(){
@@ -71,11 +69,6 @@ public class QuantumCreatorList {
         
         QuantumStyleManager.buttonStyles(fireButton,moveUpButton,moveDownButton);
 
-        //employeeName.addActionListener(hireListener);
-        //employeeName.getDocument().addDocumentListener(hireListener);
-        String name = listModel.getElementAt(
-                              list.getSelectedIndex()).toString();
-
         //Create a panel that uses BoxLayout.
         JPanel buttonPane = new JPanel();
         buttonPane.setLayout(new BoxLayout(buttonPane,
@@ -101,8 +94,6 @@ public class QuantumCreatorList {
         moveDownButton.setEnabled(false);
 		return listWithButtons;
 
-        //add(listScrollPane, BorderLayout.CENTER);
-        //add(buttonPane, BorderLayout.PAGE_END);
     }
     public static void listAdder(String[] sa){
     	String constructedString = "Tag: "
@@ -115,6 +106,7 @@ public class QuantumCreatorList {
 	    + sa[3];
     	listModel.addElement(constructedString);
     }
+
     public static void listValueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
 

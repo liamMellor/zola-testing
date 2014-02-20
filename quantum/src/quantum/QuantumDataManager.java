@@ -13,6 +13,8 @@ public class QuantumDataManager {
 	public static ArrayList<String[]> creationContainer = new ArrayList<String[]>();
 	public static LinkedHashMap<String, String> managerContainer = new LinkedHashMap<String , String>();
 	
+	public static LinkedHashMap<Integer, LinkedHashMap<String, String>> creatorMap = new LinkedHashMap<Integer, LinkedHashMap<String, String>>();
+	
 	public static String className = new String();
 	
 	public static String baseClassURL = new String();

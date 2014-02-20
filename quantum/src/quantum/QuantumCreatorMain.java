@@ -31,19 +31,11 @@
 
 package quantum;
 
-/*
- * TextSamplerDemo.java requires the following files:
- *   TextSamplerDemoHelp.html (which references images/dukeWaveRed.gif)
- *   images/Pig.gif
- *   images/sound.gif
- */
 
 import java.awt.BorderLayout;              //for layout managers and more
-import java.awt.Container;
+import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
@@ -55,30 +47,23 @@ import java.util.Properties;
 import javafx.embed.swing.JFXPanel;
 
 import javax.swing.BorderFactory;
-import javax.swing.ButtonGroup;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JCheckBoxMenuItem;
 import javax.swing.JComboBox;
 import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
-import javax.swing.JRadioButtonMenuItem;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
 import javax.swing.JTextPane;
-import javax.swing.KeyStroke;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
@@ -108,130 +93,6 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     public QuantumCreatorMain(QuantumManagerMain qmMain) {
     	QuantumCreatorMain.qmMain = qmMain;
         setLayout(new BorderLayout());
-        QuantumTagList qtl = new QuantumTagList();
-        //Create a regular text field.
-        final JComboBox<?> tagName = new JComboBox<Object>(qtl.tagList());
-        tagName.setActionCommand(textFieldString);
-        tagName.addActionListener(this);
-        
-        //Create a password field.
-        String [] identifierTypes = {"Class Name", "ID", "Link Text", "CSS Selector", "Name", "Partial Link Text", "XPath"};
-        final JComboBox<?> identifierType = new JComboBox<Object>(identifierTypes);
-        identifierType.setActionCommand(passwordFieldString);
-        identifierType.addActionListener(this);
-
-        //Create a formatted text field.
-        final JTextField ftf = new JTextField(10);
-        ftf.setActionCommand(ftfString);
-        ftf.addActionListener(this);
-        
-        String [] actions = {"Click", "Send Keys"};
-        final JComboBox<?> actionType = new JComboBox<Object>(actions);
-        actionType.setActionCommand(actionString);
-        actionType.addActionListener(this);
-        
-        final JTextField keysToSend = new JTextField(10);
-        keysToSend.setActionCommand(sendKeysString);
-        keysToSend.addActionListener(this);
-        
-        String [] specialActions = {"None", "Submit Form", "Get Size", "Get Text", "Is Visible?"};
-        final JComboBox<?> specialActionType = new JComboBox<Object>(specialActions);
-        specialActionType.setActionCommand("Special Action");
-        specialActionType.addActionListener(this);
-
-        JLabel textFieldLabel = new JLabel(textFieldString + ": ");
-        textFieldLabel.setLabelFor(tagName);
-        JLabel passwordFieldLabel = new JLabel(passwordFieldString + ": ");
-        passwordFieldLabel.setLabelFor(identifierType);
-        JLabel ftfLabel = new JLabel(ftfString + ": ");
-        ftfLabel.setLabelFor(ftf);
-        JLabel actionFieldLabel = new JLabel(actionString + ": ");
-        actionFieldLabel.setLabelFor(actionType);
-        JLabel sendKeysFieldLabel = new JLabel(sendKeysString + ": ");
-        sendKeysFieldLabel.setLabelFor(keysToSend);
-        JLabel specialActionFieldLabel = new JLabel("Special Action" + ": ");
-        specialActionFieldLabel.setLabelFor(keysToSend);
-        //Create a label to put messages during an action event.
-
-        //Lay out the text controls and the labels.
-        JPanel textControlsPane = new JPanel();
-        GridBagLayout gridbag = new GridBagLayout();
-        GridBagConstraints c = new GridBagConstraints();
-
-        textControlsPane.setLayout(gridbag);
-
-        JLabel[] labels = {textFieldLabel, passwordFieldLabel, ftfLabel, actionFieldLabel, sendKeysFieldLabel, specialActionFieldLabel};
-        for(JLabel label : labels){
-        	label.setFont(QuantumStyleManager.mightyFont());
-        }
-        JTextField[] textFields = {ftf, keysToSend};
-        JComboBox<?>[] comboBoxes = {tagName, identifierType, actionType, specialActionType};
-        for (JComboBox<?> comboBox: comboBoxes){
-        	comboBox.setUI(QuantumStyleManager.ColorArrowUI.createUI(specialActionType));
-        }
-        addLabelTextRows(labels, textFields, comboBoxes, gridbag, textControlsPane);
-
-        c.gridwidth = GridBagConstraints.REMAINDER; //last
-        c.anchor = GridBagConstraints.WEST;
-        c.weightx = 1.0;
-        textControlsPane.setBorder(
-                BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder(getBorder(), "Searchers",
-                                		TitledBorder.CENTER, TitledBorder.TOP, QuantumStyleManager.mightyFont()),
-                                BorderFactory.createEmptyBorder(5,5,5,5)));
-
-        leftPane = new JPanel(new BorderLayout());
-        JButton mSubmit = new JButton("Submit");
-        QuantumStyleManager.buttonStyles(mSubmit);
-        QuantumCreatorList qList = new QuantumCreatorList();
-        final JSplitPane quantumDataList = qList.QuantumList();
-        //HireListener hireListener = new HireListener(mSubmit);
-        mSubmit.addActionListener(new ActionListener(){
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				
-				if(!ftf.getText().equals("")){
-					
-					ArrayList<String> tempContainer = new ArrayList<String>();
-					tempContainer.add(tagName.getSelectedItem().toString());
-					tempContainer.add(identifierType.getSelectedItem().toString());
-					tempContainer.add(ftf.getText());
-					tempContainer.add(actionType.getSelectedItem().toString());
-					tempContainer.add(keysToSend.getText());
-					tempContainer.add(specialActionType.getSelectedItem().toString());
-					String[] tempArray = new String[tempContainer.size()];
-					tempArray = tempContainer.toArray(tempArray);
-					QuantumCreatorList.listAdder(tempArray);
-					QuantumDataManager.creationContainer.add(tempArray);
-					
-				}
-			}
-        	
-        });
-        QuantumCreatorList.list.addListSelectionListener(new ListSelectionListener() {
-
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
-				//QuantumList.list.setSelectedIndex(QuantumList.listModel.size()-1);
-				QuantumCreatorList.fireButton.setEnabled(true);
-				QuantumCreatorList.moveUpButton.setEnabled(true);
-				QuantumCreatorList.moveDownButton.setEnabled(true);
-			}
-        	
-        });
-        mSubmit.setMaximumSize(new Dimension(30,30));
-        mSubmit.setPreferredSize(new Dimension(30,30));
-        leftPane.add(textControlsPane, 
-                     BorderLayout.PAGE_START);
-        leftPane.add(mSubmit,
-    			BorderLayout.CENTER);
-        leftPane.add(quantumDataList,
-        		BorderLayout.PAGE_END);
-        //Create an editor pane.
-        //Create a text pane.
 
         //Put the editor pane and the text pane in a split pane.
         rightPane = new JPanel(new GridLayout(1,0));
@@ -255,10 +116,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
                         JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
         tagScrollPane.setPreferredSize(new Dimension(700, 700));
         tagScrollPane.setMinimumSize(new Dimension(700, 700));
-        //String[] petStrings = { "Bird", "Cat", "Dog", "Rabbit", "Pig" };
-        //Create the combo box, select item at index 4.
-        //Indices start at 0, so 4 specifies the pig.
-        petList = new JComboBox<Object>(qtl.tagList());
+        petList = new JComboBox<Object>(QuantumTagList.tagList());
         petList.setSelectedIndex(0);
         petList.setPreferredSize(new Dimension(10, 50));
         petList.setMinimumSize(new Dimension(10, 50));
@@ -342,38 +200,12 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
          * 
          */
         //Put everything together.
-        
+        QuantumCreatorLeftPanel qcLeft = new QuantumCreatorLeftPanel();
+        leftPane = new JPanel(new GridLayout(1,0));
+        leftPane.add(qcLeft.leftPanel());
         add(leftPane, BorderLayout.LINE_START);
         add(centerPane, BorderLayout.CENTER);
         add(rightPane, BorderLayout.LINE_END);
-    }
-    
-    private void addLabelTextRows(JLabel[] labels,
-                                  JTextField[] textFields,
-                                  JComboBox<?>[] comboBoxes, GridBagLayout gridbag,
-                                  Container container) {
-        GridBagConstraints c = new GridBagConstraints();
-        c.anchor = GridBagConstraints.EAST;
-        int numLabels = labels.length;
-        int comboBoxIter = 0;
-        int textFieldsIter = 0;
-        for (int i = 0; i < numLabels; i++) {
-            c.gridwidth = GridBagConstraints.RELATIVE; //next-to-last
-            c.fill = GridBagConstraints.NONE;      //reset to default
-            c.weightx = 0.0;                       //reset to default
-            container.add(labels[i], c);
-            c.gridwidth = GridBagConstraints.REMAINDER;     //end row
-            c.fill = GridBagConstraints.HORIZONTAL;
-            c.weightx = 1.0;
-            if (i==0 || i== 1 || i==3 || i==5){
-            	container.add(comboBoxes[comboBoxIter], c);
-            	comboBoxIter++;
-            }
-            else{
-            	container.add(textFields[textFieldsIter], c);
-            	textFieldsIter++;
-            }
-        }
     }
 
     public void actionPerformed(ActionEvent e) {
@@ -507,80 +339,51 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         //Create and set up the window.
     	//Create the menu bar.
     	JMenuBar menuBar;
-    	JMenu menu, submenu;
+    	JMenu menu;
     	JMenuItem menuItem;
-    	JRadioButtonMenuItem rbMenuItem;
-    	JCheckBoxMenuItem cbMenuItem;
     	menuBar = new JMenuBar();
 
     	//Build the first menu.
-    	menu = new JMenu("A Menu");
+    	menu = new JMenu("Menu");
     	menu.setMnemonic(KeyEvent.VK_A);
     	menu.getAccessibleContext().setAccessibleDescription(
     	        "The only menu in this program that has menu items");
     	menuBar.add(menu);
 
     	//a group of JMenuItems
-    	menuItem = new JMenuItem("A text-only menu item",
+    	menuItem = new JMenuItem("Creator",
     	                         KeyEvent.VK_T);
     	menuItem.getAccessibleContext().setAccessibleDescription(
     	        "This doesn't really do anything");
     	menu.add(menuItem);
 
-    	menuItem = new JMenuItem("Both text and icon",
-    	                         new ImageIcon("images/middle.gif"));
+    	menuItem = new JMenuItem("Manager");
     	menuItem.setMnemonic(KeyEvent.VK_B);
-    	menu.add(menuItem);
-
-    	menuItem = new JMenuItem(new ImageIcon("images/middle.gif"));
-    	menuItem.setMnemonic(KeyEvent.VK_D);
     	menu.add(menuItem);
 
     	//a group of radio button menu items
     	menu.addSeparator();
-    	ButtonGroup group = new ButtonGroup();
-    	rbMenuItem = new JRadioButtonMenuItem("A radio button menu item");
-    	rbMenuItem.setSelected(true);
-    	rbMenuItem.setMnemonic(KeyEvent.VK_R);
-    	group.add(rbMenuItem);
-    	menu.add(rbMenuItem);
-
-    	rbMenuItem = new JRadioButtonMenuItem("Another one");
-    	rbMenuItem.setMnemonic(KeyEvent.VK_O);
-    	group.add(rbMenuItem);
-    	menu.add(rbMenuItem);
-
-    	//a group of check box menu items
+    	menuItem = new JMenuItem("Help");
+    	menuItem.setMnemonic(KeyEvent.VK_R);
+    	menu.add(menuItem);
+    	
     	menu.addSeparator();
-    	cbMenuItem = new JCheckBoxMenuItem("A check box menu item");
-    	cbMenuItem.setMnemonic(KeyEvent.VK_C);
-    	menu.add(cbMenuItem);
-
-    	cbMenuItem = new JCheckBoxMenuItem("Another one");
-    	cbMenuItem.setMnemonic(KeyEvent.VK_H);
-    	menu.add(cbMenuItem);
-
-    	//a submenu
-    	menu.addSeparator();
-    	submenu = new JMenu("A submenu");
-    	submenu.setMnemonic(KeyEvent.VK_S);
-
-    	menuItem = new JMenuItem("An item in the submenu");
-    	menuItem.setAccelerator(KeyStroke.getKeyStroke(
-    	        KeyEvent.VK_2, ActionEvent.ALT_MASK));
-    	submenu.add(menuItem);
-
-    	menuItem = new JMenuItem("Another item");
-    	submenu.add(menuItem);
-    	menu.add(submenu);
-
-    	//Build second menu in the menu bar.
-    	menu = new JMenu("Another Menu");
-    	menu.setMnemonic(KeyEvent.VK_N);
-    	menu.getAccessibleContext().setAccessibleDescription(
-    	        "This menu does nothing");
-    	menuBar.add(menu);
-
+    	menuItem = new JMenuItem("Credits");
+    	menuItem.setMnemonic(KeyEvent.VK_R);
+    	menu.add(menuItem);
+    	
+    	JButton Site = new JButton("     Site     ");
+    	JButton API = new JButton("     API      ");
+    	
+    	QuantumStyleManager.buttonStyles(Site, API);
+    	Site.setForeground(Color.black);
+    	API.setForeground(Color.black);
+    	
+    	menu.setBorder(BorderFactory.createCompoundBorder(
+                        BorderFactory.createEmptyBorder(10,10,10,10), BorderFactory.createLineBorder(Color.black, 1)));
+    	menuBar.add(Site);
+    	menuBar.add(API);
+    	
     	QuantumDataManager.frame.setJMenuBar(menuBar);
         QuantumDataManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
         if(qmMain != null){
@@ -604,7 +407,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         
     	
     	Properties props = new Properties();
-    	props.put("logoString", "Zola Books");
+    	props.put("logoString", "Quantum");
         props.put("selectionBackgroundColor", "220 208 255"); 
         props.put("menuSelectionBackgroundColor", "220 208 255"); 
         

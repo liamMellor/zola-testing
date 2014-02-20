@@ -9,7 +9,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class QuantumTagList {
-	public String[] tagList(){
+	public static String[] tagList(){
 		String[] tagList = {"html",
 		                    "title","body" ,"h1" ,
 		                    "h2" ,"h3" ,"h4",

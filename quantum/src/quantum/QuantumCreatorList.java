@@ -106,7 +106,10 @@ public class QuantumCreatorList {
 	    + sa[3];
     	listModel.addElement(constructedString);
     }
-
+    public static void listAdder2(String... s){
+    	StringBuilder sb = new StringBuilder(64);
+    	
+    }
     public static void listValueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
 

@@ -47,10 +47,13 @@ public class QuantumManagerList {
         if (epochFolder.exists() || epochFolder.mkdirs()) {
         	listFilesForFolder(epochFolder);
         }
+        if(QuantumDataManager.managerContainer.size() != 0){
+        	listModel.remove(0);
+        }
         //Create the list and put it in a scroll pane.
         list = new JList<String>(listModel);
-        list.setSelectionMode(ListSelectionModel.SINGLE_SELECTION);
-        list.setSelectedIndex(0);
+        list.setSelectionMode(ListSelectionModel.MULTIPLE_INTERVAL_SELECTION);
+        //list.setSelectedIndex(0);
         /*list.addListSelectionListener(new ListSelectionListener(){
 
 			@Override
@@ -174,8 +177,8 @@ public class QuantumManagerList {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
-			QuantumCreatorMain.createAndShowGUI(qmMain);
 			String entry = list.getSelectedValue();
+			QuantumCreatorMain.createAndShowGUI(qmMain);
 			String constructorSetter = QuantumDataManager.managerContainer.get(entry);
 			QuantumConstructor.reconstruct(constructorSetter, true);
 	    }

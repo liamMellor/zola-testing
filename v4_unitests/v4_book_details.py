@@ -54,6 +54,22 @@ class V4_details():
             detailsContainer[x] = y
             return detailsContainer
 
+class V4_avatar():
+    def __init__(self,member_id,auth_token):
+        self.member_id = member_id
+        self.auth_token = auth_token
+
+    def avatar(self, api_url):
+        avUrl = api_url + 'session/avatar'
+        avValues = {'auth_member_id' : self.member_id,
+                    'auth_token' : self.auth_token,
+                    'action' : 'set'}
+        avData = urllib.urlencode(avValues)
+        avReq = urllib2.Request(avUrl,avData)
+        avResponse = urllib2.urlopen(avReq)
+        avJSON = json.load(avResponse)
+        print avJSON
+
 login = V4_login('jason-flax-2','kingkong','python','jay.flax@zolabooks.com')
 creds = login.login(api_url)
 mem_id = creds["member_id"]

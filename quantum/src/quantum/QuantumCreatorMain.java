@@ -36,35 +36,36 @@ import java.awt.BorderLayout;              //for layout managers and more
 import java.awt.Color;
 import java.awt.Cursor;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;        //for action events
 import java.awt.event.KeyEvent;
-import java.util.ArrayList;
 import java.util.Properties;
 
 import javafx.embed.swing.JFXPanel;
 
 import javax.swing.BorderFactory;
+import javax.swing.Box;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JScrollPane;
 import javax.swing.JSplitPane;
+import javax.swing.JTextArea;
 import javax.swing.JTextField;
-import javax.swing.JTextPane;
 import javax.swing.SwingUtilities;
 import javax.swing.UIManager;
 import javax.swing.UnsupportedLookAndFeelException;
 import javax.swing.border.TitledBorder;
-import javax.swing.text.BadLocationException;
 import javax.swing.text.Style;
 import javax.swing.text.StyleConstants;
 import javax.swing.text.StyleContext;
@@ -86,12 +87,17 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
 	private JPanel rightPane;
 	private JPanel leftPane;
 	private JPanel centerPane;
-	private JComboBox<?> petList;
-	private JTextPane tagPage;
+	private JSplitPane centerSplit;
+	private JSplitPane webPage;
+	private JSplitPane cPane;
 	private static QuantumManagerMain qmMain;
-	
+	private QuantumCreatorWebView mWebView = new QuantumCreatorWebView();
+	public static JTextArea terminal;
+	private static QuantumCreatorMain qcMain;
+
     public QuantumCreatorMain(QuantumManagerMain qmMain) {
     	QuantumCreatorMain.qmMain = qmMain;
+    	QuantumCreatorMain.qcMain = this;
         setLayout(new BorderLayout());
 
         //Put the editor pane and the text pane in a split pane.
@@ -104,98 +110,45 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         /*
          * 
          */
-        final JSplitPane webPage = createWebPagePane();
+        webPage = createWebPagePane();
         //JScrollPane webPagePane = new JScrollPane(webPage);
         webPage.setPreferredSize(new Dimension(500, 500));
         webPage.setMinimumSize(new Dimension(400, 400));
-
-        //Create a text pane.
-        tagPage = createTextPane("html");
-        final JScrollPane tagScrollPane = new JScrollPane(tagPage);
-        tagScrollPane.setVerticalScrollBarPolicy(
-                        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-        tagScrollPane.setPreferredSize(new Dimension(700, 700));
-        tagScrollPane.setMinimumSize(new Dimension(700, 700));
-        petList = new JComboBox<Object>(QuantumTagList.tagList());
-        petList.setSelectedIndex(0);
-        petList.setPreferredSize(new Dimension(10, 50));
-        petList.setMinimumSize(new Dimension(10, 50));
-        JButton btnGo = new JButton("Go");
-	    final JTextField txtURL = new JTextField();
-	    JPanel webBar = new JPanel(new BorderLayout(5, 0));
-	    webBar.setBorder(BorderFactory.createEmptyBorder(3, 5, 3, 5));
-	    webBar.add(txtURL, BorderLayout.CENTER);
-	    webBar.add(btnGo, BorderLayout.EAST);
-        //topBar.setPreferredSize(new Dimension(5,10));
-	    webBar.setSize(new Dimension(5, 10));
-        final JSplitPane webPageTopBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-        		webBar,
-        		petList);
-        ActionListener btnGoAL = new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent e) {
-				// TODO Auto-generated method stub
-				QuantumDataManager.currentUrl = txtURL.getText();
-				remove(centerPane);
-                invalidate();
-                repaint();
-                centerPane = new JPanel(new GridLayout(1,0));
-            	tagPage = createTextPane(petList.getSelectedItem().toString());
-            	final JScrollPane tagScrollPane = new JScrollPane(tagPage);
-                tagScrollPane.setVerticalScrollBarPolicy(
-                                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                tagScrollPane.setPreferredSize(new Dimension(700, 700));
-                tagScrollPane.setMinimumSize(new Dimension(700, 700));
-            	final JSplitPane splitPane2Inner = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-                		tagScrollPane,
-                		webPageTopBar);
-            	splitPane2Inner.setOneTouchExpandable(true);
-            	splitPane2Inner.setResizeWeight(0.5);
-            	centerPane.add(splitPane2Inner);
-                centerPane.setBorder(BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder(getBorder(),"Browser Kit",TitledBorder.CENTER, TitledBorder.TOP, QuantumStyleManager.mightyFont()),
-                                BorderFactory.createEmptyBorder(5,5,5,5)));
-                add(centerPane);
-                validate();
-                repaint();
-			}
-        	
-        };
-        btnGo.addActionListener(btnGoAL);
-        //petList.se
-        ActionListener comboBoxAL = new ActionListener() {
-            @Override public void actionPerformed(ActionEvent e) {
-                remove(centerPane);
-                invalidate();
-                repaint();
-                centerPane = new JPanel(new GridLayout(1,0));
-            	tagPage = createTextPane(petList.getSelectedItem().toString());
-            	final JScrollPane tagScrollPane = new JScrollPane(tagPage);
-                tagScrollPane.setVerticalScrollBarPolicy(
-                                 JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
-                tagScrollPane.setPreferredSize(new Dimension(700, 700));
-                tagScrollPane.setMinimumSize(new Dimension(700, 700));
-            	final JSplitPane splitPane2Inner = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-                		tagScrollPane,
-                		webPageTopBar);
-            	splitPane2Inner.setOneTouchExpandable(true);
-            	splitPane2Inner.setResizeWeight(0.5);
-            	centerPane.add(splitPane2Inner);
-                centerPane.setBorder(BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder(getBorder(),"Browser Kit",TitledBorder.CENTER, TitledBorder.TOP, QuantumStyleManager.mightyFont()),
-                                BorderFactory.createEmptyBorder(5,5,5,5)));
-                add(centerPane);
-                validate();
-                repaint();
-            }
-        };
-        petList.addActionListener(comboBoxAL);
+        
         centerPane = new JPanel(new GridLayout(1,0));
-        centerPane.add(webPage);
-        centerPane.setBorder(BorderFactory.createCompoundBorder(
+        JMenuBar menuBar;
+    	menuBar = new JMenuBar();
+    	
+        JButton bKit = new JButton("Browser Kit");
+        JButton console = new JButton("Console");
+    	QuantumStyleManager.buttonStyles(bKit, console);
+        bKit.setForeground(Color.black);
+        console.setForeground(Color.black);
+        console.addActionListener(new ConsoleButtonListener());
+        bKit.addActionListener(new BrowserButtonListener());
+    	menuBar.setBackground(Color.red);
+
+        menuBar.add(bKit);
+        menuBar.add(console);
+        bKit.setPreferredSize(new Dimension(512,30));
+        bKit.setMinimumSize(new Dimension(512,30));
+        bKit.setSize(new Dimension(512,30));
+        console.setPreferredSize(new Dimension(512,30));
+        console.setMinimumSize(new Dimension(512,30));
+        console.setSize(new Dimension(512,30));
+        menuBar.setPreferredSize(new Dimension(1024,30));
+        menuBar.setMinimumSize(new Dimension(1024,30));
+        menuBar.setSize(new Dimension(1024,30));
+        JPanel menuPane = new JPanel();
+        menuPane.add(menuBar);
+        centerSplit = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+        menuPane,
+        webPage);
+    	centerPane.add(centerSplit);
+        centerPane.setPreferredSize(new Dimension(1024,700));
+        /*centerPane.setBorder(BorderFactory.createCompoundBorder(
                         BorderFactory.createTitledBorder(getBorder(),"Browser Kit",TitledBorder.CENTER, TitledBorder.TOP, QuantumStyleManager.mightyFont()),
-                        BorderFactory.createEmptyBorder(5,5,5,5)));
+                        BorderFactory.createEmptyBorder(5,5,5,5)));*/
         /*
          * 
          */
@@ -205,17 +158,14 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         leftPane.add(qcLeft.leftPanel());
         add(leftPane, BorderLayout.LINE_START);
         add(centerPane, BorderLayout.CENTER);
-        add(rightPane, BorderLayout.LINE_END);
+        //add(rightPane, BorderLayout.LINE_END);
     }
 
-    public void actionPerformed(ActionEvent e) {
-    }
     
     private JSplitPane createWebPagePane() {
-    	final QuantumCreatorWebView mWebView = new QuantumCreatorWebView();
     	JFXPanel webPagePane = mWebView.initComponents();
-        webPagePane.setPreferredSize(new Dimension(430, 700));
-        webPagePane.setMinimumSize(new Dimension(430, 700));
+        webPagePane.setPreferredSize(new Dimension(1000, 700));
+        webPagePane.setMinimumSize(new Dimension(1000, 700));
 	    JButton btnGo = new JButton("Go");
 	    final JTextField txtURL = new JTextField();
 	    JProgressBar progressBar = new JProgressBar();
@@ -239,40 +189,96 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         //topBar.setPreferredSize(new Dimension(5,10));
         topBar.setSize(new Dimension(5, 10));
         JSplitPane webPageTopBar = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
-        		webPagePane,
-        		topBar);
+        		topBar,
+        		webPagePane);
         QuantumDataManager.currentUrl = "http://www.bookish.com";
         mWebView.loadURL("http://www.bookish.com");
+        cPane = consolePane();
         return webPageTopBar;
     }
-    
-    private JTextPane createTextPane(String selectedItem) {
-    	QuantumTagList qtl = new QuantumTagList();
-        String[] initString = qtl.parser(QuantumDataManager.currentUrl, selectedItem);
-	    ArrayList<String> initStyleList = new ArrayList<String>();
+    class ConsoleButtonListener implements ActionListener {
 
-        for(int i = 0; i < initString.length; i++){
-    		initStyleList.add("regular");
-	    }
-        String[] initStyles = new String[initStyleList.size()];
-	    initStyles = initStyleList.toArray(initStyles);
-        JTextPane textPane = new JTextPane();
-        StyledDocument doc = textPane.getStyledDocument();
-        addStylesToDocument(doc);
-
-        try {
-            for (int i=0; i < initString.length; i++) {
-                doc.insertString(doc.getLength(), initString[i],
-                                 doc.getStyle(initStyles[i]));
-            }
-        } catch (BadLocationException ble) {
-            System.err.println("Couldn't insert initial text into text pane.");
-        }
-        textPane.setPreferredSize(new Dimension(700, 700));
-        textPane.setMinimumSize(new Dimension(700, 700));
-        textPane.setEditable(false);
-        return textPane;
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			centerSplit.remove(webPage);
+			centerSplit.add(cPane);
+			centerSplit.invalidate();
+			centerSplit.repaint();
+			centerSplit.validate();
+		}
+    	
     }
+    class BrowserButtonListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			centerSplit.remove(cPane);
+			webPage.removeAll();
+			mWebView.destroy();
+			webPage = createWebPagePane();
+			centerSplit.add(webPage);
+			centerSplit.invalidate();
+			centerSplit.repaint();
+			centerSplit.validate();
+		}
+    	
+    }
+    private JSplitPane consolePane() {
+		terminal = new JTextArea(
+                QuantumDataManager.runnerConsole
+        );
+		terminal.setPreferredSize(new Dimension(1024, 500));
+		terminal.setMinimumSize(new Dimension(1024, 500));
+		terminal.setSize(new Dimension(1024, 500));
+		terminal.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		terminal.setLineWrap(true);
+		terminal.setWrapStyleWord(true);
+        JScrollPane areaScrollPane = new JScrollPane(terminal);
+        areaScrollPane.setVerticalScrollBarPolicy(
+                        JScrollPane.VERTICAL_SCROLLBAR_ALWAYS);
+        areaScrollPane.setPreferredSize(new Dimension(1024, 700));
+        areaScrollPane.setMinimumSize(new Dimension(1024, 700));
+        areaScrollPane.setSize(new Dimension(1024, 700));
+
+        JPanel miniPane = new JPanel();
+        JButton deleteAllSteps = new JButton("Delete All Steps");
+        JButton saveAndSubmit = new JButton("Save and Submit");
+        saveAndSubmit.addActionListener(new ActionListener(){
+        	
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				Icon icon = createImageIcon("images/GladosPotato.png", "GLaDOS Potato");
+				Object[] possibilities = null;
+				// TODO Auto-generated method stub
+				String fileName = (String) JOptionPane.showInputDialog(null,
+						"What would "
+								+ "you like to name this file?",
+						"Save",
+						JOptionPane.PLAIN_MESSAGE,
+						icon,
+						possibilities,
+						null);
+				QuantumDataManager.className = fileName;
+				QuantumRunner.compile();
+			}
+        	
+        });
+        QuantumStyleManager.buttonStyles(deleteAllSteps, saveAndSubmit);
+        deleteAllSteps.setSize(new Dimension( 300, 200));
+        miniPane.add(Box.createVerticalStrut(100));
+        miniPane.add(deleteAllSteps);
+        miniPane.add(Box.createHorizontalStrut(500));
+        miniPane.add(saveAndSubmit);
+        miniPane.setPreferredSize(new Dimension(1024, 30));
+        miniPane.setMinimumSize(new Dimension(1024, 30));
+        miniPane.setSize(new Dimension(1024, 30));
+        JSplitPane cFinal = new JSplitPane(JSplitPane.VERTICAL_SPLIT, 
+        		terminal, miniPane);
+	    return cFinal;
+    }
+   
     
     public void addStylesToDocument(StyledDocument doc) {
         //Initialize some styles.
@@ -335,7 +341,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
      * this method should be invoked from the
      * event dispatch thread.
      */
-    static void createAndShowGUI(QuantumManagerMain qmMain) {
+    static void createAndShowGUI(QuantumManagerMain quantumManager) {
         //Create and set up the window.
     	//Create the menu bar.
     	JMenuBar menuBar;
@@ -351,16 +357,32 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     	menuBar.add(menu);
 
     	//a group of JMenuItems
-    	menuItem = new JMenuItem("Creator",
-    	                         KeyEvent.VK_T);
-    	menuItem.getAccessibleContext().setAccessibleDescription(
-    	        "This doesn't really do anything");
-    	menu.add(menuItem);
+    	JMenuItem menuItemCreator = new JMenuItem("Creator",
+    	                         KeyEvent.VK_T);    
+        menuItemCreator.addActionListener(new QuantumManagerMain());
+    	menu.add(menuItemCreator);
 
-    	menuItem = new JMenuItem("Manager");
-    	menuItem.setMnemonic(KeyEvent.VK_B);
-    	menu.add(menuItem);
+    	JMenuItem menuItemManager = new JMenuItem("Manager");
+    	ActionListener managerAL = new ActionListener(){
 
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				
+				SwingUtilities.invokeLater(new Runnable() {
+		            public void run() {
+		                 //Turn off metal's use of bold fonts
+					//UIManager.put("swing.boldMetal", Boolean.FALSE);
+					QuantumManagerMain.createAndShowGUI(qcMain);
+		            }
+				});
+			}
+        	
+        };
+        menuItemManager.addActionListener(managerAL);
+        menuItemManager.setMnemonic(KeyEvent.VK_B);
+    	menu.add(menuItemManager);
+    	
     	//a group of radio button menu items
     	menu.addSeparator();
     	menuItem = new JMenuItem("Help");
@@ -386,12 +408,12 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     	
     	QuantumDataManager.frame.setJMenuBar(menuBar);
         QuantumDataManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        if(qmMain != null){
-        	QuantumDataManager.frame.remove(qmMain);
+        if(quantumManager != null){
+        	QuantumDataManager.frame.remove(quantumManager);
         }
         
         //Add content to the window.
-        QuantumDataManager.frame.add(new QuantumCreatorMain(qmMain));
+        QuantumDataManager.frame.add(new QuantumCreatorMain(quantumManager));
         //Display the window.
         
         QuantumDataManager.frame.pack();
@@ -447,4 +469,9 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
             }
         });
     }
+	@Override
+	public void actionPerformed(ActionEvent e) {
+		// TODO Auto-generated method stub
+		
+	}
 }

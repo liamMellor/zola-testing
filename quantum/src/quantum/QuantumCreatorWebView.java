@@ -2,9 +2,13 @@ package quantum;
 import static javafx.concurrent.Worker.State.FAILED;
 
 import java.awt.BorderLayout;
+import java.awt.DefaultKeyboardFocusManager;
 import java.awt.Dimension;
+import java.awt.KeyEventDispatcher;
+import java.awt.KeyboardFocusManager;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 import java.net.MalformedURLException;
 import java.net.URL;
 
@@ -14,9 +18,6 @@ import javafx.beans.value.ObservableValue;
 import javafx.embed.swing.JFXPanel;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.ContextMenu;
-import javafx.scene.input.MouseButton;
-import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebEvent;
 import javafx.scene.web.WebView;
@@ -47,7 +48,7 @@ public class QuantumCreatorWebView implements Runnable {
 
     public JFXPanel initComponents() {
         jfxPanel = new JFXPanel();
-        jfxPanel.setPreferredSize(new Dimension(100,100));
+        jfxPanel.setPreferredSize(new Dimension(700,700));
         createScene();
 
         ActionListener al = new ActionListener() {
@@ -55,7 +56,20 @@ public class QuantumCreatorWebView implements Runnable {
                 loadURL(txtURL.getText());
             }
         };
+        KeyboardFocusManager kfm = DefaultKeyboardFocusManager.getCurrentKeyboardFocusManager();
+        kfm.addKeyEventDispatcher(new KeyEventDispatcher() {
 
+			@Override
+			public boolean dispatchKeyEvent(KeyEvent e) {
+				if (DefaultKeyboardFocusManager.getCurrentKeyboardFocusManager().getFocusOwner() == jfxPanel) {
+	                if (e.getID() == KeyEvent.KEY_TYPED && e.getKeyChar() == 10) {
+	                    e.setKeyChar((char) 13);
+	                }
+	                return false;
+	             }
+				return false;
+			}
+        });
         btnGo.addActionListener(al);
         QuantumStyleManager.buttonStyles(btnGo);
         txtURL.addActionListener(al);
@@ -91,39 +105,15 @@ public class QuantumCreatorWebView implements Runnable {
     private static void enableXpath(final WebEngine engine) {
         engine.executeScript("function getXpath(e){var t=getPrevSibs(e);var n;if(getParentId(e)!=undefined){n=getParentId(e);var r=\"//*[@\"+'id=\"'+n+'\"]/'+e.tagName.toLowerCase()+\"[\"+t+\"]\";return r}else{n=getParentClass(e);var r=\"//*[@\"+'class=\"'+n+'\"]/'+e.tagName.toLowerCase()+\"[\"+t+\"]\";return r}}function getPrevSibs(e){var t=true;var n=0;while(t==true){var r;if(n==0){if(e.prevElementSibling!=undefined){r=e.prevElementSibling;if(r.tagName==e.tagName)n+=1}else{t=false;break}}else{if(r.prevElementSibling!=undefined){var i=r;r=r.prevElementSibling;if(i.tagName==r.tagName)n+=1}else{t=false;break}}}return n}function getParentId(e){var t=e.parentElement;var n=t.getAttribute(\"id\");return n}function getParentClass(e){var t=e.parentElement;var n=t.getAttribute(\"class\");return n}var el;document.oncontextmenu=function(e){el=e.toElement}"); 
       }
-    private void createScene() {
+    public void createScene() {
 
         Platform.runLater(new Runnable() {
             @Override public void run() {
 
                 final WebView view = new WebView();
-                view.setOnMouseClicked(new EventHandler<MouseEvent>() {
-
-                    private ContextMenu menu;
-
-					@Override
-                    public void handle(MouseEvent mouse) {
-                        if (mouse.getButton() == MouseButton.SECONDARY) {
-                            menu = new ContextMenu();
-                           //add some menu items here
-                            javafx.scene.control.MenuItem menuItem1 = new javafx.scene.control.MenuItem("Get Xpath");
-                            menuItem1.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
-                                @Override
-                                public void handle(javafx.event.ActionEvent actionEvent) {
-                                    engine.executeScript("console.log(getXpath(el))");
-                                }
-                            });
-                            menu.getItems().add(menuItem1);
-                            menu.show(view, mouse.getScreenX(), mouse.getScreenY());
-                        } else {
-                            if (menu != null) {
-                                menu.hide();
-                            }
-                        }
-                    }
-                });
+                
                 engine = view.getEngine();
-
+                
                 engine.titleProperty().addListener(new ChangeListener<String>() {
                     @Override
                     public void changed(ObservableValue<? extends String> observable, String oldValue, final String newValue) {
@@ -192,7 +182,8 @@ public class QuantumCreatorWebView implements Runnable {
                                 }
                             }
                         });
-                
+                Platform.setImplicitExit(false);
+
                 jfxPanel.setScene(new Scene(view));
             }
         });
@@ -223,9 +214,8 @@ public class QuantumCreatorWebView implements Runnable {
     @Override
     public void run() {
 
-        frame.setPreferredSize(new Dimension(100, 100));
-        frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        frame.setPreferredSize(new Dimension(700, 700));
+        frame.setDefaultCloseOperation(JFrame.DO_NOTHING_ON_CLOSE);
         initComponents();
 
         loadURL("http://oracle.com");
@@ -233,5 +223,9 @@ public class QuantumCreatorWebView implements Runnable {
         frame.pack();
         frame.setVisible(true);
     }
+    public void destroy(){
 
+    	frame = new JFrame();
+    }
+    
 }

@@ -1,14 +1,18 @@
 package quantum;
 
 import java.util.ArrayList;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import org.bouncycastle.util.encoders.Base64;
+
 
 public class QuantumConstructor {
-	public static String contruct(){
-		
-		ArrayList<String[]> creationContainer = QuantumDataManager.creationContainer;
+	
+	public static String construct(){
+		LinkedHashMap<Integer, LinkedHashMap<String, String>> creatorMap = QuantumDataManager.creatorMap;
 		StringBuilder sb = new StringBuilder(64);
 		sb.append(
 				";;;;;;;;;;;;;;;;;;;;;;\n"+
@@ -34,22 +38,22 @@ public class QuantumConstructor {
 		}
 		sb.append("!sub_domain=" + sub_d +"\n");
 		sb.append("\n");
-		int z = 0;
-		for(String[] creator : creationContainer){
-			sb.append("$"+z);
+		for( Entry<Integer, LinkedHashMap<String, String>> creatorEntries : creatorMap.entrySet()){
+			sb.append("$"+creatorEntries.getKey());
+			LinkedHashMap<String, String> entryStorage = creatorEntries.getValue();
 			int y = 0;
-			for(String pack : creator){
-				sb.append("#"+z+y+pack+",");
-				y++;
+			for( Entry<String, String> innerEntry : entryStorage.entrySet()){
+				sb.append("#"+creatorEntries.getKey()+y+innerEntry.getKey()+","+innerEntry.getValue());
 			}
 			sb.append("\n");
-			z++;
 		}
-
-		return sb.toString();	
+		return sb.toString();
 	}
+
 	public static void reconstruct(String everything, boolean reissue) {
 		QuantumDataManager.onDestroy();
+		byte[] allBytes = Base64.decode(everything.getBytes());
+		everything = new String(allBytes);
         Pattern pattern = Pattern.compile("^!domain=+(.*)", Pattern.MULTILINE);
 
         Matcher matcher = pattern.matcher(everything);
@@ -68,24 +72,39 @@ public class QuantumConstructor {
         pattern = Pattern.compile("^\\$+(.*)", Pattern.MULTILINE);
         matcher = pattern.matcher(everything);
         int y = 0;
-        ArrayList<String> readContainer = new ArrayList<String>();
+        LinkedHashMap<String, String> readContainer = new LinkedHashMap<String, String>();
+        LinkedHashMap<Integer, LinkedHashMap<String,String>> grandContainer = new LinkedHashMap<Integer, LinkedHashMap<String, String>>();
         while (matcher.find()) {
            // System.out.println(matcher.group());
             String group = matcher.group();
             String[] indyGroup = group.split(",");
             int z = 0;
+            ArrayList<String> tempList = new ArrayList<String>();
             for(String line: indyGroup){
             	String newLine = line.replace("#"+y+z, "");
-            	readContainer.add(newLine);
+            	newLine = newLine.replace("$"+y, "");
+            	if(z == 0){
+            		newLine = newLine.replaceAll("\\[^a-zA-Z\\s]", "");
+            	}
+            	tempList.add(newLine);        	
             	z++;
             }
+            String[] tempArray = new String[tempList.size()];
+            tempArray = tempList.toArray(tempArray);
+            StringBuilder sbCommand = new StringBuilder(64);
+            for(String sbVal : tempArray){
+            	sbCommand.append(sbVal+",");
+            }
+            readContainer.put(tempList.get(0), sbCommand.toString().replace(tempList.get(0)+",", ""));
+            grandContainer.put(y, readContainer);
             y++;
+            readContainer = new LinkedHashMap<String, String>();
         }
-        String[] readList = new String[readContainer.size()];
-        readList = readContainer.toArray(readList);
-    	QuantumDataManager.creationContainer.add(readList);
+        QuantumDataManager.creatorMap = grandContainer;
     	if(reissue){
-    		QuantumCreatorList.listAdder(readList);
+    		for(int i = 0; i < QuantumDataManager.creatorMap.size(); i++){
+    			QuantumCreatorList.listConstructor(i);
+    		}
     	}
 	}
 }

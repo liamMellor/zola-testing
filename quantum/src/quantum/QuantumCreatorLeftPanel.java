@@ -110,17 +110,21 @@ public class QuantumCreatorLeftPanel extends JPanel{
  	}
 	
 	class SubmitListener implements ActionListener{
-		int n;
 		LinkedHashMap<String, String> subContainer = new LinkedHashMap<String, String>();
 		@Override
 		public void actionPerformed(ActionEvent e) {
+			int n = QuantumDataManager.creatorMap.size();
 			// TODO Auto-generated method stub
 			if(actionType.getSelectedItem().toString().equals("Go To")){
 				subContainer.put("URL", keysToSend.getText());
+				if(n == 0){
+					QuantumDataManager.baseClassURL = keysToSend.getText();
+				}
 				QuantumDataManager.creatorMap.put(n, subContainer);
-				subContainer.clear();
 				
-				//QuantumCreatorList.listAdder2(n);
+				QuantumCreatorList.listConstructor(n);
+				
+				subContainer = new LinkedHashMap<String, String>();
 			}
 			else if(actionType.getSelectedItem().toString().equals("Enter Text")){
 				ArrayList<String> tempContainer = new ArrayList<String>();
@@ -137,7 +141,10 @@ public class QuantumCreatorLeftPanel extends JPanel{
 				}
 				subContainer.put("TEXT", sb.toString());
 				QuantumDataManager.creatorMap.put(n, subContainer);
-				subContainer.clear();
+				
+				QuantumCreatorList.listConstructor(n);
+				
+				subContainer = new LinkedHashMap<String, String>();
 			}
 			else if(actionType.getSelectedItem().toString().equals("Enter Text and Submit")){
 				ArrayList<String> tempContainer = new ArrayList<String>();
@@ -154,7 +161,10 @@ public class QuantumCreatorLeftPanel extends JPanel{
 				}
 				subContainer.put("SUBMIT", sb.toString());
 				QuantumDataManager.creatorMap.put(n, subContainer);
-				subContainer.clear();
+				
+				QuantumCreatorList.listConstructor(n);
+				
+				subContainer = new LinkedHashMap<String, String>();
 			}
 			else{
 				ArrayList<String> tempContainer = new ArrayList<String>();
@@ -170,7 +180,10 @@ public class QuantumCreatorLeftPanel extends JPanel{
 				}
 				subContainer.put("CLICK", sb.toString());
 				QuantumDataManager.creatorMap.put(n, subContainer);
-				subContainer.clear();
+				
+				QuantumCreatorList.listConstructor(n);
+				
+				subContainer = new LinkedHashMap<String, String>();
 			}
 			n++;
 		}
@@ -189,7 +202,7 @@ public class QuantumCreatorLeftPanel extends JPanel{
 	private JComboBox<Object> identifierType;
 	private JTextField identifierTextField;
 	private JTextField keysToSend;
-	private ArrayList<JComboBox> comboBoxes = new ArrayList<JComboBox>();
+	private ArrayList<JComboBox<?>> comboBoxes = new ArrayList<JComboBox<?>>();
 	private ArrayList<JTextField> textFields = new ArrayList<JTextField>();
 	private ArrayList<JLabel> labels = new ArrayList<JLabel>();
 	private JLabel textFieldLabel;
@@ -293,16 +306,19 @@ public class QuantumCreatorLeftPanel extends JPanel{
 					//QuantumList.list.setSelectedIndex(QuantumList.listModel.size()-1);
 					QuantumCreatorList.fireButton.setEnabled(true);
 					QuantumCreatorList.moveUpButton.setEnabled(true);
-					QuantumCreatorList.moveDownButton.setEnabled(true);
+					QuantumCreatorList.runAllButton.setEnabled(true);
 				}  	
 	     });
 	     
 	     mSubmit.setMaximumSize(new Dimension(30,30));
 	     mSubmit.setPreferredSize(new Dimension(30,30));
-	     leftPane.add(fieldAndButton, 
+	     JSplitPane all = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+	    		 fieldAndButton,
+	    		 quantumDataList);
+	     leftPane.add(all, 
 	                  BorderLayout.PAGE_START);
-	     leftPane.add(quantumDataList,
-	     		BorderLayout.PAGE_END);
+	     /*leftPane.add(quantumDataList,
+	     		BorderLayout.PAGE_END);*/
 	 	return leftPane;
 	}
 
@@ -338,12 +354,13 @@ public class QuantumCreatorLeftPanel extends JPanel{
 		panel.repaint();
 		panel.validate();
 	}
-	static void genericRemover(ArrayList a, Object... b){
+	static void genericRemover(@SuppressWarnings("rawtypes") ArrayList a, Object... b){
 		for (Object c: b){
 			a.remove(c);
 		}
 	}
-	static void genericAdder(ArrayList a, Object... b){
+	@SuppressWarnings("unchecked")
+	static void genericAdder(@SuppressWarnings("rawtypes") ArrayList a, Object... b){
 		for (Object c: b){
 			a.add(c);
 		}

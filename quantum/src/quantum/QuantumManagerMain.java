@@ -18,6 +18,7 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.event.ListSelectionEvent;
 import javax.swing.event.ListSelectionListener;
 import javax.swing.text.Style;
@@ -36,12 +37,13 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
     protected static final String actionString = "Action";
     protected static final String sendKeysString = "Keys to send";
     protected static final String buttonString = "JButton";
+	private static QuantumManagerMain thisMain;
 	private JPanel rightPane;
 	private JPanel leftPane;
 	private JPanel centerPane;
 	
     public QuantumManagerMain() {
-    	
+    	QuantumManagerMain.thisMain = this;
         setLayout(new BorderLayout());
         //Create a regular text field.
        
@@ -212,7 +214,13 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 		// TODO Auto-generated method stub
-		
+		SwingUtilities.invokeLater(new Runnable() {
+            public void run() {
+                 //Turn off metal's use of bold fonts
+			//UIManager.put("swing.boldMetal", Boolean.FALSE);
+			QuantumCreatorMain.createAndShowGUI(thisMain);
+            }
+		});
 	}
 
 }

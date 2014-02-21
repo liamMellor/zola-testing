@@ -3,6 +3,8 @@ import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Collections;
+import java.util.LinkedHashMap;
+import java.util.Map.Entry;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -25,11 +27,11 @@ public class QuantumCreatorList {
     static DefaultListModel<String> listModel;
 
     private static final String moveUpString = "Move Up";
-    private static final String moveDownString = "Move Down";
+    private static final String runAllString = "Run All";
     private static final String fireString = "Remove";
     static JButton fireButton;
     static JButton moveUpButton;
-    static JButton moveDownButton;
+    static JButton runAllButton;
     
     public JSplitPane QuantumList() {
 
@@ -63,11 +65,11 @@ public class QuantumCreatorList {
         moveUpButton.setActionCommand(moveUpString);
         moveUpButton.addActionListener(new MoveUpListener());
         
-        moveDownButton = new JButton(moveDownString);
-        moveDownButton.setActionCommand(moveDownString);
-        moveDownButton.addActionListener(new MoveDownListener());
+        runAllButton = new JButton(runAllString);
+        runAllButton.setActionCommand(runAllString);
+        runAllButton.addActionListener(new RunAllListener());
         
-        QuantumStyleManager.buttonStyles(fireButton,moveUpButton,moveDownButton);
+        QuantumStyleManager.buttonStyles(fireButton,moveUpButton,runAllButton);
 
         //Create a panel that uses BoxLayout.
         JPanel buttonPane = new JPanel();
@@ -81,7 +83,7 @@ public class QuantumCreatorList {
         buttonPane.add(Box.createHorizontalStrut(5));
         buttonPane.add(new JSeparator(SwingConstants.VERTICAL));
         buttonPane.add(Box.createHorizontalStrut(5));
-        buttonPane.add(moveDownButton);
+        buttonPane.add(runAllButton);
         buttonPane.setBorder(BorderFactory.createEmptyBorder(5,5,5,5));
         listScrollPane.setPreferredSize(new Dimension(400, 560));
         buttonPane.setPreferredSize(new Dimension(20, 20));
@@ -91,7 +93,7 @@ public class QuantumCreatorList {
         listModel.removeAllElements();
         fireButton.setEnabled(false);
         moveUpButton.setEnabled(false);
-        moveDownButton.setEnabled(false);
+        runAllButton.setEnabled(false);
 		return listWithButtons;
 
     }
@@ -106,9 +108,38 @@ public class QuantumCreatorList {
 	    + sa[3];
     	listModel.addElement(constructedString);
     }
-    public static void listAdder2(String... s){
+    public static void listConstructor(int n){
     	StringBuilder sb = new StringBuilder(64);
-    	
+    	sb.append("<html>");
+    	sb.append("Step " + (n+1) + ".<br>");
+    	LinkedHashMap<String, String> listMap = QuantumDataManager.creatorMap.get(n);
+    	for( Entry<String, String> listEntry : listMap.entrySet()){
+        	sb.append("Action: " + listEntry.getKey());
+        	if(listEntry.getKey().equals("URL")){
+        		sb.append("<br>URL: " + listEntry.getValue());
+        		sb.append("</html>");
+        		listModel.addElement(sb.toString());
+        	}
+        	else if (listEntry.getKey().equals("TEXT") || listEntry.getKey().equals("SUBMIT")){
+        		String valueFull = listEntry.getValue();
+        		String[] valueSplit = valueFull.split(",");
+        		sb.append("		Tag Type: " + valueSplit[1] + "<br>");
+        		sb.append("Identifier: " + valueSplit[3]);
+        		sb.append("		Id Type: " + valueSplit[2] + "<br>");
+        		sb.append("Text Submitted: " + valueSplit[0]);
+        		sb.append("</html>");
+        		listModel.addElement(sb.toString());
+        	}
+        	else if (listEntry.getKey().equals("CLICK")){
+        		String valueFull = listEntry.getValue();
+        		String[] valueSplit = valueFull.split(",");
+        		sb.append("		Tag Type: " + valueSplit[0] + "<br>");
+        		sb.append("Identifier: " + valueSplit[2]);
+        		sb.append("		Id Type: " + valueSplit[1] + "<br>");
+        		sb.append("</html>");
+        		listModel.addElement(sb.toString());
+        	}
+    	}
     }
     public static void listValueChanged(ListSelectionEvent e) {
         if (e.getValueIsAdjusting() == false) {
@@ -130,7 +161,7 @@ public class QuantumCreatorList {
             //so go ahead and remove whatever's selected.
             int index = list.getSelectedIndex();
             listModel.remove(index);
-            QuantumDataManager.creationContainer.remove(index);
+            QuantumDataManager.creatorMap.remove(index);
             int size = listModel.getSize();
 
             if (size == 0) { //Nobody's left, disable firing.
@@ -165,22 +196,15 @@ public class QuantumCreatorList {
 	        listModel.set(pos2, tmp);
 	    }
     }
-    class MoveDownListener implements ActionListener {
+    class RunAllListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if (list.getSelectedIndex() != (listModel.size() -1)){
-		        int indexOfSelected = list.getSelectedIndex();
-		        swapElements(indexOfSelected, indexOfSelected + 1);
-		        list.updateUI();
-			}
+					// TODO Auto-generated method stub
+					//QuantumDataManager.baseClassURL = baseUrl.getText().toString();
+					QuantumRunner.run();
+					QuantumCreatorMain.terminal.append(QuantumDataManager.runnerConsole);
 		}
-		private void swapElements(int pos1, int pos2) {
-	        String tmp = (String) listModel.get(pos1);
-	        Collections.swap(QuantumDataManager.creationContainer, pos2, pos1);
-	        listModel.set(pos1, listModel.get(pos2));
-	        listModel.set(pos2, tmp);
-	    }
     }
 }

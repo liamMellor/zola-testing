@@ -5,6 +5,8 @@ import java.awt.event.ActionListener;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
+import java.util.Set;
+import java.util.TreeMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -59,11 +61,11 @@ public class APIshCreatorList {
 
         editButton = new JButton(editString);
         editButton.setActionCommand(editString);
-        editButton.addActionListener(new FireListener());
+        editButton.addActionListener(new EditorListener());
         
         deleteButton = new JButton(deleteString);
         deleteButton.setActionCommand(deleteString);
-        deleteButton.addActionListener(new MoveUpListener());
+        deleteButton.addActionListener(new FireListener());
         
         runButton = new JButton(runString);
         runButton.setActionCommand(runString);
@@ -140,8 +142,27 @@ public class APIshCreatorList {
             //there's a valid selection
             //so go ahead and remove whatever's selected.
             int index = list.getSelectedIndex();
-            listModel.remove(index);
+            listModel.removeAllElements();
+            APIshDataManager.urlUp.remove(index);
+            APIshDataManager.requestType.remove(index);
             APIshDataManager.creationContainer.remove(index);
+        	TreeMap<Integer, LinkedHashMap<String, String>> listMap = (TreeMap<Integer, LinkedHashMap<String, String>>) APIshDataManager.creationContainer.clone();
+        	Set<Entry<Integer, LinkedHashMap<String, String>>> listMapEntrySet = listMap.entrySet();
+        	int meow = 0;
+    		APIshDataManager.creationContainer.clear();
+        	for ( Entry<Integer, LinkedHashMap<String, String>> it : listMapEntrySet){
+        		LinkedHashMap<String, String> itV = it.getValue();
+        		APIshDataManager.creationContainer.put(meow, itV);
+        		meow++;
+        	}
+            APIshCreatorLeftPanel.n = 0;
+            for(int i = 0; i < (APIshDataManager.urlUp.size()); i++){
+            	listConstructor(i);
+            }
+            APIshCreatorLeftPanel.n++;
+            list.invalidate();
+            list.repaint();
+            list.validate();
             int size = listModel.getSize();
 
             if (size == 0) { //Nobody's left, disable firing.
@@ -158,7 +179,7 @@ public class APIshCreatorList {
             }
         }
     }
-    class MoveUpListener implements ActionListener {
+    class EditorListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {

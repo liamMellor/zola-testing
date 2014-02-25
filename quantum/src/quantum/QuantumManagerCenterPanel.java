@@ -150,7 +150,7 @@ public class QuantumManagerCenterPanel {
 		terminal.setMinimumSize(new Dimension(1000, 250));
 		terminal.setSize(new Dimension(1000, 250));
 
-		terminal.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		terminal.setFont(new Font("Monospaced", Font.PLAIN, 10));
 		terminal.setLineWrap(true);
 		terminal.setWrapStyleWord(true);
         JScrollPane areaScrollPane = new JScrollPane(terminal);

@@ -1,6 +1,7 @@
 package quantum;
 
 import java.awt.BorderLayout;
+import java.awt.Color;
 import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
@@ -8,6 +9,7 @@ import java.awt.GridLayout;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
 
 import javafx.embed.swing.JFXPanel;
 
@@ -15,6 +17,9 @@ import javax.swing.BorderFactory;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JMenu;
+import javax.swing.JMenuBar;
+import javax.swing.JMenuItem;
 import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.JSplitPane;
@@ -181,6 +186,67 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
      * event dispatch thread.
      */
     public static void createAndShowGUI(Component qcMain) {
+    	//Create and set up the window.
+    	//Create the menu bar.
+    	JMenuBar menuBar;
+    	JMenu menu;
+    	JMenuItem menuItem;
+    	menuBar = new JMenuBar();
+
+    	//Build the first menu.
+    	menu = new JMenu("Menu");
+    	menu.setMnemonic(KeyEvent.VK_A);
+    	menu.getAccessibleContext().setAccessibleDescription(
+    	        "The only menu in this program that has menu items");
+    	menuBar.add(menu);
+
+    	//a group of JMenuItems
+
+    	JMenuItem menuItemManager = new JMenuItem("Manager");
+        menuItemManager.setMnemonic(KeyEvent.VK_B);
+    	menu.add(menuItemManager);
+    	
+    	//a group of radio button menu items
+    	menu.addSeparator();
+    	menuItem = new JMenuItem("Help");
+    	menuItem.setMnemonic(KeyEvent.VK_R);
+    	menu.add(menuItem);
+    	
+    	menu.addSeparator();
+    	menuItem = new JMenuItem("Credits");
+    	menuItem.setMnemonic(KeyEvent.VK_R);
+    	menu.add(menuItem);
+    	
+    	JButton Site = new JButton("     Site     ");
+    	Site.addActionListener(new ActionListener(){
+    		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				QuantumCreatorMain.createAndShowGUI(thisMain);
+			}
+    		
+    	});
+    	JButton API = new JButton("     API      ");
+    	API.addActionListener(new ActionListener(){
+    		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				APIshCreatorMain.createAndShowGUI(thisMain);
+			}
+    		
+    	});
+    	QuantumStyleManager.buttonStyles(Site, API);
+    	Site.setForeground(Color.black);
+    	API.setForeground(Color.black);
+    	
+    	menu.setBorder(BorderFactory.createCompoundBorder(
+                        BorderFactory.createEmptyBorder(10,10,10,10), BorderFactory.createLineBorder(Color.black, 1)));
+    	menuBar.add(Site);
+    	menuBar.add(API);
+    	
+    	QuantumDataManager.frame.setJMenuBar(menuBar);
         //Create and set up the window.
     	QuantumDataManager.frame.setTitle("QuANTUM Manager");
         QuantumDataManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);

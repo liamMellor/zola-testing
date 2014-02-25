@@ -5,24 +5,29 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.io.Writer;
 
-import javax.swing.Icon;
-import javax.swing.filechooser.FileSystemView;
-
 import org.apache.http.client.ClientProtocolException;
 import org.json.JSONException;
 import org.json.JSONObject;
-import org.junit.runner.JUnitCore;
-import org.junit.runner.Result;
-import org.junit.runner.notification.Failure;
+
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonParser;
 
 public class APIshRunner {
 	//private static String everything;
-	public static void run(){
+	public static void run() {
 		for(int i = 0; i < APIshDataManager.urlUp.size(); i++){
 			try {
 				JSONObject result = APIshTestTemplate.apiRequest(i);
-				APIshCreatorMain.terminal.append(result.toString());
-			} catch (ClientProtocolException e) {
+				Gson gson = new GsonBuilder().setPrettyPrinting().create();
+				JsonParser jp = new JsonParser();
+				JsonElement je = jp.parse(result.toString());
+				String prettyJsonString = gson.toJson(je);
+				APIshCreatorMain.terminal.append(prettyJsonString);
+
+			}
+			 catch (ClientProtocolException e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
 			} catch (IOException e) {

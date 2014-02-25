@@ -38,10 +38,10 @@ public class APIshCreatorLeftPanel extends JPanel{
     protected static final String valueString = "Value";
     protected static final String buttonString = "JButton";
 	protected static JPanel leftPane;
-	
+	static int n;
+
 	
 	class SubmitListener implements ActionListener{
-		int n;
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
@@ -63,18 +63,16 @@ public class APIshCreatorLeftPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub0
 			if(keysList.size() > 1){
-				textFieldsAndKVP.remove(kvpPanel);
+				paneRemover(textFieldsAndKVP, kvpPanel);
+			    kvpPanel = new JPanel();
+			    kvpPanel.setLayout(kvpGridBag);
 				keysList.remove(keysList.size()-1);
-				valuesList.remove(valuesList.size()-1);
-				System.out.println(keysList.size());
+				valuesList.remove(keysList.size()-1);
+			    addKeyValuePairRowsComps(keysList, valuesList, kvpGridBag, kvpPanel);
 				textFieldsAndKVP.add(kvpPanel);
 				repainter(kvpPanel);
 				repainter(textFieldsAndKVP);
 				repainter(leftPane);
-			}
-			
-			else{
-				System.out.println("ERROR: Already reached minimum amount of key value pairs.");
 			}
 			
 		}
@@ -88,6 +86,7 @@ public class APIshCreatorLeftPanel extends JPanel{
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
 			paneRemover(textFieldsAndKVP, kvpPanel);
+			paneRemover(leftPane, jointCoalition);
 		    kvpPanel = new JPanel();
 		    kvpPanel.setLayout(kvpGridBag);
 			JTextField tempKeys = new JTextField(10);
@@ -107,6 +106,8 @@ public class APIshCreatorLeftPanel extends JPanel{
 			textFieldsAndKVP.add(kvpPanel);
 			repainter(kvpPanel);
 			repainter(textFieldsAndKVP);
+		    jointCoalition = new JSplitPane(JSplitPane.VERTICAL_SPLIT, fieldAndButton, apishDataList);
+			leftPane.add(jointCoalition);
 			repainter(leftPane);
 		}	
  	}
@@ -178,6 +179,9 @@ public class APIshCreatorLeftPanel extends JPanel{
 	private ArrayList<JTextField> keysList;
 	private ArrayList<JTextField> valuesList;
 	private JPanel textFieldsAndKVP;
+	private JSplitPane jointCoalition;
+	private JSplitPane apishDataList;
+	private JSplitPane fieldAndButton;
 	
 	
 	public JPanel leftPanel(){
@@ -297,12 +301,12 @@ public class APIshCreatorLeftPanel extends JPanel{
 	                             BorderFactory.createTitledBorder(getBorder(), "Build Your Tag!",
 	                             		TitledBorder.CENTER, TitledBorder.TOP, QuantumStyleManager.mightyFont()),
 	                             BorderFactory.createEmptyBorder(5,5,5,5)));
-	     JSplitPane fieldAndButton = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
+	     fieldAndButton = new JSplitPane(JSplitPane.VERTICAL_SPLIT,
 	    		 textFieldsAndKVP,
 	     			miniPane);
 	     
 	     APIshCreatorList aList = new APIshCreatorList();
-	     final JSplitPane apishDataList = aList.APIshList();
+	     apishDataList = aList.APIshList();
 	     //HireListener hireListener = new HireListener(mSubmit);
 	     
 	     APIshCreatorList.list.addListSelectionListener(new ListSelectionListener() {
@@ -317,10 +321,9 @@ public class APIshCreatorLeftPanel extends JPanel{
 	     
 	     mSubmit.setMaximumSize(new Dimension(30,30));
 	     mSubmit.setPreferredSize(new Dimension(30,30));
-	     leftPane.add(fieldAndButton, 
-	                  BorderLayout.PAGE_START);
-	     leftPane.add(apishDataList,
-	     		BorderLayout.PAGE_END);
+	     jointCoalition = new JSplitPane(JSplitPane.VERTICAL_SPLIT, fieldAndButton, apishDataList);
+	     jointCoalition.setResizeWeight(1);
+	     leftPane.add(jointCoalition);
 	 	return leftPane;
 	}
 

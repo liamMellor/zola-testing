@@ -34,6 +34,7 @@ package quantum;
 
 import java.awt.BorderLayout;              //for layout managers and more
 import java.awt.Color;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -90,13 +91,12 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
 	private JSplitPane centerSplit;
 	private JSplitPane webPage;
 	private JSplitPane cPane;
-	private static QuantumManagerMain qmMain;
+	private static QuantumManagerMain qmMain = new QuantumManagerMain();
 	private QuantumCreatorWebView mWebView = new QuantumCreatorWebView();
 	public static JTextArea terminal;
 	private static QuantumCreatorMain qcMain;
 
-    public QuantumCreatorMain(QuantumManagerMain qmMain) {
-    	QuantumCreatorMain.qmMain = qmMain;
+    public QuantumCreatorMain() {
     	QuantumCreatorMain.qcMain = this;
         setLayout(new BorderLayout());
 
@@ -341,7 +341,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
      * this method should be invoked from the
      * event dispatch thread.
      */
-    static void createAndShowGUI(QuantumManagerMain quantumManager) {
+    static void createAndShowGUI(Component quantumManager) {
         //Create and set up the window.
     	//Create the menu bar.
     	JMenuBar menuBar;
@@ -355,12 +355,6 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     	menu.getAccessibleContext().setAccessibleDescription(
     	        "The only menu in this program that has menu items");
     	menuBar.add(menu);
-
-    	//a group of JMenuItems
-    	JMenuItem menuItemCreator = new JMenuItem("Creator",
-    	                         KeyEvent.VK_T);    
-        menuItemCreator.addActionListener(new QuantumManagerMain());
-    	menu.add(menuItemCreator);
 
     	JMenuItem menuItemManager = new JMenuItem("Manager");
     	ActionListener managerAL = new ActionListener(){
@@ -396,6 +390,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     	menu.add(menuItem);
     	
     	JButton Site = new JButton("     Site     ");
+    	
     	JButton API = new JButton("     API      ");
     	API.addActionListener(new ActionListener(){
     		
@@ -422,7 +417,7 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
         }
         
         //Add content to the window.
-        QuantumDataManager.frame.add(new QuantumCreatorMain(quantumManager));
+        QuantumDataManager.frame.add(new QuantumCreatorMain());
         //Display the window.
         
         QuantumDataManager.frame.pack();

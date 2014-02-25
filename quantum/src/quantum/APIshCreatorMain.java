@@ -188,7 +188,7 @@ public class APIshCreatorMain extends JPanel implements ActionListener {
 		terminal.setPreferredSize(new Dimension(1024, 500));
 		terminal.setMinimumSize(new Dimension(1024, 500));
 		terminal.setSize(new Dimension(1024, 500));
-		terminal.setFont(new Font("Monospaced", Font.PLAIN, 16));
+		terminal.setFont(new Font("Monospaced", Font.PLAIN, 10));
 		terminal.setLineWrap(true);
 		terminal.setWrapStyleWord(true);
         JScrollPane areaScrollPane = new JScrollPane(terminal);
@@ -313,10 +313,6 @@ public class APIshCreatorMain extends JPanel implements ActionListener {
     	menuBar.add(menu);
 
     	//a group of JMenuItems
-    	JMenuItem menuItemCreator = new JMenuItem("Creator",
-    	                         KeyEvent.VK_T);    
-        menuItemCreator.addActionListener(new QuantumManagerMain());
-    	menu.add(menuItemCreator);
 
     	JMenuItem menuItemManager = new JMenuItem("Manager");
     	ActionListener managerAL = new ActionListener(){
@@ -351,6 +347,15 @@ public class APIshCreatorMain extends JPanel implements ActionListener {
     	menu.add(menuItem);
     	
     	JButton Site = new JButton("     Site     ");
+    	Site.addActionListener(new ActionListener(){
+    		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				QuantumCreatorMain.createAndShowGUI(acMain);
+			}
+    		
+    	});
     	JButton API = new JButton("     API      ");
     	
     	QuantumStyleManager.buttonStyles(Site, API);

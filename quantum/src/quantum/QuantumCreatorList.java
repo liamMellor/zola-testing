@@ -26,7 +26,7 @@ public class QuantumCreatorList {
 	static JList<String> list;
     static DefaultListModel<String> listModel;
 
-    private static final String moveUpString = "Move Up";
+    private static final String moveUpString = "Edit";
     private static final String runAllString = "Run All";
     private static final String fireString = "Remove";
     static JButton fireButton;
@@ -63,7 +63,7 @@ public class QuantumCreatorList {
         
         moveUpButton = new JButton(moveUpString);
         moveUpButton.setActionCommand(moveUpString);
-        moveUpButton.addActionListener(new MoveUpListener());
+        moveUpButton.addActionListener(new EditorListener());
         
         runAllButton = new JButton(runAllString);
         runAllButton.setActionCommand(runAllString);
@@ -167,23 +167,13 @@ public class QuantumCreatorList {
             }
         }
     }
-    class MoveUpListener implements ActionListener {
+    class EditorListener implements ActionListener {
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
 			// TODO Auto-generated method stub
-			if (list.getSelectedIndex() != 0){
-		        int indexOfSelected = list.getSelectedIndex();
-		        swapElements(indexOfSelected, indexOfSelected - 1);
-		        list.updateUI();
-			}
+			
 		}
-		private void swapElements(int pos1, int pos2) {
-	        String tmp = (String) listModel.get(pos1);
-	        Collections.swap(QuantumDataManager.creationContainer, pos1, pos2);
-	        listModel.set(pos1, listModel.get(pos2));
-	        listModel.set(pos2, tmp);
-	    }
     }
     class RunAllListener implements ActionListener {
 

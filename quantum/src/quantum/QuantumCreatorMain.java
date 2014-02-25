@@ -371,9 +371,10 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
 				
 				SwingUtilities.invokeLater(new Runnable() {
 		            public void run() {
-		                 //Turn off metal's use of bold fonts
-					//UIManager.put("swing.boldMetal", Boolean.FALSE);
-					QuantumManagerMain.createAndShowGUI(qcMain);
+		            	//if(!QuantumDataManager.managerActive){
+		            		QuantumManagerMain.createAndShowGUI(qcMain);
+		            		QuantumDataManager.managerActive = true;
+		            	//}
 		            }
 				});
 			}
@@ -396,7 +397,15 @@ public class QuantumCreatorMain extends JPanel implements ActionListener {
     	
     	JButton Site = new JButton("     Site     ");
     	JButton API = new JButton("     API      ");
-    	
+    	API.addActionListener(new ActionListener(){
+    		
+			@Override
+			public void actionPerformed(ActionEvent e) {
+				// TODO Auto-generated method stub
+				APIshCreatorMain.createAndShowGUI(qcMain);
+			}
+    		
+    	});
     	QuantumStyleManager.buttonStyles(Site, API);
     	Site.setForeground(Color.black);
     	API.setForeground(Color.black);

@@ -1,6 +1,7 @@
 package quantum;
 
 import java.awt.BorderLayout;
+import java.awt.Component;
 import java.awt.Cursor;
 import java.awt.Dimension;
 import java.awt.GridLayout;
@@ -31,11 +32,6 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
 	 * 
 	 */
 	private static final long serialVersionUID = -679415248975465081L;
-    protected static final String textFieldString = "Tag Name";
-    protected static final String passwordFieldString = "Identifier Type";
-    protected static final String ftfString = "Identifier";
-    protected static final String actionString = "Action";
-    protected static final String sendKeysString = "Keys to send";
     protected static final String buttonString = "JButton";
 	private static QuantumManagerMain thisMain;
 	private JPanel rightPane;
@@ -44,6 +40,7 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
 	
     public QuantumManagerMain() {
     	QuantumManagerMain.thisMain = this;
+    	QuantumDataManager.managerActive = true;
         setLayout(new BorderLayout());
         //Create a regular text field.
        
@@ -51,21 +48,10 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
         final JSplitPane quantumDataList = qList.QuantumList();
         //HireListener hireListener = new HireListener(mSubmit);
         
-        QuantumManagerList.list.addListSelectionListener(new ListSelectionListener() {
-
-			@Override
-			public void valueChanged(ListSelectionEvent e) {
-				// TODO Auto-generated method stub
-				//QuantumList.list.setSelectedIndex(QuantumList.listModel.size()-1);
-				QuantumManagerList.fireButton.setEnabled(true);
-				QuantumManagerList.moveRightButton.setEnabled(true);
-				QuantumManagerList.editorButton.setEnabled(true);
-			}
-        	
-        });
+        
         quantumDataList.setBorder(
                 BorderFactory.createCompoundBorder(
-                                BorderFactory.createTitledBorder("Scripts"),
+                                BorderFactory.createTitledBorder("All Tests"),
                                 BorderFactory.createEmptyBorder(5,5,5,5)));
         leftPane = new JPanel(new BorderLayout());
         leftPane.add(quantumDataList);
@@ -88,9 +74,6 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
         centerPane = new JPanel(new GridLayout(1,0));
         QuantumManagerCenterPanel quantumCenterPanel = new QuantumManagerCenterPanel(centerPane, this);
         centerPane.add(quantumCenterPanel.QuantumTopCenter());
-        centerPane.setBorder(BorderFactory.createCompoundBorder(
-                        BorderFactory.createTitledBorder("WebPage"),
-                        BorderFactory.createEmptyBorder(5,5,5,5)));
         /*
          * 
          */
@@ -99,7 +82,6 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
         
         add(leftPane, BorderLayout.LINE_START);
         add(centerPane, BorderLayout.CENTER);
-        add(rightPane, BorderLayout.LINE_END);
     }
     
     private JSplitPane createWebPagePane() {
@@ -198,7 +180,7 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
      * this method should be invoked from the
      * event dispatch thread.
      */
-    public static void createAndShowGUI(QuantumCreatorMain qcMain) {
+    public static void createAndShowGUI(Component qcMain) {
         //Create and set up the window.
     	QuantumDataManager.frame.setTitle("QuANTUM Manager");
         QuantumDataManager.frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -216,9 +198,10 @@ public class QuantumManagerMain extends JPanel implements ActionListener {
 		// TODO Auto-generated method stub
 		SwingUtilities.invokeLater(new Runnable() {
             public void run() {
-                 //Turn off metal's use of bold fonts
-			//UIManager.put("swing.boldMetal", Boolean.FALSE);
-			QuantumCreatorMain.createAndShowGUI(thisMain);
+            	if(QuantumDataManager.managerActive){
+            		QuantumCreatorMain.createAndShowGUI(thisMain);
+            		QuantumDataManager.managerActive = false;
+            	}
             }
 		});
 	}

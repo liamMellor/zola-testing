@@ -86,14 +86,21 @@ public class QuantumConstructor {
             	if(z == 0){
             		newLine = newLine.replaceAll("\\[^a-zA-Z\\s]", "");
             	}
-            	tempList.add(newLine);        	
+            	tempList.add(newLine);
             	z++;
             }
             String[] tempArray = new String[tempList.size()];
             tempArray = tempList.toArray(tempArray);
             StringBuilder sbCommand = new StringBuilder(64);
+            int q = 0;
             for(String sbVal : tempArray){
-            	sbCommand.append(sbVal+",");
+            	if(q != tempArray.length -1){
+            		sbCommand.append(sbVal+",");
+            	}
+            	else{
+            		sbCommand.append(sbVal);
+            	}
+            	q++;
             }
             readContainer.put(tempList.get(0), sbCommand.toString().replace(tempList.get(0)+",", ""));
             grandContainer.put(y, readContainer);

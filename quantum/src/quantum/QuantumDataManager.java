@@ -15,6 +15,8 @@ public class QuantumDataManager {
 	
 	public static LinkedHashMap<Integer, LinkedHashMap<String, String>> creatorMap = new LinkedHashMap<Integer, LinkedHashMap<String, String>>();
 	
+	public static boolean managerActive = false;
+	
 	public static String className = new String();
 	
 	public static String baseClassURL = new String();

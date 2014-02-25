@@ -147,14 +147,14 @@ import org.openqa.selenium.firefox.FirefoxDriver;
 				        	}
 						}
 					}
-					System.out.println("Step " + j + " successful!");
-					QuantumCreatorMain.terminal.append("Step " + j + " successful! \n");
+					System.out.println("Step " + (j+1) + " successful!");
+					QuantumCreatorMain.terminal.append("Step " + (j+1) + " successful! \n");
 					j++;
 				} 
 		        driver.quit();
 			}
 			catch(Exception e){
-				QuantumCreatorMain.terminal.append("Step " + j + " FAILURE! \n");
+				QuantumCreatorMain.terminal.append("Step " + (j+1) + " FAILURE! \n");
 				QuantumCreatorMain.terminal.append(e.toString());
 				System.out.println(e);
 				driver.quit();

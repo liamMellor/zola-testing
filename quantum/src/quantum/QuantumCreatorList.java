@@ -97,45 +97,34 @@ public class QuantumCreatorList {
 		return listWithButtons;
 
     }
-    public static void listAdder(String[] sa){
-    	String constructedString = "Tag: "
-	    + sa[0]+" "
-	    + "Identifier Type: "
-	    + sa[1]+" "
-	    + "Identifier: "
-	    + sa[2]+" "
-	    + "Action: "
-	    + sa[3];
-    	listModel.addElement(constructedString);
-    }
     public static void listConstructor(int n){
     	StringBuilder sb = new StringBuilder(64);
     	sb.append("<html>");
-    	sb.append("Step " + (n+1) + ".<br>");
+    	sb.append("<b><i>Step " + (n+1) + ". </i></b><br>");
     	LinkedHashMap<String, String> listMap = QuantumDataManager.creatorMap.get(n);
     	for( Entry<String, String> listEntry : listMap.entrySet()){
-        	sb.append("Action: " + listEntry.getKey());
+        	sb.append("<b>Action: </b>" + listEntry.getKey());
         	if(listEntry.getKey().equals("URL")){
-        		sb.append("<br>URL: " + listEntry.getValue());
+        		sb.append("<br><b>URL: </b>" + listEntry.getValue());
         		sb.append("</html>");
         		listModel.addElement(sb.toString());
         	}
         	else if (listEntry.getKey().equals("TEXT") || listEntry.getKey().equals("SUBMIT")){
         		String valueFull = listEntry.getValue();
         		String[] valueSplit = valueFull.split(",");
-        		sb.append("		Tag Type: " + valueSplit[1] + "<br>");
-        		sb.append("Identifier: " + valueSplit[3]);
-        		sb.append("		Id Type: " + valueSplit[2] + "<br>");
-        		sb.append("Text Submitted: " + valueSplit[0]);
+        		sb.append("		<b>Tag Type: </b>" + valueSplit[1] + "<br>");
+        		sb.append("<b>Identifier: </b>" + valueSplit[3]);
+        		sb.append("		<b>Id Type: </b>" + valueSplit[2] + "<br>");
+        		sb.append("<b>Text Submitted: </b>" + valueSplit[0]);
         		sb.append("</html>");
         		listModel.addElement(sb.toString());
         	}
         	else if (listEntry.getKey().equals("CLICK")){
         		String valueFull = listEntry.getValue();
         		String[] valueSplit = valueFull.split(",");
-        		sb.append("		Tag Type: " + valueSplit[0] + "<br>");
-        		sb.append("Identifier: " + valueSplit[2]);
-        		sb.append("		Id Type: " + valueSplit[1] + "<br>");
+        		sb.append("		<b>Tag Type: </b>" + valueSplit[0] + "<br>");
+        		sb.append("<b>Identifier: </b>" + valueSplit[2]);
+        		sb.append("		<b>Id Type: </b>" + valueSplit[1] + "<br>");
         		sb.append("</html>");
         		listModel.addElement(sb.toString());
         	}

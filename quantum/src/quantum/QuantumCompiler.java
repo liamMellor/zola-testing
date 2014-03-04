@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 import java.io.File;
 import java.io.FileWriter;
 import java.io.IOException;
@@ -33,7 +33,7 @@ public class QuantumCompiler {
                 Writer writer = null;
                 try {
                     writer = new FileWriter(helloWorldJava);
-                    writer.write(QuantumConstructor.contruct());
+                    writer.write(QuantumConstructor.construct());
                     writer.flush();
                 } finally {
                     try {

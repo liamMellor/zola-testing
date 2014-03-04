@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.io.IOException;
 import java.util.ArrayList;

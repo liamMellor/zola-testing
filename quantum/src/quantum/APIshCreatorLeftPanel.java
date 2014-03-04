@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -313,9 +313,15 @@ public class APIshCreatorLeftPanel extends JPanel{
 				@Override
 				public void valueChanged(ListSelectionEvent e) {
 					// TODO Auto-generated method stub
-					APIshCreatorList.editButton.setEnabled(true);
-					APIshCreatorList.deleteButton.setEnabled(true);
 					APIshCreatorList.runButton.setEnabled(true);
+					if( APIshCreatorList.list.getSelectedIndex() != -1){
+						APIshCreatorList.editButton.setEnabled(true);
+						APIshCreatorList.deleteButton.setEnabled(true);
+					}
+					else{
+						APIshCreatorList.editButton.setEnabled(false);
+						APIshCreatorList.deleteButton.setEnabled(false);
+					}
 				}  	
 	     });
 	     
@@ -326,6 +332,8 @@ public class APIshCreatorLeftPanel extends JPanel{
 	     leftPane.add(jointCoalition);
 	 	return leftPane;
 	}
+	
+	
 
 	private static void addLabelTextRowsComps(ArrayList<JLabel> labels2,
             ArrayList<Component> comps, GridBagLayout gridbag,

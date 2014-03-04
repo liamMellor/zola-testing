@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 
 import java.awt.BorderLayout;              //for layout managers and more
@@ -208,14 +208,14 @@ public class APIshCreatorMain extends JPanel implements ActionListener {
 				Icon icon = createImageIcon("images/GladosPotato.png", "GLaDOS Potato");
 				Object[] possibilities = null;
 				// TODO Auto-generated method stub
-				String fileName = (String) JOptionPane.showInputDialog(null,
-						"What would "
-								+ "you like to name this file?",
-						"Save",
-						JOptionPane.PLAIN_MESSAGE,
-						icon,
-						possibilities,
-						null);
+				String fileName = (String) 
+						JOptionPane.showInputDialog(null,
+								"What would you like to name this file?",
+								"Save",
+								JOptionPane.PLAIN_MESSAGE,
+								icon,
+								possibilities,
+								null);
 				APIshDataManager.className = fileName;
 				APIshRunner.compile();
 			}

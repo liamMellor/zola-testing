@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.awt.BorderLayout;
 import java.awt.Component;
@@ -261,7 +261,7 @@ public class QuantumManagerList {
         public boolean accept(File file) {
             // implement the logic to select files here..
             String everything = null;
-            String name = file.getName().toLowerCase();
+            String name = file.getName();
             if(!file.isDirectory()){
 	        	try {
 	        		inputStream = new FileInputStream(file);

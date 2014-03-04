@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 import java.util.LinkedHashMap;
 import java.util.Map.Entry;
 import java.util.Set;

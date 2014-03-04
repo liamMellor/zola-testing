@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 import static javafx.concurrent.Worker.State.FAILED;
 
 import java.awt.BorderLayout;

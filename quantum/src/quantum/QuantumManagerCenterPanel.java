@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.awt.Dimension;
 import java.awt.Font;

@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.awt.Color;
 import java.awt.Component;

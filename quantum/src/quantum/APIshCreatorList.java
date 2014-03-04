@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -12,9 +12,13 @@ import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.BoxLayout;
 import javax.swing.DefaultListModel;
+import javax.swing.Icon;
 import javax.swing.JButton;
+import javax.swing.JDialog;
 import javax.swing.JList;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JFrame;
 import javax.swing.JScrollPane;
 import javax.swing.JSeparator;
 import javax.swing.JSplitPane;
@@ -34,6 +38,7 @@ public class APIshCreatorList {
     static JButton editButton;
     static JButton deleteButton;
     static JButton runButton;
+    static JFrame editFrame;
     
     public JSplitPane APIshList() {
 
@@ -58,7 +63,7 @@ public class APIshCreatorList {
         //HireListener hireListener = new HireListener(hireButton);
         //hireButton.setActionCommand(hireString);
         //hireButton.addActionListener(hireListener);
-
+        
         editButton = new JButton(editString);
         editButton.setActionCommand(editString);
         editButton.addActionListener(new EditorListener());
@@ -135,6 +140,38 @@ public class APIshCreatorList {
             }
         }
     }
+    
+    class EditorListener implements ActionListener {
+
+		@Override
+		public void actionPerformed(ActionEvent e) {
+			// TODO Auto-generated method stub
+			Icon icon = APIshCreatorMain.createImageIcon("images/thing.gif", "Headcrab");
+			Object[] possibilities = null;
+			editFrame = new JFrame();
+			editFrame.setContentPane(APIshEditView.editPane);
+			editFrame.validate();
+			JDialog(editFrame, "Edit");
+			JOptionPane.showConfirmDialog(null, APIshEditView.editPane);
+			//JOptionPane.showInputDialog(APIshEditView.editPane, "Edit Away", "Edit", JOptionPane.PLAIN_MESSAGE, icon, possibilities, null);
+			if (list.getSelectedIndex() != 0){
+		        int indexOfSelected = list.getSelectedIndex();
+		        swapElements(indexOfSelected, indexOfSelected - 1);
+		        list.updateUI();
+			}
+			
+		}
+		private void swapElements(int pos1, int pos2) {
+	        String tmp = (String) listModel.get(pos1);
+	        LinkedHashMap<String, String> map1 = APIshDataManager.creationContainer.get(pos1);
+	        LinkedHashMap<String, String> map2 = APIshDataManager.creationContainer.get(pos2);
+	        APIshDataManager.creationContainer.put(pos1, map2);
+	        APIshDataManager.creationContainer.put(pos2, map1);
+	        listModel.set(pos1, listModel.get(pos2));
+	        listModel.set(pos2, tmp);
+	    }
+    }
+    
     class FireListener implements ActionListener {
         @Override
 		public void actionPerformed(ActionEvent e) {
@@ -143,6 +180,7 @@ public class APIshCreatorList {
             //so go ahead and remove whatever's selected.
             int index = list.getSelectedIndex();
             listModel.removeAllElements();
+            System.out.println(index);
             APIshDataManager.urlUp.remove(index);
             APIshDataManager.requestType.remove(index);
             APIshDataManager.creationContainer.remove(index);
@@ -179,27 +217,7 @@ public class APIshCreatorList {
             }
         }
     }
-    class EditorListener implements ActionListener {
-
-		@Override
-		public void actionPerformed(ActionEvent e) {
-			// TODO Auto-generated method stub
-			if (list.getSelectedIndex() != 0){
-		        int indexOfSelected = list.getSelectedIndex();
-		        swapElements(indexOfSelected, indexOfSelected - 1);
-		        list.updateUI();
-			}
-		}
-		private void swapElements(int pos1, int pos2) {
-	        String tmp = (String) listModel.get(pos1);
-	        LinkedHashMap<String, String> map1 = APIshDataManager.creationContainer.get(pos1);
-	        LinkedHashMap<String, String> map2 = APIshDataManager.creationContainer.get(pos2);
-	        APIshDataManager.creationContainer.put(pos1, map2);
-	        APIshDataManager.creationContainer.put(pos2, map1);
-	        listModel.set(pos1, listModel.get(pos2));
-	        listModel.set(pos2, tmp);
-	    }
-    }
+    
     class RunListener implements ActionListener {
 
 		@Override

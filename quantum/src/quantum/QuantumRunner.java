@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.io.File;
 import java.io.FileWriter;

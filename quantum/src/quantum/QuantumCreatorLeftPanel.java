@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.awt.BorderLayout;
 import java.awt.Component;

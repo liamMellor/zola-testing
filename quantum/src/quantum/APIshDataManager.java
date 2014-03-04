@@ -1,4 +1,4 @@
-package quantum;
+package src.quantum;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -17,7 +17,7 @@ public class APIshDataManager {
 	public static TreeMap<Integer, LinkedHashMap<String, String>> creationContainer = new TreeMap<Integer, LinkedHashMap<String, String>>();
 	public static LinkedHashMap<String, String> managerContainer = new LinkedHashMap<String , String>();
 	
-	public static TreeMap<Integer, HashMap<String, String>> creatorMap = new TreeMap<Integer, HashMap<String, String>>();
+	public static TreeMap<Integer, LinkedHashMap<String, String>> creatorMap = new TreeMap<Integer, LinkedHashMap<String, String>>();
 	
 	public static String className = new String();
 	
@@ -31,7 +31,9 @@ public class APIshDataManager {
 		className = "";
 		baseClassURL = "";
 		baseClassSubDomain = "";
-		runnerConsole = "";		
+		runnerConsole = "";
+		requestType.clear();
+		urlUp.clear();
 	}
 	
 }

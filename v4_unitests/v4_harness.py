@@ -5,9 +5,10 @@ from session.v4_session_token import V4_token
 from session.v4_session_password import V4_password
 from book.v4_book_cnt import V4_books_cnt
 from book.v4_book_download import v4_download
+from book.v4_book_details import DetailsTest
 from collection.v4_collection_lists import v4coll
 from social.v4_social_follow import Follow
-from social.v4_social_activity import Activate
+from social.v4_social_activity import ActivityTest
 import json
 
 api_url = 'https://zolaqc.com/api/v4/'
@@ -50,44 +51,44 @@ class v4_harness():
         
         downloadInst = v4_download(memberId, authToken, isbn, "epub")
         keys = downloadInst.getKeys(api_url)
+        
         keys = keys[0]
-
+                
         followTest(api_url, memberId, authToken)
         
-        Activate(api_url, memberId, authToken).activityTest()
-
-        tokenInst = V4_token(memberId, authToken, "deactivate")
-        tokenInst.token(api_url)
-
-        loginInst = V4_login("jason-flax-2","kingkong","swagger","jay.flax@zolabooks.com")
-        loginDict =  loginInst.login(api_url)
-
-        memberId = loginDict["member_id"]
-        authToken = loginDict["auth_token"]
-        deviceName = loginDict["device_name"]
+        ActivityTest(api_url, memberId, authToken).activityTest()
+        print DetailsTest(api_url, memberId, authToken).detailsTest()
         
-        logoutInst = V4_logout(memberId, authToken, "true")
-        logoutCode = logoutInst.logout(api_url)
-        print logoutCode
-        if int(logoutCode) != 204:
-            assert False, "not logged out"
-        else:
-            print "logged out"
+        #tokenInst = V4_token(memberId, authToken, "deactivate")
+        #tokenInst.token(api_url)
+
+        #loginInst = V4_login("jason-flax-2","kingkong","swagger","jay.flax@zolabooks.com")
+        #loginDict =  loginInst.login(api_url)
+
+        #memberId = loginDict["member_id"]
+        #authToken = loginDict["auth_token"]
+        #deviceName = loginDict["device_name"]
+        
+        #logoutInst = V4_logout(memberId, authToken, "true")
+        #logoutCode = logoutInst.logout(api_url)
+        #print logoutCode
+        #if int(logoutCode) != 204:
+        #    assert False, "not logged out"
+        #else:
+        #    print "logged out"
 
 def followTest(api_url, memberId, authToken):
     startFollowing = Follow(memberId, authToken, "start-following", "79058")
-    print dump(startFollowing.follow(api_url)[1])
+    print startFollowing.follow(api_url)
     
     unFollow = Follow(memberId, authToken,"unfollow", "79058")
-    print dump(unFollow.follow(api_url)[1])
+    print unFollow.follow(api_url)
 
     getFollowers = Follow(memberId, authToken, "get-followers")
-    print dump(getFollowers.follow(api_url)[1])
+    print getFollowers.follow(api_url)
 
     getFollowing = Follow(memberId, authToken, "get-following")
-    print dump(getFollowing.follow(api_url)[1])
+    print getFollowing.follow(api_url)
 
-def dump(s):
-    return json.dumps(s, indent=4, sort_keys=False)
 harness = v4_harness()
 harness.runner()

@@ -1,4 +1,4 @@
-package src.quantum;
+package quantum;
 import java.awt.Dimension;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -149,10 +149,12 @@ public class APIshCreatorList {
 			Icon icon = APIshCreatorMain.createImageIcon("images/thing.gif", "Headcrab");
 			Object[] possibilities = null;
 			editFrame = new JFrame();
-			editFrame.setContentPane(APIshEditView.editPane);
+			editFrame.add(APIshEditView.editPanel());
 			editFrame.validate();
-			JDialog(editFrame, "Edit");
-			JOptionPane.showConfirmDialog(null, APIshEditView.editPane);
+			editFrame.pack();
+			editFrame.setFont(QuantumStyleManager.mightyFont());
+			editFrame.setVisible(true);
+			//JOptionPane.showConfirmDialog(null, APIshEditView.editPane);
 			//JOptionPane.showInputDialog(APIshEditView.editPane, "Edit Away", "Edit", JOptionPane.PLAIN_MESSAGE, icon, possibilities, null);
 			if (list.getSelectedIndex() != 0){
 		        int indexOfSelected = list.getSelectedIndex();

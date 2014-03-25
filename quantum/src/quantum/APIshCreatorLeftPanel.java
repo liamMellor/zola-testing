@@ -1,4 +1,4 @@
-package src.quantum;
+package quantum;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -10,10 +10,14 @@ import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
 import java.util.LinkedHashMap;
+
+import javafx.scene.input.KeyCode;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
@@ -99,8 +103,10 @@ public class APIshCreatorLeftPanel extends JPanel{
 			tempValues.setForeground(Color.gray);
 			tempValues.setFont(italicFont);
 			tempValues.addMouseListener(new kvpHinter());
-
-			keysList.add(tempKeys);
+			tempKeys.addKeyListener( new kvpKeyListener() );
+		    tempValues.addKeyListener( new kvpKeyListener() );
+			
+		    keysList.add(tempKeys);
 			valuesList.add(tempValues);
 		    addKeyValuePairRowsComps(keysList, valuesList, kvpGridBag, kvpPanel);
 			textFieldsAndKVP.add(kvpPanel);
@@ -144,6 +150,35 @@ public class APIshCreatorLeftPanel extends JPanel{
 
 		@Override
 		public void mouseExited(MouseEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+		
+	}
+	class kvpKeyListener implements KeyListener {
+		boolean firstTab = false;
+		@Override
+		public void keyTyped(KeyEvent e) {
+			// TODO Auto-generated method stub
+			
+		}
+
+		@Override
+		public void keyPressed(KeyEvent e) {
+			// TODO Auto-generated method stub
+			if ( !firstTab )
+			{
+				if ( e.getKeyCode() == KeyEvent.VK_TAB )
+				{
+					JTextField eT = (JTextField) e.getComponent();
+					eT.setText("");
+				}
+				firstTab = true;
+			}
+		}
+
+		@Override
+		public void keyReleased(KeyEvent e) {
 			// TODO Auto-generated method stub
 			
 		}
@@ -235,6 +270,7 @@ public class APIshCreatorLeftPanel extends JPanel{
 	     kvpC.anchor = GridBagConstraints.WEST;
 	     kvpC.weightx = 1.0;
 	     
+
 	     italicFont = new Font("Arial", Font.ITALIC, 14);
 	     
 	     keysToSend.setText("Key");
@@ -250,6 +286,8 @@ public class APIshCreatorLeftPanel extends JPanel{
 	     valuesToSend.addMouseListener(new kvpHinter());
 	     keysList = new ArrayList<JTextField>();
 	     valuesList = new ArrayList<JTextField>();
+	     keysToSend.addKeyListener( new kvpKeyListener() );
+	     valuesToSend.addKeyListener( new kvpKeyListener() );
 	     
 	     keysList.add(keysToSend);
 	     valuesList.add(valuesToSend);

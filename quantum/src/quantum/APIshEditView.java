@@ -1,10 +1,9 @@
-package src.quantum;
+package quantum;
 
 import java.awt.BorderLayout;
 import java.awt.Color;
 import java.awt.Component;
 import java.awt.Container;
-import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -13,28 +12,18 @@ import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
 import java.awt.event.MouseListener;
 import java.util.ArrayList;
-import java.util.LinkedHashMap;
 
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.DefaultListModel;
-import javax.swing.Icon;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
 import javax.swing.JLabel;
 import javax.swing.JList;
-import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JSplitPane;
 import javax.swing.JTextField;
-import javax.swing.JComponent;
 import javax.swing.border.TitledBorder;
-import javax.swing.event.ListSelectionEvent;
-import javax.swing.event.ListSelectionListener;
-
-import src.quantum.APIshCreatorLeftPanel.MinusListener;
-import src.quantum.APIshCreatorLeftPanel.PlusListener;
-import src.quantum.APIshCreatorLeftPanel.kvpHinter;
 
 
 public class APIshEditView extends JPanel{
@@ -77,6 +66,7 @@ public class APIshEditView extends JPanel{
 	private static JButton mPlus;
 	private static JButton mMinus;
 	
+	private static JPanel miniPane;
 	private static JPanel kvpPanel;
 	private static JPanel textFieldsAndKVP;
 	private static JPanel textControlsPane;
@@ -85,7 +75,7 @@ public class APIshEditView extends JPanel{
 	
 	private static Font normalFont;
 	
-	private  Font italicFont;
+	private static  Font italicFont;
 	
 	private static void addKeyValuePairRowsComps(ArrayList<JTextField> keys,
             ArrayList<JTextField> values, GridBagLayout gridbag,
@@ -147,7 +137,7 @@ public class APIshEditView extends JPanel{
 		panel.validate();
 	}
 	
-	class CancelListener implements ActionListener{
+	static class CancelListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -157,7 +147,7 @@ public class APIshEditView extends JPanel{
 		
 	}
 	
-	class ReplaceListener implements ActionListener{
+	static class ReplaceListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -167,7 +157,7 @@ public class APIshEditView extends JPanel{
 		
 	}
 	
-	class InverseMouseListener implements MouseListener{
+	static class InverseMouseListener implements MouseListener{
 
 		@Override
 		public void mouseClicked(MouseEvent e) {
@@ -195,7 +185,7 @@ public class APIshEditView extends JPanel{
 		}		
 	}
 	
-	class kvpHinter implements MouseListener{
+	static class kvpHinter implements MouseListener{
 		boolean firstClick = true;
 
 		@Override
@@ -229,7 +219,7 @@ public class APIshEditView extends JPanel{
 		}	
 	}
 	
-	class MinusListener implements ActionListener{
+	static class MinusListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -249,7 +239,7 @@ public class APIshEditView extends JPanel{
 		}		
 	}
 	
-	class PlusListener implements ActionListener{
+	static class PlusListener implements ActionListener{
 
 		@Override
 		public void actionPerformed(ActionEvent e) {
@@ -275,12 +265,19 @@ public class APIshEditView extends JPanel{
 			textFieldsAndKVP.add(kvpPanel);
 			repainter(kvpPanel);
 			repainter(textFieldsAndKVP);
-		    editPane.add(textFieldsAndKVP);
-			repainter(editPane);
+			fieldAndButton = new JSplitPane(JSplitPane.VERTICAL_SPLIT, textFieldsAndKVP,
+		     			miniPane);
+			APIshCreatorList.editFrame.remove(editPane);
+		    editPane = new JPanel(new BorderLayout());
+		    editPane.add(fieldAndButton);
+		    APIshCreatorList.editFrame.add(editPane);
+		    APIshCreatorList.editFrame.validate();
+		    APIshCreatorList.editFrame.pack();
+		    APIshCreatorList.editFrame.setVisible(true);
 		}	
  	}
 	
-	public JPanel editPanel(){
+	public static JPanel editPanel(){
 		
 		normalFont = new Font("Arial", Font.PLAIN, 14);
 	    italicFont = new Font("Arial", Font.ITALIC, 14);
@@ -321,22 +318,7 @@ public class APIshEditView extends JPanel{
 	    
 	    keysList = new ArrayList<JTextField>();
 	    keysList.add(keysToSend);
-	     
-	    restCallLabel = new JLabel(restCallString + ": ");
-	    restCallLabel.setFont(normalFont);
-	    restCallLabel.setLabelFor(restCallType);
-	     
-	    urlLabel = new JLabel(urlString + ": ");
-	    urlLabel.setLabelFor(urlTextField);
 	    
-	    labels.add(restCallLabel);
-	    labels.add(urlLabel);
-	    for(JLabel label : labels){
-	    	label.setFont(QuantumStyleManager.mightyFont());
-	    }
-	     
-	    textFields.add(urlTextField);
-	     
 	    kvpPanel = new JPanel();
 	    kvpGridBag = new GridBagLayout();
 	    GridBagConstraints kvpC = new GridBagConstraints();
@@ -345,6 +327,24 @@ public class APIshEditView extends JPanel{
 	    kvpC.anchor = GridBagConstraints.WEST;
 	    kvpC.weightx = 1.0;
 	    
+	    addKeyValuePairRowsComps(keysList, valuesList, kvpGridBag, kvpPanel);
+	     
+	    restCallLabel = new JLabel(restCallString + ": ");
+	    restCallLabel.setFont(normalFont);
+	    restCallLabel.setLabelFor(restCallType);
+	     
+	    urlLabel = new JLabel(urlString + ": ");
+	    urlLabel.setLabelFor(urlTextField);
+	    
+	    labels =  new ArrayList<JLabel>();
+	    labels.add(restCallLabel);
+	    labels.add(urlLabel);
+	    for(JLabel label : labels){
+	    	label.setFont(QuantumStyleManager.mightyFont());
+	    }
+	     
+	    textFields.add(urlTextField);
+	     
 	    mPlus = new JButton("+");
 	    mPlus.addActionListener(new PlusListener());
 	    mMinus = new JButton("-");
@@ -371,7 +371,7 @@ public class APIshEditView extends JPanel{
 	    
 	    mReplace = new JButton(replaceString);
 	    mReplace.addActionListener(new ReplaceListener());
-	    JPanel miniPane = new JPanel(new BorderLayout());
+	    miniPane = new JPanel(new BorderLayout());
 	    QuantumStyleManager.buttonStyles(mReplace);
 	    miniPane.add(Box.createHorizontalGlue());
 	    miniPane.add(mReplace);
@@ -382,7 +382,7 @@ public class APIshEditView extends JPanel{
 	    textFieldsAndKVP.add(plusMinusPanel, BorderLayout.SOUTH);
 	    textFieldsAndKVP.setBorder(
 	            BorderFactory.createCompoundBorder(
-	                            BorderFactory.createTitledBorder(getBorder(), "Edit Your Tag!",
+	                            BorderFactory.createTitledBorder(textFieldsAndKVP.getBorder(), "Edit Your Tag!",
 	                            		TitledBorder.CENTER, TitledBorder.TOP, QuantumStyleManager.mightyFont()),
 	                            BorderFactory.createEmptyBorder(5,5,5,5)));
 	    fieldAndButton = new JSplitPane(JSplitPane.VERTICAL_SPLIT,

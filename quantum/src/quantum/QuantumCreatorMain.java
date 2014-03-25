@@ -29,7 +29,7 @@
  * SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
  */ 
 
-package src.quantum;
+package quantum;
 
 
 import java.awt.BorderLayout;              //for layout managers and more

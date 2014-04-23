@@ -9,9 +9,10 @@ from book.v4_book_details import DetailsTest
 from collection.v4_collection_lists import v4coll
 from social.v4_social_follow import Follow
 from social.v4_social_activity import ActivityTest
+from social.v4_social_member import MemberTest
 import json
 
-api_url = 'https://zolaqc.com/api/v4/'
+api_url = 'https://zolabooks.com/api/v4/'
 
 class v4_harness():
     
@@ -22,7 +23,7 @@ class v4_harness():
 
         accountInst = V4_account("create", "jay.flax@zolabooks.com", "kingkong", "Jay", "Flax", "26", "10", "1990", "swagger", "m")
         accountDict = accountInst.account(api_url)
-
+        print accountDict
         memberId = accountDict["member_id"]
         authToken = accountDict["auth_token"]
         deviceName = accountDict["device_name"]
@@ -44,20 +45,22 @@ class v4_harness():
         
         collectionInst = v4coll(memberId, authToken, "get-purchased", "purchased")
         list = collectionInst.list(api_url)
+        print list
         list = list["list"]
         
         first_book = list[5]
         isbn = first_book["details"]["isbn_13"]
+                
+        #downloadInst = v4_download(memberId, authToken, isbn, "epub")
+        #keys = downloadInst.getKeys(api_url)
         
-        downloadInst = v4_download(memberId, authToken, isbn, "epub")
-        keys = downloadInst.getKeys(api_url)
-        
-        keys = keys[0]
+        #keys = keys[0]
                 
         followTest(api_url, memberId, authToken)
-        
+
         ActivityTest(api_url, memberId, authToken).activityTest()
         print DetailsTest(api_url, memberId, authToken).detailsTest()
+        print MemberTest(api_url, memberId, authToken).memberTest()
         
         #tokenInst = V4_token(memberId, authToken, "deactivate")
         #tokenInst.token(api_url)

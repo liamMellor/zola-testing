@@ -5,7 +5,12 @@ from session.v4_session_token import V4_token
 from session.v4_session_password import V4_password
 from book.v4_book_cnt import V4_books_cnt
 from book.v4_book_download import v4_download
+from book.v4_book_details import DetailsTest
 from collection.v4_collection_lists import v4coll
+from social.v4_social_follow import Follow
+from social.v4_social_activity import ActivityTest
+from social.v4_social_member import MemberTest
+import json
 
 api_url = 'https://zolaqc.com/api/v4/'
 
@@ -18,7 +23,7 @@ class v4_harness():
 
         accountInst = V4_account("create", "jay.flax@zolabooks.com", "kingkong", "Jay", "Flax", "26", "10", "1990", "swagger", "m")
         accountDict = accountInst.account(api_url)
-
+        print accountDict
         memberId = accountDict["member_id"]
         authToken = accountDict["auth_token"]
         deviceName = accountDict["device_name"]
@@ -40,39 +45,53 @@ class v4_harness():
         
         collectionInst = v4coll(memberId, authToken, "get-purchased", "purchased")
         list = collectionInst.list(api_url)
+        print list
         list = list["list"]
         
         first_book = list[5]
         isbn = first_book["details"]["isbn_13"]
+                
+        #downloadInst = v4_download(memberId, authToken, isbn, "epub")
+        #keys = downloadInst.getKeys(api_url)
         
-        downloadInst = v4_download(memberId, authToken, isbn, "epub")
-        keys = downloadInst.getKeys(api_url)
-        keys = keys[0]
+        #keys = keys[0]
+                
+        followTest(api_url, memberId, authToken)
 
-        uuid = keys["uuid"]
-        uri = keys["uri"]
-        email = keys["member_email"]
+        ActivityTest(api_url, memberId, authToken).activityTest()
+        print DetailsTest(api_url, memberId, authToken).detailsTest()
+        print MemberTest(api_url, memberId, authToken).memberTest()
         
-        downloadInst.downloadEpub(api_url, uuid, uri, email)
+        #tokenInst = V4_token(memberId, authToken, "deactivate")
+        #tokenInst.token(api_url)
+
+        #loginInst = V4_login("jason-flax-2","kingkong","swagger","jay.flax@zolabooks.com")
+        #loginDict =  loginInst.login(api_url)
+
+        #memberId = loginDict["member_id"]
+        #authToken = loginDict["auth_token"]
+        #deviceName = loginDict["device_name"]
         
+        #logoutInst = V4_logout(memberId, authToken, "true")
+        #logoutCode = logoutInst.logout(api_url)
+        #print logoutCode
+        #if int(logoutCode) != 204:
+        #    assert False, "not logged out"
+        #else:
+        #    print "logged out"
 
-        tokenInst = V4_token(memberId, authToken, "deactivate")
-        tokenInst.token(api_url)
+def followTest(api_url, memberId, authToken):
+    startFollowing = Follow(memberId, authToken, "start-following", "79058")
+    print startFollowing.follow(api_url)
+    
+    unFollow = Follow(memberId, authToken,"unfollow", "79058")
+    print unFollow.follow(api_url)
 
-        loginInst = V4_login("jason-flax-2","kingkong","swagger","jay.flax@zolabooks.com")
-        loginDict =  loginInst.login(api_url)
+    getFollowers = Follow(memberId, authToken, "get-followers")
+    print getFollowers.follow(api_url)
 
-        memberId = loginDict["member_id"]
-        authToken = loginDict["auth_token"]
-        deviceName = loginDict["device_name"]
-        
-        logoutInst = V4_logout(memberId, authToken, "true")
-        logoutCode = logoutInst.logout(api_url)
-        print logoutCode
-        if int(logoutCode) != 204:
-            assert False, "not logged out"
-        else:
-            print "logged out"
+    getFollowing = Follow(memberId, authToken, "get-following")
+    print getFollowing.follow(api_url)
 
 harness = v4_harness()
 harness.runner()

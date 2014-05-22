@@ -25,7 +25,7 @@ class v4_download():
 						 'isbn' : self.isbn,
 						 'type' :self.type })
 
-		keysUrl = api_url + "book/download"
+		keysUrl = api_url + "ecomm/download"
 		
 		keysReq = urllib2.Request(keysUrl, encoded_vars)
 		resp = urllib2.urlopen(keysReq)

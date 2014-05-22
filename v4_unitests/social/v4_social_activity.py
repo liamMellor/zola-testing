@@ -23,7 +23,7 @@ class Activity():
             if type is "highlight" or type is "notation":
                 self.vals["note"] = note
                 self.vals["highlighted_text"] = highlighted_text
-                self.vals["start_char"] = start_char
+                self.vals["current_char"] = start_char
                 self.vals["end_char"] = end_char
                 self.vals["page_number"] = page_number
                 self.vals["is_spoiler"] = is_spoiler
@@ -61,21 +61,21 @@ class ActivityTest():
         print Manager.WARNING + sets + Manager.ENDC
 
         a = Activity(self.member_id, self.auth_token, "set", "highlight", "9781939126009", None, "meow", "woofy woofkins went dookie", None, "10000", "10020", None, None, None, "67", "47", 0, 25, 0, "yes", "yes", "yes")
-        print a.activate(self.api_url)
+        a.activate(self.api_url)
     
         b = Activity(self.member_id, self.auth_token, "set", "progress", "9781939126009",current_char="90", page_number="70", reading_duration="100")
-        print b.activate(self.api_url)
+        b.activate(self.api_url)
     
         c = Activity(self.member_id, self.auth_token, "set", "rating", "9781939126009",rating="4")
-        print c.activate(self.api_url)
+        c.activate(self.api_url)
 
         d = Activity(self.member_id, self.auth_token, "set", "reply", "9781939126009", note="boo", in_reply_to="7226")
-        print d.activate(self.api_url)
+        d.activate(self.api_url)
 
         print Manager.WARNING + gets + Manager.ENDC
 
         a = Activity(self.member_id, self.auth_token, "get", "notation", "9781939126009", notation_id="7226")
-        print a.activate(self.api_url)
+        print a.activate(self.api_url)[0]
 
         b = Activity(self.member_id, self.auth_token, "get", "rating", "9781939126009")
         print b.activate(self.api_url)

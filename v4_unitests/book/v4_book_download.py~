@@ -57,9 +57,9 @@ class v4_download():
 		
 		for q in files_for_reading:
 			with open (q, "r") as myfile:
-				encoded_data = myfile.read().replace('\n', '')
+				encoded_data = myfile.read()
 				decrypted_data = zbdrmInst.decrypt(bytearray(encoded_data))
-				print type(decrypted_data)
+				print (decrypted_data)
 				decrypted_chapter = open(q, "w")
 				decrypted_chapter.write(decrypted_data)
 				decrypted_chapter.close()

@@ -46,8 +46,8 @@ class MemberTest():
         a = Member(self.auth_member_id, self.auth_token, "reading-book", isbn = "9781939126009", member_id = self.member_id)
         print Manager.OKBLUE + marker + Manager.ENDC
         print Manager.WARNING + reading + Manager.ENDC
-        print a.member(self.api_url)
-        b = Member(self.auth_member_id, self.auth_token, "activity-stream", member_id = self.member_id)
+        a.member(self.api_url)
+        b = Member(self.auth_member_id, self.auth_token, "activity-stream", member_id = self.member_id, limit=50)
         print Manager.WARNING + stream + Manager.ENDC
-        print b.member(self.api_url)
+        b.member(self.api_url)
         

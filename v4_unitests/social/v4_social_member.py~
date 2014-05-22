@@ -15,7 +15,7 @@ stream = "############################ STREAM ############################"
 
 class Member():
 
-    def __init__(self, auth_member_id, auth_token, action, isbn = None, member_id, limit = None, offset= None):
+    def __init__(self, auth_member_id, auth_token, action, isbn = None, member_id = None, limit = None, offset= None):
         self.vals = {"auth_member_id": auth_member_id,
                     "auth_token" : auth_token,
                     "action" : action }
@@ -43,7 +43,7 @@ class MemberTest():
         self.auth_token = auth_token
 
     def memberTest(self):
-        a = Member(self.auth_member_id, self.auth_token, "reading-book", isbn = "9781939126009", self.member_id)
+        a = Member(self.auth_member_id, self.auth_token, "reading-book", isbn = "9781939126009", member_id = self.member_id)
         print Manager.OKBLUE + marker + Manager.ENDC
         print Manager.WARNING + reading + Manager.ENDC
         print a.member(self.api_url)

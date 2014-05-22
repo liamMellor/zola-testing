@@ -1,3 +1,4 @@
+
 import urllib
 import urllib2
 import json
@@ -37,7 +38,7 @@ class Manager():
             s = [response.getcode(), json.load(response)]
             if s[1]["status"] == "system_error":
                 return Manager.FAIL + self.dump(s) + Manager.ENDC
-            return [Manager.OKGREEN + self.dump(s) + Manager.ENDC, s[1]]
+            return Manager.OKGREEN + self.dump(s) + Manager.ENDC
         except urllib2.HTTPError as e:
             s = [e, e.read()]
             return Manager.FAIL + self.dump(s) + Manager.ENDC

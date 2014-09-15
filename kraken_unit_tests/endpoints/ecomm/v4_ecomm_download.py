@@ -33,7 +33,7 @@ class downloadTest():
     def download(self):
         print Manager.WARNING + sets + Manager.ENDC
 		
-        actions = ['get-decrypt-key','get-file-info','download','download-no-header','download-base64']
+        actions = ['get-key','get-file-info','download','download-no-header','download-base64']
         bools   = ['true','false']
         for action in actions:
             for bool in bools:

@@ -81,45 +81,45 @@ class ActivityTest():
         ########## BEGIN SETS ###########
         print Manager.WARNING + sets + Manager.ENDC
 
-        a = Activity(self.member_id, self.auth_token, "set", "highlight", "9781939126009", None, "meow", "woofy woofkins went dookie", None, "10000", "10020", None, None, None, "67", "47", 0, 25, 0, "yes", "yes", "yes")
+        a = Activity(self.member_id, self.auth_token, "set", "highlight", "9780525478812", None, "meow", "woofy woofkins went dookie", None, "10000", "10020", None, None, None, "67", "47", 0, 25, 0, "yes", "yes", "yes")
         value = a.activate(self.api_url)
         data  = value[1]['data']
         id1   = data['notation_id']
 
-        b = Activity(self.member_id, self.auth_token, "set", "progress", "9781939126009",current_char="90", page_number="70", reading_duration="100")
+        b = Activity(self.member_id, self.auth_token, "set", "progress", "9780525478812",current_char="10", page_number="7", reading_duration="100")
         b.activate(self.api_url)
     
-        c = Activity(self.member_id, self.auth_token, "set", "rating", "9781939126009",rating="4")
+        c = Activity(self.member_id, self.auth_token, "set", "rating", "9780525478812",rating="4")
         c.activate(self.api_url)
 
-        d = Activity(self.member_id, self.auth_token, "set", "reply", "9781939126009", note="boo", in_reply_to="7226")
+        d = Activity(self.member_id, self.auth_token, "set", "reply", "9780525478812", note="boo", in_reply_to="7226")
         value = d.activate(self.api_url)
         data  = value[1]['data']
         id2   = data['notation_id']
         
-        e = Activity(self.member_id, self.auth_token, "set", "bookmark", "9781939126009", page_number="2")
+        e = Activity(self.member_id, self.auth_token, "set", "bookmark", "9780525478812", page_number="2")
         value = e.activate(self.api_url)
         data  = value[1]['data']
         id3   = data['notation_id']
         
-        f = Activity(self.member_id, self.auth_token, "set", "note", "9781939126009", note="Liam is cool")
+        f = Activity(self.member_id, self.auth_token, "set", "note", "9780525478812", note="Liam is cool")
         value = f.activate(self.api_url)
         data  = value[1]['data']
         id4   = data['notation_id']
         
-        h = Activity(self.member_id, self.auth_token, "set", "note", "9781939126009", note="Liam is cool yup")
+        h = Activity(self.member_id, self.auth_token, "set", "note", "9780525478812", note="Liam is cool yup")
         value = h.activate(self.api_url)
         data  = value[1]['data']
         id5   = data['notation_id']
         
-        i = Activity(self.member_id, self.auth_token, "set", "abandonded", "9781939126009")
+        i = Activity(self.member_id, self.auth_token, "set", "abandonded", "9780525478812")
         i.activate(self.api_url)
         
         
         ########## BEGIN GETS ###########
         print Manager.WARNING + gets + Manager.ENDC
 
-        a      = Activity(self.member_id, self.auth_token, "get", "notation", "9781939126009")
+        a      = Activity(self.member_id, self.auth_token, "get", "notation", "9780525478812")
         printA = a.activate(self.api_url)[0]
         if arg_manager.verboseHigh == True:
             print "\n"
@@ -127,7 +127,7 @@ class ActivityTest():
             print "\n"
             print printA
         
-        b      = Activity(self.member_id, self.auth_token, "get", "rating", "9781939126009")
+        b      = Activity(self.member_id, self.auth_token, "get", "rating", "9780525478812")
         printB = b.activate(self.api_url)
         if arg_manager.verboseHigh == True:
             print "\n"
@@ -135,7 +135,7 @@ class ActivityTest():
             print "\n"
             print printB
         
-        c      = Activity(self.member_id, self.auth_token, "get", "progress", "9781939126009")
+        c      = Activity(self.member_id, self.auth_token, "get", "progress", "9780525478812")
         printC = c.activate(self.api_url)
         if arg_manager.verboseHigh == True:
             print "\n"
@@ -143,7 +143,7 @@ class ActivityTest():
             print "\n"
             print printC
 
-        d      = Activity(self.member_id, self.auth_token, "get", "reply", "9781939126009")
+        d      = Activity(self.member_id, self.auth_token, "get", "reply", "9780525478812")
         printD = d.activate(self.api_url)
         if arg_manager.verboseHigh == True:
             print "\n"
@@ -151,7 +151,7 @@ class ActivityTest():
             print "\n"
             print printD
 
-        e      = Activity(self.member_id, self.auth_token, "get", "notation", "9781939126009")
+        e      = Activity(self.member_id, self.auth_token, "get", "notation", "9780525478812")
         printE = e.activate(self.api_url)
         if arg_manager.verboseHigh == True:
             print "\n"
@@ -159,7 +159,7 @@ class ActivityTest():
             print "\n"
             print printE
             
-    	f      = Activity(self.member_id, self.auth_token, "get", "bookmark", "9781939126009")
+    	f      = Activity(self.member_id, self.auth_token, "get", "bookmark", "9780525478812")
     	printF = f.activate(self.api_url)
     	if arg_manager.verboseHigh == True:
             print "\n"
@@ -167,7 +167,7 @@ class ActivityTest():
             print "\n"
             print printF
             
-        g      = Activity(self.member_id, self.auth_token, "get", "highlight", "9781939126009")
+        g      = Activity(self.member_id, self.auth_token, "get", "highlight", "9780525478812")
         printG = g.activate(self.api_url)
     	if arg_manager.verboseHigh == True:
             print "\n"
@@ -175,7 +175,7 @@ class ActivityTest():
             print "\n"
             print printG
             
-        h      = Activity(self.member_id, self.auth_token, "get", "note", "9781939126009")
+        h      = Activity(self.member_id, self.auth_token, "get", "note", "9780525478812")
         printH = h.activate(self.api_url)
     	if arg_manager.verboseHigh == True:
             print "\n"
@@ -183,7 +183,7 @@ class ActivityTest():
             print "\n"
             print printH  
             
-    	i      =  Activity(self.member_id, self.auth_token, "get", "abandonded", "9781939126009")
+    	i      =  Activity(self.member_id, self.auth_token, "get", "abandonded", "9780525478812")
         printI = i.activate(self.api_url)
     	if arg_manager.verboseHigh == True:
             print "\n"

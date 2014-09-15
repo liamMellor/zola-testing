@@ -35,16 +35,16 @@ class DetailsTest():
         print Manager.WARNING + sets + Manager.ENDC
         
         ######## Valid Calls
-        book = v4Details("book", None, "9781939126009", None, None, None)
+        book = v4Details("book", None, "9780525478812", None, None, None)
         book.details(self.api_url)
 
-        bookMin = v4Details("book-min", None, "9781939126009", None, None, None)
+        bookMin = v4Details("book-min", None, "9780525478812", None, None, None)
         bookMin.details(self.api_url)
 
-        author = v4Details("author", 101512, None, None, None, None)
+        author = v4Details("author", '87f6d5e5-09d3-46ed-957f-4f09be8fb3a2', None, None, None, None)
         author.details(self.api_url)
         
-        authorBook = v4Details("books-by-author", '101512', None, None, None, None)
+        authorBook = v4Details("books-by-author", '87f6d5e5-09d3-46ed-957f-4f09be8fb3a2', None, None, None, None)
         authorBook.details(self.api_url) 
 
 

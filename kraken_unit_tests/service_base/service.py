@@ -84,7 +84,7 @@ class Manager():
             return Manager.FAIL + self.dump(s) + Manager.ENDC
         finally:
             timeattack = clock2 - clock1
-            if arg_manager.verboseLow == True:
+            if arg_manager.verboseHigh == True:
                 print Manager.TIMEPURP + Manager.TIMEBLOCK + str(timeattack) + Manager.ENDC
 
 
@@ -157,5 +157,5 @@ class Manager():
             print  Manager.OKGREEN + "success " + Manager.ENDC + Manager.WARNING + "(catch)  " + Manager.ENDC + endpoint + " " + message + " " + str(s[start:end])
         finally:
             timeattack = clock2 - clock1
-            if arg_manager.verboseLow == True:
+            if arg_manager.verboseHigh == True:
                 print Manager.TIMEPURP + Manager.TIMEBLOCK + str(timeattack) + Manager.ENDC

@@ -95,6 +95,7 @@ class v4profile():
         manager = Manager(self.vals)
         manager.request(api_url, "session/profile")
 
+    '''
     def profileFail(self, api_url, message):
         if self.action == "set":
             self.vals = {   'member_id'    : self.member_id,
@@ -156,6 +157,7 @@ class v4profile():
                 }
         manager = Manager(self.vals)
         manager.requestFail(api_url, "session/profile", message)
+        '''
 
 class profileTest():
 
@@ -189,6 +191,11 @@ class profileTest():
         profileGetMin = v4profile(self.memberId, self.authToken, 'get-min', 273196, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
         profileGetMin.profile(self.api_url)
 
+        profileSetEmail = v4profile(self.memberId, self.authToken, 'update_email', 273196, 'leemo92@mail.com', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+        profileSetEmail.profile(self.api_url)
+
+        profileSet = v4profile(self.memberId, self.authToken, 'set', 273196, 'liam.mellor@zolabooks.com', '20', '10', '1992', 'n', 'n', 'y', 'Liam', 'Mellor', 'liam.mellor', None, 'm', '10012', None, None, None, None, None, None, None, None, None, None)
+        profileSet.profile(self.api_url)
 
 
 

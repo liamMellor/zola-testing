@@ -64,25 +64,25 @@ class commerceTest():
         # action = cart
         for type in cartTypes:
             if type == 'add' or type == 'remove' or type == 'update':
-                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, None, 1508127, None, None, None, None, None, None, None)
+                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, 2, 1508127, None, None, None, None, None, None, None)
                 commerceA.commerce(self.api_url)
             else:
-                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, None, 1508127, None, None, None, None, None, None, None)
+                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, 2, 1508127, None, None, None, None, None, None, None)
                 commerceA.commerce(self.api_url)
         
         # action = promotional_code
         for type in promTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "promotional_code", "ZOLA", type, None, None, None, None, "FREE-SHIPPING", None, None, None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "promotional_code", "ZOLA", type, 2, None, None, None, "FREE-SHIPPING", None, None, None, None)
             commerceA.commerce(self.api_url)
         
         # action = certificate
         for type in certTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "certificate", "ZOLA", type, None, None, None, None, "FREE-SHIPPING", None, None, None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "certificate", "ZOLA", type, 2, None, None, None, "FREE-SHIPPING", None, None, None, None)
             commerceA.commerce(self.api_url)
         
         # action = credit
         for type in credTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "credit", "ZOLA", type, None, None, None, None, None, 0.00, None, None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "credit", "ZOLA", type, 2, None, None, None, None, 0.00, None, None, None)
             commerceA.commerce(self.api_url)
         
         # action = process
@@ -95,7 +95,7 @@ class commerceTest():
         
         # action = calculate_shipping 
         for type in calcTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "calculate_shipping", "ZOLA", None, None, None, None, None, None, None, 'USPS', None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "calculate_shipping", "ZOLA", None, 2, None, None, None, None, None, 'USPS', None, None)
             commerceA.commerce(self.api_url)
                 
         # action = email_receipt
@@ -107,7 +107,7 @@ class commerceTest():
         commerceA.commerce(self.api_url)
     
         # action = send_to_kindle
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "send_to_kindle", "ZOLA", None, 2, None, None, '9780525478812', None, None, None, None, "liam.mellor@zolabooks.com", 0)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "send_to_kindle", "ZOLA", None, 2, 1508127, None, '9780525478812', None, None, None, None, "liam.mellor@zolabooks.com", 0)
         commerceA.commerce(self.api_url)
 
 

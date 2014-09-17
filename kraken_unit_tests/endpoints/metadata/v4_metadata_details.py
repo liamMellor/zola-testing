@@ -12,7 +12,7 @@ class v4Details():
                       "preferred-format" : format,
                       "limit"            : limit,
                       "offset"           : offset,
-                      "author_id"        : authorId
+                      "contributor_id"        : authorId
                     }
 
     def details(self, api_url):
@@ -41,10 +41,10 @@ class DetailsTest():
         bookMin = v4Details("book-min", None, "9780525478812", None, None, None)
         bookMin.details(self.api_url)
 
-        author = v4Details("author", '87f6d5e5-09d3-46ed-957f-4f09be8fb3a2', None, None, None, None)
+        author = v4Details("contributor", '87f6d5e5-09d3-46ed-957f-4f09be8fb3a2', None, None, None, None)
         author.details(self.api_url)
         
-        authorBook = v4Details("books-by-author", '87f6d5e5-09d3-46ed-957f-4f09be8fb3a2', None, None, None, None)
+        authorBook = v4Details("books-by-contributor", '87f6d5e5-09d3-46ed-957f-4f09be8fb3a2', None, None, None, None)
         authorBook.details(self.api_url) 
 
 

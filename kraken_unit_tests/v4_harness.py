@@ -14,6 +14,7 @@ from endpoints.social.v4_social_cnt import cntTest
 from endpoints.metadata.v4_metadata_details import DetailsTest
 from endpoints.collection.v4_collection_lists import CollectionTest
 from endpoints.collection.v4_collection_curation import curationTest
+from endpoints.collection.v4_collection_purchase import purchaseTest
 from endpoints.ecomm.v4_ecomm_saleable import saleTest
 from endpoints.ecomm.v4_ecomm_address import addressTest
 from endpoints.ecomm.v4_ecomm_commerce import commerceTest
@@ -156,6 +157,11 @@ class v4_harness():
         if arg_manager.CollectionCur == True:
             curationInstance = curationTest(api_url, memberId, authToken)   #9780525478812 Fault in our stars
             curationInstance.curation()
+        
+        # Collection/purchase retreives list of purchased books
+        if arg_manager.CollectionPurchase == True:
+            purchaseInstance = purchaseTest(api_url, memberId, authToken)
+            purchaseInstance.purchase()
          
         # Ecomm/saleable retrieves a book sales data
         if arg_manager.EcommSaleable == True:

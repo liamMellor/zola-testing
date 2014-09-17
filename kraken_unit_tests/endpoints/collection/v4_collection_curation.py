@@ -17,7 +17,7 @@ class v4curation():
                       'auth_token'     : self.auth_token,
                       'action'         : self.action,
                       'isbn'           : self.isbn,
-					  'author_id'      : self.author_id
+					  'contributor_id'      : self.author_id
                     }
         manager = Manager(self.vals)
         return manager.request(api_url, "collection/curation")

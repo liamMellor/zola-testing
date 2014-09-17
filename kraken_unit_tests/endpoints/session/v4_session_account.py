@@ -24,13 +24,13 @@ class v4_account():
                       'action'            : self.action,
 				      'email'             : self.email,
 				      'password'          : self.password,
-				      'member_first_name' : self.member_first_name,
-				      'member_last_name'  : self.member_last_name,
+				      'first_name' : self.member_first_name,
+				      'last_name'  : self.member_last_name,
 				      'bday_d'            : self.bday_d,
 				      'bday_m'            : self.bday_m,
 				      'bday_y'            : self.bday_y,
 				      'device_name'       : self.device_name,
-				      'member_gender'     : self.member_gender
+				      'gender'     : self.member_gender
                     }
         manager = Manager(self.vals)
         manager.request(api_url, "session/account")
@@ -41,13 +41,13 @@ class v4_account():
                       'action'            : self.action,
                       'email'             : self.email,
                       'password'          : self.password,
-                      'member_first_name' : self.member_first_name,
-                      'member_last_name'  : self.member_last_name,
+                      'first_name' : self.member_first_name,
+                      'last_name'  : self.member_last_name,
                       'bday_d'            : self.bday_d,
                       'bday_m'            : self.bday_m,
                       'bday_y'            : self.bday_y,
                       'device_name'       : self.device_name,
-                      'member_gender'     : self.member_gender
+                      'gender'     : self.member_gender
                     }
         manager = Manager(self.vals)
         manager.requestFail(api_url, "session/account", message)

@@ -1,6 +1,5 @@
 import argparse
-#                                                                  Slightly "un-pythonic" module.....  -___-
-
+#                                                 Slightly "un-pythonic" module.....  -___-
 useStaging     = False
 # Print options
 verboseHigh    = False
@@ -28,6 +27,7 @@ SocialMember      = False
 SocialFollow      = False
 CollectionList    = False
 CollectionCur     = False
+CollectionPurchase = False
 ContentArticle    = False
 ContentReview     = False
 EcommBounty       = False
@@ -66,6 +66,7 @@ def get_args():
     parser.add_argument("--ContentReview",     help="Run testing on 'content/review' calls.", action="store_true")
     parser.add_argument("--CollectionList",    help="Run testing on 'collection/list' calls.", action="store_true")
     parser.add_argument("--CollectionCur",     help="Run testing on 'collection/curation' calls.", action="store_true")
+    parser.add_argument("--CollectionPurchase",help="Run testing on 'collection/purchase' calls.", action="store_true")
     parser.add_argument("--EcommSaleable",     help="Run testing on 'ecomm/saleable' calls.", action="store_true")
     parser.add_argument("--EcommAddress",      help="Run testing on 'ecomm/address' calls.", action="store_true")
     parser.add_argument("--EcommCommerce",     help="Run testing on 'ecomm/commerce/ calls.", action="store_true")
@@ -81,7 +82,7 @@ def get_args():
     
     # parse
     args = parser.parse_args()
-    global verboseHigh, verboseLow, JSONdump, SessionLogin, SessionIsLoggedIn, SocialCnt, SocialActivity, MetadataDetails, SocialMember, SocialFollow, CollectionList, CollectionCur, ContentArticle, ContentReview, EcommBounty, EcommSaleable, EcommAddress, EcommCommerce, EcommDownload, RecommendationRec, SearchFind, SessionAccount, SessionProfile, SessionAvatar, SessionPassword, SessionToken, SessionPing, useStaging, TestSession, TestEcomm, TestSocial, TestContent, TestCollection
+    global verboseHigh, verboseLow, JSONdump, SessionLogin, SessionIsLoggedIn, SocialCnt, SocialActivity, MetadataDetails, SocialMember, SocialFollow, CollectionList, CollectionCur, CollectionPurchase,ContentArticle, ContentReview, EcommBounty, EcommSaleable, EcommAddress, EcommCommerce, EcommDownload, RecommendationRec, SearchFind, SessionAccount, SessionProfile, SessionAvatar, SessionPassword, SessionToken, SessionPing, useStaging, TestSession, TestEcomm, TestSocial, TestContent, TestCollection
     # set
     verboseHigh       = args.verboseHigh
     verboseLow        = args.verboseLow
@@ -102,6 +103,7 @@ def get_args():
     SocialFollow      = args.SocialFollow
     CollectionList    = args.CollectionList
     CollectionCur     = args.CollectionCur
+    CollectionPurchase= args.CollectionPurchase
     ContentArticle    = args.ContentArticle
     ContentReview     = args.ContentReview
     #ContentRSS       = args.ContentRSS
@@ -123,10 +125,10 @@ def get_args():
 # If no API args are provided, test all endpoints
 def default_run():
     
-    global SessionLogin, SessionIsLoggedIn, SocialCnt, SocialActivity, MetadataDetails, SocialMember, SocialFollow, CollectionList, CollectionCur, ContentArticle,  ContentReview, EcommBounty, EcommSaleable, EcommAddress, EcommCommerce, EcommDownload, RecommendationRec, SessionAccount, SearchFind, SessionProfile, SessionAvatar, SessionPassword, SessionToken, SessionPing
+    global SessionLogin, SessionIsLoggedIn, SocialCnt, SocialActivity, MetadataDetails, SocialMember, SocialFollow, CollectionList, CollectionCur, CollectionPurchase, ContentArticle,  ContentReview, EcommBounty, EcommSaleable, EcommAddress, EcommCommerce, EcommDownload, RecommendationRec, SessionAccount, SearchFind, SessionProfile, SessionAvatar, SessionPassword, SessionToken, SessionPing
     
     
-    if  SessionLogin == False and SessionIsLoggedIn == False and SessionAccount == False and SessionProfile == False and SessionAvatar == False and SessionPassword == False and SessionToken == False and SessionPing == False and SocialCnt == False and SocialActivity == False and MetadataDetails == False and SocialMember == False and SocialFollow == False and CollectionList == False and CollectionCur == False and ContentArticle == False and ContentReview == False and EcommBounty == False and EcommSaleable == False and EcommAddress == False and EcommCommerce == False and EcommDownload == False and RecommendationRec == False and SearchFind == False:
+    if  SessionLogin == False and SessionIsLoggedIn == False and SessionAccount == False and SessionProfile == False and SessionAvatar == False and SessionPassword == False and SessionToken == False and SessionPing == False and SocialCnt == False and SocialActivity == False and MetadataDetails == False and SocialMember == False and SocialFollow == False and CollectionList == False and CollectionCur == False and ContentArticle == False and ContentReview == False and EcommBounty == False and EcommSaleable == False and EcommAddress == False and EcommCommerce == False and EcommDownload == False and RecommendationRec == False and SearchFind == False and CollectionPurchase == False:
         
         print "No arguments given. Testing all endpoints by default."
         SessionLogin      = True
@@ -142,6 +144,7 @@ def default_run():
         SocialFollow      = True
         CollectionList    = True
         CollectionCur     = True
+        CollectionPurchase= True
         ContentArticle    = True
         ContentReview     = True
         EcommBounty       = True
@@ -189,6 +192,7 @@ def collection_run():
     if TestCollection == True:
         CollectionCur  = True
         CollectionList = True
+        CollectionPurchase = True
 
 def content_run():
     global ContentArticle, ContentReview, TestContent

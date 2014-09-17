@@ -37,6 +37,6 @@ class downloadTest():
         bools   = ['true','false']
         for action in actions:
             for bool in bools:
-                downloadA = v4download(self.auth_member_id, self.auth_token, action, '9781451667943', 'epub', bool)
+                downloadA = v4download(self.auth_member_id, self.auth_token, action, '9780525478812', 'epub', bool) #9780525478812 9781451667943
                 downloadA.download(self.api_url)
 

@@ -81,7 +81,7 @@ class passwordTest():
         update1.passwordNoEmail(self.api_url)
         '''
         
-        # update password by providing email addres
+        # update password by providing email addres             username was None
         update = v4password(self.member_id, self.auth_token, 'update', None, 'testing123', 'testing123', 'liam@test1.com')
         update.password(self.api_url)
         

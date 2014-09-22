@@ -27,7 +27,6 @@ class v4commerce():
                       'auth_token'     : self.auth_token,
                       'action'         : self.action,
                       'store_uid'      : self.store_uid,
-                      'type'           : self.type,
                       'order_id'       : self.order_id,
                       'item_id'        : self.item_id,
                       'qty'            : self.qty,
@@ -39,6 +38,9 @@ class v4commerce():
                       'email'          : self.email,
                       'opt_in'         : self.opt_in
                     }
+        if self.type != None:
+            self.vals['type'] = self.type
+        
         manager = Manager(self.vals)
         return manager.request(api_url, "ecomm/commerce")
 
@@ -86,7 +88,7 @@ class commerceTest():
             commerceA.commerce(self.api_url)
         
         # action = process
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "process", "ZOLA", None, 2, 1508127, None, None, None, 'd015ca4470b4f86a125d0b9fed283ca8', None, None, 1)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "process", "ZOLA", None, 2, 1508127, None, None, None, None, 'd015ca4470b4f86a125d0b9fed283ca8', None, "liam.mellor@zolabooks.com", 1)
         commerceA.commerce(self.api_url)
         	 
         # action = detail

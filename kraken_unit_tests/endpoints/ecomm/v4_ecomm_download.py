@@ -34,9 +34,10 @@ class downloadTest():
         print Manager.WARNING + sets + Manager.ENDC
 		
         actions = ['get-key','get-file-info','download','download-no-header','download-base64']
-        bools   = ['true','false']
         for action in actions:
-            for bool in bools:
-                downloadA = v4download(self.auth_member_id, self.auth_token, action, '9780525478812', 'epub', bool) #9780525478812 9781451667943
-                downloadA.download(self.api_url)
+            downloadA = v4download(self.auth_member_id, self.auth_token, action, '9781101569184', 'epub', 'true') #9780525478812 9781451667943
+            downloadA.download(self.api_url)
 
+        for action in actions:
+            downloadA = v4download(self.auth_member_id, self.auth_token, action, '9781101569184', 'epub', 'false') #9780525478812 9781451667943
+            downloadA.download(self.api_url)

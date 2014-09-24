@@ -60,66 +60,65 @@ class commerceTest():
         credTypes = ['apply-to-order','remove-from-order','balance']
         calcTypes = ['ECONOMY','EXPEDITED']
         
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", 'add', 2, 12345, '1', '9780525478812', None, None, None, None, None)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", 'add', orderID, 1508127, '1', '9780525478812', None, sessionID, None, None, None)
         commerceA.commerce(self.api_url)
         
         # action = cart
         for type in cartTypes:
             if type == 'add' or type == 'remove' or type == 'update':
-                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, 2, 1508127, None, None, None, None, None, None, None)
+                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, orderID, 1508127, None, None, None, sessionID, None, None, None)
                 commerceA.commerce(self.api_url)
             else:
-                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, 2, 1508127, None, None, None, None, None, None, None)
+                commerceA = v4commerce(self.auth_member_id, self.auth_token, "cart", "ZOLA", type, orderID, 1508127, None, None, None, sessionID, None, None, None)
                 commerceA.commerce(self.api_url)
         
         # action = promotional_code
         for type in promTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "promotional_code", "ZOLA", type, 2, None, None, None, "FREE-SHIPPING", None, None, None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "promotional_code", "ZOLA", type, orderID, 1508127, None, None, "FREE-SHIPPING", sessionID, None, None, None)
             commerceA.commerce(self.api_url)
         
         # action = certificate
         for type in certTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "certificate", "ZOLA", type, 2, None, None, None, "FREE-SHIPPING", None, None, None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "certificate", "ZOLA", type, orderID, 1508127, None, None, "FREE-SHIPPING", sessionID, None, None, None)
             commerceA.commerce(self.api_url)
         
         # action = credit
         for type in credTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "credit", "ZOLA", type, 2, None, None, None, None, 0.00, None, None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "credit", "ZOLA", type, orderID, 1508127, None, None, 0.00, sessionID, None, None, None)
             commerceA.commerce(self.api_url)
         
         # action = process
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "process", "ZOLA", None, 2, 1508127, None, None, None, None, 'd015ca4470b4f86a125d0b9fed283ca8', None, "liam.mellor@zolabooks.com", 1)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "process", "ZOLA", None, orderID, 1508127, None, None, None, None, sessionID, None, "liam.mellor@zolabooks.com", 1)
         commerceA.commerce(self.api_url)
         	 
         # action = detail
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "detail", "ZOLA", None, 2, None, None, None, None, None, None, None, None)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "detail", "ZOLA", None, orderID, None, None, None, None, sessionID, None, None, None)
         commerceA.commerce(self.api_url)
         
         # action = calculate_shipping 
         for type in calcTypes:
-            commerceA = v4commerce(self.auth_member_id, self.auth_token, "calculate_shipping", "ZOLA", None, 2, None, None, None, None, None, 'USPS', None, None)
+            commerceA = v4commerce(self.auth_member_id, self.auth_token, "calculate_shipping", "ZOLA", None, orderID, None, None, None, None, sessionID, 'USPS', None, None)
             commerceA.commerce(self.api_url)
                 
         # action = email_receipt
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "email_receipt", "ZOLA", None, 2, None, None, None, None, None, None, None, "liam.mellor@zolabooks.com", None)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "email_receipt", "ZOLA", None, orderID, None, None, None, None, None, sessionID, None, "liam.mellor@zolabooks.com", None)
         commerceA.commerce(self.api_url)
     
         # action = opt_in
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "opt_in", "ZOLA", None, 2, None, None, None, None, None, None, None, 0)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "opt_in", "ZOLA", None, orderID, None, None, None, None, sessionID, None, None, 0)
         commerceA.commerce(self.api_url)
     
         # action = send_to_kindle
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "send_to_kindle", "ZOLA", None, 2, 1508127, None, '9780525478812', None, None, None, None, "liam.mellor@zolabooks.com", 0)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "send_to_kindle", "ZOLA", None, orderID, 1508127, None, '9780525478812', None, None, sessionID, None, "liam.mellor@zolabooks.com", 0)
         commerceA.commerce(self.api_url)
 
 
     def commerceInit(self):
+        global orderID
+        global sessionID
         print Manager.WARNING + sets + Manager.ENDC
         # initialize cart
         commerceA = v4commerce(self.auth_member_id, self.auth_token, "initialize", "ZOLA", None, None, None, None, None, None, None, None, None, None)
-        commerceA.commerce(self.api_url)
-
-
-
-
-
+        info      = commerceA.commerce(self.api_url)
+        orderID   = info[1]["data"]['order_id']
+        sessionID = info[1]["data"]['session_id']

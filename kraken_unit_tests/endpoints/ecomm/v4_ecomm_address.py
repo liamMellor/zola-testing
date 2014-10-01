@@ -83,8 +83,8 @@ class addressTest():
         objects  = value[1]['data']
         new      = 0
         for number in objects:
-            if number == "default":         # this for loop identifies the newest added address so that it can be delted.
-                continue
+            if number == "default":
+                continue                                    # This loop finds most recent addition to address to be removed below
             number = int(number)
             if number > new:
                 new = number
@@ -100,8 +100,8 @@ class addressTest():
         objects  = value[1]['data']
         new      = 0
         for number in objects:
-            if number == "default":         # this for loop identifies the newest added address so that the address_id can be used in further calls
-                continue
+            if number == "default":
+                continue                                    # This loop finds most recent addition to address to be used for further calls below
             number = int(number)
             if number > new:
                 new = number
@@ -123,15 +123,14 @@ class addressTest():
         testAddress = v4address(self.auth_member_id, self.auth_token, 'billing', 'add', None, '840', None, "Liam Mellor", "36 Meserole St", None, "Brooklyn", "NY", "11206", None, None, "Liam Mellor", "Visa", 06, 2017, 333, 5555555555554444)
         value    = testAddress.address(self.api_url)
         objects  = value[1]['data']
-        new      = 0
+        new = 0
         for number in objects:
             if number == "default":
-                continue
+                continue                                    # This loop finds most recent addition to billing to be delted below
             number = int(number)
             if number > new:
                 new = number
         id = objects[str(new)]['id']
-
         # billing action = delete
         testAddress = v4address(self.auth_member_id, self.auth_token, 'billing', 'delete', id, '840', None, "Liam Mellor", "36 Meserole St", None, "Brooklyn", "NY", "11206", None, None, "Liam Mellor", "Visa", 06, 2017, 333, 5555555555554444)
         testAddress.address(self.api_url)
@@ -140,10 +139,9 @@ class addressTest():
         testAddress = v4address(self.auth_member_id, self.auth_token, 'billing', 'add', None, '840', None, "Liam Mellor", "36 Meserole St", None, "Brooklyn", "NY", "11206", None,None, "Liam Mellor", "Visa", 06, 2017, 333, 5555555555554444)
         value    = testAddress.address(self.api_url)
         objects  = value[1]['data']
-        new      = 0
         for number in objects:
             if number == "default":
-                continue
+                continue                                    # This loop finds most recent addition to billing to be used for further calls below
             number = int(number)
             if number > new:
                 new = number

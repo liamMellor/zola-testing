@@ -24,13 +24,13 @@ class v4_account():
                       'action'            : self.action,
 				      'email'             : self.email,
 				      'password'          : self.password,
-				      'first_name' : self.member_first_name,
-				      'last_name'  : self.member_last_name,
+				      'first_name'        : self.member_first_name,
+				      'last_name'         : self.member_last_name,
 				      'bday_d'            : self.bday_d,
 				      'bday_m'            : self.bday_m,
 				      'bday_y'            : self.bday_y,
 				      'device_name'       : self.device_name,
-				      'gender'     : self.member_gender
+				      'gender'            : self.member_gender
                     }
         manager = Manager(self.vals)
         manager.request(api_url, "session/account")
@@ -41,13 +41,13 @@ class v4_account():
                       'action'            : self.action,
                       'email'             : self.email,
                       'password'          : self.password,
-                      'first_name' : self.member_first_name,
-                      'last_name'  : self.member_last_name,
+                      'first_name'        : self.member_first_name,
+                      'last_name'         : self.member_last_name,
                       'bday_d'            : self.bday_d,
                       'bday_m'            : self.bday_m,
                       'bday_y'            : self.bday_y,
                       'device_name'       : self.device_name,
-                      'gender'     : self.member_gender
+                      'gender'            : self.member_gender
                     }
         manager = Manager(self.vals)
         manager.requestFail(api_url, "session/account", message)
@@ -82,11 +82,11 @@ class accountTest():
         
         ############# Valid calls
         # create valid account. expect success
-        createAcc = v4_account(self.memberId, self.authToken, 'create', 'liam.mellor@zolabooks.com', 'testing123', 'Liam', '20', '10', '1992', 'dank', 'Test', 'm')
+        createAcc = v4_account(self.memberId, self.authToken, 'create', 'LiamAccountCreate@SessionAccount.com', 'testing123', 'Liam', '20', '10', '1992', 'The DeLorean', 'Test', 'm')
         createAcc.account(self.api_url)
         
         # check for valid account. expect success
-        existsAcc = v4_account(self.memberId, self.authToken, 'exists', 'liam.mellor@zolabooks.com', 'testing123', None, None, None, None, None, None, None)
+        existsAcc = v4_account(self.memberId, self.authToken, 'exists', 'liam.mellor@zolabooks.com', None, None, None, None, None, None, None, None)
         existsAcc.account(self.api_url)
 
 

@@ -32,7 +32,10 @@ class purchaseTest():
     def purchase(self):
         print Manager.WARNING + sets + Manager.ENDC
         
-        periods = ['days','months','years','all-tiome']
+        periods = ['days','months','years','all-time']
+        actions = ['history', 'preorder']
+        
         for period in periods:
-            testCase = v4collectionPurchase(self.auth_member_id, self.auth_token, 'history', None, '1', period , '2013-01-01', '2014-01-01', 'desc', 20, 0)
-            testCase.purchase(self.api_url)
+            for action in actions:
+                testCase = v4collectionPurchase(self.auth_member_id, self.auth_token, action, None, '1', period , '2013-01-01', '2014-01-01', 'desc', 20, 0)
+                testCase.purchase(self.api_url)

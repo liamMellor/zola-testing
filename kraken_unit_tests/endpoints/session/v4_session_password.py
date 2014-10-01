@@ -18,11 +18,13 @@ class v4password():
         self.vals = { "auth_member_id"   : self.member_id,
                       "auth_token"       : self.auth_token,
                       "action"           : self.action,
-                      "username"         : self.username,
                       "current_password" : self.current_password,
                       "password"         : self.new_password,
                       "email"            : self.email
                     }
+        if self.username != None:
+            self.vals["username"] = self.username
+        
         manager = Manager(self.vals)
         manager.request(api_url, "session/password")
 
@@ -82,11 +84,11 @@ class passwordTest():
         '''
         
         # update password by providing email addres             username was None
-        update = v4password(self.member_id, self.auth_token, 'update', None, 'testing123', 'testing123', 'liam@test1.com')
+        update = v4password(self.member_id, self.auth_token, 'update', 'michael-jordan', '123456123456', '123456123456', 'michael.jordan@zolabooks.com')
         update.password(self.api_url)
         
-        # email user passowrd at specified email
-        forgot = v4password(self.member_id, self.auth_token, 'forgot', 'liam-test1', 'testing123', None, 'liam@test1.com')
+        # email user password at specified email
+        forgot = v4password(self.member_id, self.auth_token, 'forgot', 'mail-rollem', None , None, 'liam.mellor@zolabooks.com')
         forgot.password(self.api_url)
 
 

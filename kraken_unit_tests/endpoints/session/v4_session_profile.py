@@ -35,8 +35,7 @@ class v4profile():
     
     def profile(self, api_url):
         if self.action == "set":
-            self.vals = {   'member_id'                : self.member_id,
-                            'auth_member_id'           : self.auth_member_id,
+            self.vals = {   'auth_member_id'           : self.auth_member_id,
                             'auth_token'               : self.auth_token,
                             'action'                   : self.action,
                             'email'                    : self.email,
@@ -63,9 +62,11 @@ class v4profile():
                             'gplus_username'    : self.member_gplus_username,
                             'rss_feed'          : self.member_rss_feed
                         }
+            if self.member_id != None:
+                self.vals['member_id'] = self.member_id
+        
         else:
-            self.vals = {   'member_id'                : self.member_id,
-                            'auth_member_id'           : self.auth_member_id,
+            self.vals = {   'auth_member_id'           : self.auth_member_id,
                             'auth_token'               : self.auth_token,
                             'action'                   : self.action,
                             'email'                    : self.email,
@@ -92,72 +93,21 @@ class v4profile():
                             'gplus_username'    : self.member_gplus_username,
                             'rss_feed'          : self.member_rss_feed
                         }
+            if self.member_id != None:
+                self.vals['member_id'] = self.member_id
+
         manager = Manager(self.vals)
         manager.request(api_url, "session/profile")
-
-    '''
-    def profileFail(self, api_url, message):
-        if self.action == "set":
-            self.vals = {   'member_id'    : self.member_id,
-                'auth_member_id'           : self.auth_member_id,
-                'auth_token'               : self.auth_token,
-                'action'                   : self.action,
-                'email'                    : self.email,
-                'bday_d'                   : self.bday_d,
-                'bday_m'                   : self.bday_m,
-                'bday_y'                   : self.bday_y,
-                'receive_newsletter'       : self.receive_newsletter,
-                'receive_email_if_followed' : self.receive_email_if_followed,
-                'receive_email_if_messaged' : self.receive_email_if_messaged,
-                'member_first_name'        : self.member_first_name,
-                'member_last_name'         : self.member_last_name,
-                'member_facebook_username' : self.member_facebook_username,
-                'member_twitter_username'  : self.member_twitter_username,
-                'member_gender'            : self.member_gender,
-                'member_zip_code'          : self.member_zip_code,
-                'member_location'          : self.member_location,
-                'member_public_email'      : self.member_public_email,
-                'member_website'           : self.member_website,
-                'member_twitter_url'       : self.member_twitter_url,
-                'member_facebook_url'      : self.member_facebook_url,
-                'member_phone'             : self.member_phone,
-                'member_gplus_url'         : self.member_gplus_url,
-                'member_facebook_id'       : self.member_facebook_id,
-                'member_gplus_username'    : self.member_gplus_username,
-                'member_rss_feed'          : self.member_rss_feed
-                }
-        else:
-            self.vals = {   'member_id'                : self.member_id,
-                'auth_member_id'           : self.auth_member_id,
-                'auth_token'               : self.auth_token,
-                'action'                   : self.action,
-                'email'                    : self.email,
-                'bday_d'                   : self.bday_d,
-                'bday_m'                   : self.bday_m,
-                'bday_y'                   : self.bday_y,
-                'receive_newsletter'       : self.receive_newsletter,
-                'receive_email_if_followed': self.receive_email_if_followed,
-                'receive_email_if_messaged': self.receive_email_if_messaged,
-                'first_name'        : self.member_first_name,
-                'last_name'         : self.member_last_name,
-                'facebook_username' : self.member_facebook_username,
-                'twitter_username'  : self.member_twitter_username,
-                'gender'            : self.member_gender,
-                'zip_code'          : self.member_zip_code,
-                'location'          : self.member_location,
-                'public_email'      : self.member_public_email,
-                'website'           : self.member_website,
-                'twitter_url'       : self.member_twitter_url,
-                'facebook_url'      : self.member_facebook_url,
-                'phone'             : self.member_phone,
-                'gplus_url'         : self.member_gplus_url,
-                'facebook_id'       : self.member_facebook_id,
-                'gplus_username'    : self.member_gplus_username,
-                'rss_feed'          : self.member_rss_feed
-                }
+            
+            
+    def profileEmail(self, api_url):
+        self.vals = { 'auth_member_id'           : self.auth_member_id,
+                      'auth_token'               : self.auth_token,
+                      'action'                   : self.action,
+                      'email'                    : self.email,
+                    }
         manager = Manager(self.vals)
-        manager.requestFail(api_url, "session/profile", message)
-        '''
+        manager.request(api_url, "session/profile")
 
 class profileTest():
 
@@ -182,19 +132,26 @@ class profileTest():
         '''
         
         ############# Valid Calls
-        profileSet = v4profile(self.memberId, self.authToken, 'set', 273196, 'liam.mellor@zolabooks.com', '20', '10', '1992', 'n', 'n', 'y', 'Liam', 'Mellor', 'liam.mellor', None, 'm', '10012', None, None, None, None, None, None, None, None, None, None)
+        profileSet = v4profile(self.memberId, self.authToken, 'set', 272820, 'michael.jordan@zolabooks.com', '20', '10', '1992', 'n', 'n', 'y', 'Michael', 'Jordan', 'liam.mellor', None, 'm', '10012', None, None, None, None, None, None, None, None, None, None)
         profileSet.profile(self.api_url)
         
-        profileGet = v4profile(self.memberId, self.authToken, 'get', 273196, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+        profileGet = v4profile(self.memberId, self.authToken, 'get', 272820, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
         profileGet.profile(self.api_url)
 
-        profileGetMin = v4profile(self.memberId, self.authToken, 'get-min', 273196, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+        profileGetMin = v4profile(self.memberId, self.authToken, 'get-min', 272820, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
         profileGetMin.profile(self.api_url)
 
-        profileSetEmail = v4profile(self.memberId, self.authToken, 'update_email', 273196, 'leemo92@mail.com', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
-        profileSetEmail.profile(self.api_url)
+        profileSetEmail = v4profile(self.memberId, self.authToken, 'update_email', None, 'newEmailUpdate@zolabooks.com', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+        profileSetEmail.profileEmail(self.api_url)
+        
+        print "Email michael.jordan@zolabooks.com updated to --> newEmailUpdate@zolabooks.com"
+        
+        profileSetEmail = v4profile(self.memberId, self.authToken, 'update_email', None, 'michael.jordan@zolabooks.com', None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None, None)
+        profileSetEmail.profileEmail(self.api_url)
+        
+        print "Email newEmailUpdate@zolabooks.com updated to --> michael.jordan@zolabooks.com"
 
-        profileSet = v4profile(self.memberId, self.authToken, 'set', 273196, 'liam.mellor@zolabooks.com', '20', '10', '1992', 'n', 'n', 'y', 'Liam', 'Mellor', 'liam.mellor', None, 'm', '10012', None, None, None, None, None, None, None, None, None, None)
+        profileSet = v4profile(self.memberId, self.authToken, 'set', 272820, 'michael.jordan@zolabooks.com', '20', '10', '1992', 'n', 'n', 'y', 'Michael', 'Jordan', 'liam.mellor', None, 'm', '10012', None, None, None, None, None, None, None, None, None, None)
         profileSet.profile(self.api_url)
 
 

@@ -57,6 +57,16 @@ class saleTest():
         afillSale.sale(self.api_url)
         afillSale = v4sale('item', 'ZOLA', '9780525478812', 'false',  None, None, None, 20, 0)
         afillSale.sale(self.api_url)
+        afillSale = v4sale('item', 'ZOLA', '9780525478812', 'false',  '1508127', None, None, 20, 0)
+        afillSale.sale(self.api_url)
+        afillSale = v4sale('item', 'ZOLA', '9780525478812', 'false',  '1508127', None, None, 20, 0)
+        afillSale.sale(self.api_url)
+        afillSale = v4sale('item', 'ZOLA', '9780525478812', 'false',  '18e1c11f-1c44-4238-99a9-31944e7dc079', None, None, 20, 0)
+        afillSale.sale(self.api_url)
+        afillSale = v4sale('item', 'ZOLA', '9780525478812', 'false',  '18e1c11f-1c44-4238-99a9-31944e7dc079', None, None, 20, 0)
+        afillSale.sale(self.api_url)
+        
+        
 
         # test list
         listSale = v4sale('list', 'ZOLA', '9780525478812', 'true', '1', None, 'ebook', 20, 0)

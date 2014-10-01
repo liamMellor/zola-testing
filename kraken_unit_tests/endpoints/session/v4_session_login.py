@@ -40,11 +40,11 @@ class LoginTest():
         doubleFailLog.loginFail(self.api_url, "Attempt invalid password and username")
         
         # correct login to be logged out
-        a = v4_login("mail-rollem", "testing123", "The DeLorean", "liam.mellor@zolabooks.com", 'true')
+        a = v4_login("michael-jordan", "123456123456", "The DeLorean", "michael.jordan@zolabooks.com", 'true') #"mail-rollem", "", "The DeLorean", "liam.mellor@zolabooks.com", 'true'
         return a.login(self.api_url)
 
     def activate1(self):
         
         # second correct login to run remaining tests
-        b = v4_login("mail-rollem", "testing123", "The DeLorean", "liam.mellor@zolabooks.com", 'false')
+        b = v4_login("michael-jordan", "123456123456", "The DeLorean", "michael.jordan@zolabooks.com", 'false')
         return b.login(self.api_url)

@@ -88,7 +88,7 @@ class commerceTest():
             commerceA.commerce(self.api_url)
         
         # action = process
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "process", "ZOLA", None, orderID, 1508127, None, None, None, None, sessionID, None, "liam.mellor@zolabooks.com", 1)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "process", "ZOLA", None, orderID, 1508127, None, None, None, None, sessionID, None, "michael.jordan@zolabooks.com", 1)
         commerceA.commerce(self.api_url)
         	 
         # action = detail
@@ -101,7 +101,7 @@ class commerceTest():
             commerceA.commerce(self.api_url)
                 
         # action = email_receipt
-        commerceA = v4commerce(self.auth_member_id, self.auth_token, "email_receipt", "ZOLA", None, orderID, None, None, None, None, None, sessionID, None, "liam.mellor@zolabooks.com", None)
+        commerceA = v4commerce(self.auth_member_id, self.auth_token, "email_receipt", "ZOLA", None, orderID, None, None, None, None, None, sessionID, None, "michael.jordan@zolabooks.com", None)
         commerceA.commerce(self.api_url)
     
         # action = opt_in

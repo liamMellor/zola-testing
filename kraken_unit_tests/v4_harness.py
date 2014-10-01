@@ -37,6 +37,14 @@ import time
 # device    : "The DeLorean
 # member_id : "273196"
 
+# ABOVE IS OLD^^^^^^^ USE BELOW
+# user name : michael-jordan
+# email     : michael.jordan@zolabooks.com
+# password  : 123456123456
+# device    : "The DeLorean"
+# member_id : "272820"
+
+
 # Parse Command Line Options
 arg_manager.get_args()
 

@@ -163,7 +163,7 @@ class v4_harness():
          
         # Collection/curation retrieves curated list of books
         if arg_manager.CollectionCur == True:
-            curationInstance = curationTest(api_url, memberId, authToken)   #9780525478812 Fault in our stars
+            curationInstance = curationTest(api_url)   #9780525478812 Fault in our stars
             curationInstance.curation()
         
         # Collection/purchase retreives list of purchased books

@@ -35,7 +35,7 @@ class downloadTest():
 		
         actions = ['get-key','get-file-info','download','download-no-header','download-base64']
         for action in actions:
-            downloadA = v4download(self.auth_member_id, self.auth_token, action, '9781101569184', 'epub', 'true') #9780525478812 9781451667943
+            downloadA = v4download(self.auth_member_id, self.auth_token, action, '9781627553223', 'epub', 'true') #9780525478812 9781451667943 9781101569184
             downloadA.download(self.api_url)
 
         for action in actions:

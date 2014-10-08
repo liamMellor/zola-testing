@@ -12,7 +12,7 @@ class v4Details():
                       "preferred-format" : format,
                       "limit"            : limit,
                       "offset"           : offset,
-                      "contributor_id"        : authorId
+                      "contributor_id"   : authorId
                     }
 
     def details(self, api_url):

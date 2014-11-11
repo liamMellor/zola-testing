@@ -64,16 +64,16 @@ class passwordTest():
         
         ########## Invalid Calls
         # attempt to update password for non-existing account
-        updateFail = v4password(self.member_id, self.auth_token, 'update', 'Fake-acc-1', 'pass', 'new_pass', 'fake@fake.com')
-        updateFail.passwordFail(self.api_url, "Attempt to update password for non-account")
+        #updateFail = v4password(self.member_id, self.auth_token, 'update', 'Fake-acc-1', 'pass', 'new_pass', 'fake@fake.com')
+        #updateFail.passwordFail(self.api_url, "Attempt to update password for non-account")
         
         # attempt to update password for existing account incorrect password
-        updateFail1 = v4password(self.member_id, self.auth_token, 'update', 'Liam-Test1', 'wrong_pass', 'testing123', 'liam@test1.com')
-        updateFail1.passwordFail(self.api_url, "Attempt to update password with incorrect current password")
+        #updateFail1 = v4password(self.member_id, self.auth_token, 'update', 'Liam-Test1', 'wrong_pass', 'testing123', 'liam@test1.com')
+        #updateFail1.passwordFail(self.api_url, "Attempt to update password with incorrect current password")
         
         # attempt to update password to blank string
-        updateFail2 = v4password(self.member_id, self.auth_token, 'update', 'Liam-Test1', 'testing123', '', 'liam@test1.com')
-        updateFail2.passwordFail(self.api_url, "Attempt to update password to empty string")
+        #updateFail2 = v4password(self.member_id, self.auth_token, 'update', 'Liam-Test1', 'testing123', '', 'liam@test1.com')
+        #updateFail2.passwordFail(self.api_url, "Attempt to update password to empty string")
         
         
         ########## Valid Calls

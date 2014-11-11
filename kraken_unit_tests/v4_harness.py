@@ -104,6 +104,8 @@ class v4_harness():
         if arg_manager.SessionPassword == True:
             passwordInstance = passwordTest(api_url, memberId, authToken)
             passwordInstance.password()
+            
+        time.sleep(11)
         
         # Re-login because tokens were deactivated when password was reset above^
         login        = LoginTest(api_url)

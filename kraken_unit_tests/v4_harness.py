@@ -105,7 +105,7 @@ class v4_harness():
             passwordInstance = passwordTest(api_url, memberId, authToken)
             passwordInstance.password()
             
-        time.sleep(11)
+        time.sleep(10)
         
         # Re-login because tokens were deactivated when password was reset above^
         login        = LoginTest(api_url)
